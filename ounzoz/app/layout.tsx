@@ -32,6 +32,7 @@ const inter = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://ounzoz.com'),
   title: 'OUNZOZ — Fast, Practical Tools',
   description:
     'A global platform of fast, practical, trustworthy tools — starting with calculators.',
