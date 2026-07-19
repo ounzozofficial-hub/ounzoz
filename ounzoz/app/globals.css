@@ -140,6 +140,24 @@ body {
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
 }
 
+/* Result panel entrance — DESIGN.md Section 15: subtle fade/slide-in
+   (150–200ms) when a Result Panel appears after calculation. Disabled
+   entirely under prefers-reduced-motion (see media query below). */
+@keyframes result-panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-result-in {
+  animation: result-panel-in 200ms ease-out;
+}
+
 /* Respect prefers-reduced-motion platform-wide — DESIGN.md Section 15 */
 @media (prefers-reduced-motion: reduce) {
   *,
