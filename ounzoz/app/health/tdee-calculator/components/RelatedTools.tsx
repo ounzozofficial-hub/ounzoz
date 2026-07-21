@@ -1,21 +1,19 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Related tools — SEO.md Section 7 clusters BMI with BMR, TDEE, and
-// Calorie Calculator in the health cluster (PROJECT.md Section 7).
-// BMR Calculator now exists (Phase 4) and links for real; TDEE and
-// Calorie Calculator are still "Coming soon" until they ship — same
-// no-orphan/no-broken-link principle applied since Phase 1. Swap each
-// remaining card for a real href the moment its tool ships.
+// Related tools — SEO.md Section 7 health cluster: BMI ↔ BMR ↔ TDEE ↔
+// Calorie Calculator. BMI and BMR are both real and link; Calorie
+// Calculator is still "Coming soon" — same no-orphan/no-broken-link
+// principle applied since Phase 1.
 const HEALTH_CLUSTER_TOOLS = [
+  {
+    name: 'BMI Calculator',
+    description: 'Check your Body Mass Index.',
+    href: '/health/bmi-calculator',
+  },
   {
     name: 'BMR Calculator',
     description: 'Estimate your Basal Metabolic Rate.',
     href: '/health/bmr-calculator',
-  },
-  {
-    name: 'TDEE Calculator',
-    description: 'Find your Total Daily Energy Expenditure.',
-    href: '/health/tdee-calculator',
   },
   {
     name: 'Calorie Calculator',

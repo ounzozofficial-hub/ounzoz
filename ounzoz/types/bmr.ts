@@ -1,4 +1,4 @@
-export type BiologicalSex = 'male' | 'female';
+export type { BiologicalSex } from './shared';
 
 export interface BMRResult {
   /** Basal Metabolic Rate in calories/day, rounded to the nearest whole number */

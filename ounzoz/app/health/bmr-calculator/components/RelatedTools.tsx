@@ -13,6 +13,7 @@ const HEALTH_CLUSTER_TOOLS = [
   {
     name: 'TDEE Calculator',
     description: 'Find your Total Daily Energy Expenditure.',
+    href: '/health/tdee-calculator',
   },
   {
     name: 'Calorie Calculator',
