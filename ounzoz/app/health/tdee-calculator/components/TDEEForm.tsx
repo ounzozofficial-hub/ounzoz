@@ -2,10 +2,10 @@ import { Button } from '@/components/shared/Button';
 import { Card } from '@/components/shared/Card';
 import { Input } from '@/components/shared/Input';
 import { SexSelector } from '@/components/shared/SexSelector';
+import { ActivityLevelSelector } from '@/components/shared/ActivityLevelSelector';
 import { TDEE_VALIDATION_MESSAGES } from '@/lib/calculators/tdee';
 import type { BiologicalSex } from '@/types/shared';
 import type { ActivityLevel, TDEEValidationError } from '@/types/tdee';
-import { ActivityLevelSelector } from './ActivityLevelSelector';
 
 export interface TDEEFormProps {
   weight: string;

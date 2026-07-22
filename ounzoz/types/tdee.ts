@@ -1,11 +1,6 @@
 import type { BMRValidationError } from './bmr';
 
-export type ActivityLevel =
-  | 'sedentary'
-  | 'light'
-  | 'moderate'
-  | 'active'
-  | 'very_active';
+export type { ActivityLevel } from './shared';
 
 export interface TDEEResult {
   /** Total Daily Energy Expenditure in calories/day, rounded to the nearest whole number */

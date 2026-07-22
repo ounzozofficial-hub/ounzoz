@@ -1,12 +1,15 @@
 import {
   BMR_INPUT_BOUNDS,
-  BMR_VALIDATION_MESSAGES,
   calculateBMR,
   validateAgeInput,
   validateHeightInput,
   validateSexInput,
   validateWeightInput,
-} from './bmr';
+} from '@/lib/formulas/bmr-formula';
+import {
+  ACTIVITY_MULTIPLIERS,
+  ACTIVITY_LEVEL_LABELS,
+} from '@/lib/formulas/activity-multiplier';
 import type { BiologicalSex } from '@/types/shared';
 import type {
   ActivityLevel,
@@ -14,29 +17,11 @@ import type {
   TDEEValidationError,
 } from '@/types/tdee';
 
-// Activity multiplier table — the standard scale commonly paired with
-// the Harris-Benedict and Mifflin-St Jeor BMR equations to estimate
-// Total Daily Energy Expenditure. Widely cited source: Harris JA, and
-// Benedict FG (1919) established the original BMR-to-TDEE activity
-// scaling approach; these specific multiplier values are the version
-// most commonly published alongside Mifflin-St Jeor today (e.g. as used
-// by the NIH Body Weight Planner and most clinical nutrition
-// references).
-export const ACTIVITY_MULTIPLIERS: Record<ActivityLevel, number> = {
-  sedentary: 1.2,
-  light: 1.375,
-  moderate: 1.55,
-  active: 1.725,
-  very_active: 1.9,
-};
-
-export const ACTIVITY_LEVEL_LABELS: Record<ActivityLevel, string> = {
-  sedentary: 'Sedentary — little or no exercise',
-  light: 'Lightly active — light exercise 1–3 days/week',
-  moderate: 'Moderately active — moderate exercise 3–5 days/week',
-  active: 'Very active — hard exercise 6–7 days/week',
-  very_active: 'Extra active — very hard exercise or a physical job',
-};
+// Re-exported for existing consumers importing from this tool file
+// (TDEEForm.tsx used to; ActivityLevelSelector now imports directly from
+// the neutral module instead, per the same Tool Independence fix applied
+// to BMR_VALIDATION_MESSAGES/calculateBMR above).
+export { ACTIVITY_MULTIPLIERS, ACTIVITY_LEVEL_LABELS };
 
 /**
  * Calculates Total Daily Energy Expenditure — the calories/day a person
@@ -44,11 +29,11 @@ export const ACTIVITY_LEVEL_LABELS: Record<ActivityLevel, string> = {
  *
  * Formula: TDEE = BMR × activity multiplier
  *
- * BMR is computed via the same Mifflin-St Jeor equation used by BMR
- * Calculator (lib/calculators/bmr.ts) — TDEE Calculator builds directly
- * on that function rather than duplicating it, since lib/calculators/ is
- * exactly the shared location CLAUDE.md Section 5 designates for logic
- * genuinely reused across tools.
+ * BMR is computed via lib/formulas/bmr-formula.ts — the same neutral
+ * Mifflin-St Jeor formula module BMR Calculator itself builds on
+ * (CLAUDE.md Section 5: Tool Independence — TDEE imports the shared
+ * formula, not BMR Calculator's tool file, so deleting bmr-calculator's
+ * app folder can never break this tool).
  *
  * Pure function (CLAUDE.md Section 6). Throws RangeError for invalid
  * inputs rather than ever producing NaN/Infinity (CLAUDE.md Section 8) —
@@ -96,9 +81,10 @@ export function getTDEEResult(
 }
 
 // --- Validation ---
-// Weight/height/age/sex validation is identical to BMR Calculator's, so
-// it's reused directly from lib/calculators/bmr.ts rather than
-// duplicated (CLAUDE.md Section 5). Only activity level is new here.
+// Weight/height/age/sex validation is identical to what BMR Calculator
+// uses, so it's reused directly from the shared formula module rather
+// than duplicated (CLAUDE.md Section 5). Only activity level is new
+// here.
 
 export function validateActivityLevelInput(
   activityLevel: ActivityLevel | null,
@@ -130,8 +116,26 @@ export function validateTDEEInputs(
 
 export const TDEE_INPUT_BOUNDS = BMR_INPUT_BOUNDS;
 
-/** User-facing copy for each validation error — reuses BMR's messages and adds the one TDEE-specific field. */
+// TDEE-specific copy for every field — NOT a spread of BMR's messages.
+// Reusing BMR_VALIDATION_MESSAGES directly would have shown "Enter your
+// weight to calculate BMR." on the TDEE page, which is wrong for the
+// tool the person is actually using. Caught and fixed during this
+// refactor (CLAUDE.md Section 8 / DESIGN.md Section 19: error copy must
+// be specific and correct, not just present).
 export const TDEE_VALIDATION_MESSAGES: Record<TDEEValidationError, string> = {
-  ...BMR_VALIDATION_MESSAGES,
+  WEIGHT_REQUIRED: 'Enter your weight to calculate TDEE.',
+  HEIGHT_REQUIRED: 'Enter your height to calculate TDEE.',
+  AGE_REQUIRED: 'Enter your age to calculate TDEE.',
+  SEX_REQUIRED: 'Select your sex to calculate TDEE.',
+  WEIGHT_NOT_A_NUMBER: 'Weight must be a number.',
+  HEIGHT_NOT_A_NUMBER: 'Height must be a number.',
+  AGE_NOT_A_NUMBER: 'Age must be a number.',
+  WEIGHT_NOT_POSITIVE: 'Weight must be greater than zero.',
+  HEIGHT_NOT_POSITIVE: 'Height must be greater than zero.',
+  AGE_NOT_POSITIVE: 'Age must be greater than zero.',
+  WEIGHT_OUT_OF_RANGE: `Enter a weight between ${BMR_INPUT_BOUNDS.MIN_WEIGHT_KG} and ${BMR_INPUT_BOUNDS.MAX_WEIGHT_KG} kg.`,
+  HEIGHT_OUT_OF_RANGE: `Enter a height between ${BMR_INPUT_BOUNDS.MIN_HEIGHT_CM} and ${BMR_INPUT_BOUNDS.MAX_HEIGHT_CM} cm.`,
+  AGE_OUT_OF_RANGE: `Enter a number between ${BMR_INPUT_BOUNDS.MIN_AGE_YEARS} and ${BMR_INPUT_BOUNDS.MAX_AGE_YEARS} for age.`,
+  AGE_NOT_WHOLE_NUMBER: 'Age must be a whole number of years.',
   ACTIVITY_LEVEL_REQUIRED: 'Select your activity level to calculate TDEE.',
 };
