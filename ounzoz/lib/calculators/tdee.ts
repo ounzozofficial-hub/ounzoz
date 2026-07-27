@@ -9,6 +9,7 @@ import {
 import {
   ACTIVITY_MULTIPLIERS,
   ACTIVITY_LEVEL_LABELS,
+  validateActivityLevelInput,
 } from '@/lib/formulas/activity-multiplier';
 import type { BiologicalSex } from '@/types/shared';
 import type {
@@ -20,8 +21,9 @@ import type {
 // Re-exported for existing consumers importing from this tool file
 // (TDEEForm.tsx used to; ActivityLevelSelector now imports directly from
 // the neutral module instead, per the same Tool Independence fix applied
-// to BMR_VALIDATION_MESSAGES/calculateBMR above).
-export { ACTIVITY_MULTIPLIERS, ACTIVITY_LEVEL_LABELS };
+// to BMR_VALIDATION_MESSAGES/calculateBMR above). validateActivityLevelInput
+// itself now lives in the neutral module too (see activity-multiplier.ts).
+export { ACTIVITY_MULTIPLIERS, ACTIVITY_LEVEL_LABELS, validateActivityLevelInput };
 
 /**
  * Calculates Total Daily Energy Expenditure — the calories/day a person
@@ -83,14 +85,8 @@ export function getTDEEResult(
 // --- Validation ---
 // Weight/height/age/sex validation is identical to what BMR Calculator
 // uses, so it's reused directly from the shared formula module rather
-// than duplicated (CLAUDE.md Section 5). Only activity level is new
-// here.
-
-export function validateActivityLevelInput(
-  activityLevel: ActivityLevel | null,
-): TDEEValidationError | null {
-  return activityLevel === null ? 'ACTIVITY_LEVEL_REQUIRED' : null;
-}
+// than duplicated (CLAUDE.md Section 5). Activity-level validation is
+// reused from the neutral activity-multiplier module (see import above).
 
 export function validateTDEEInputs(
   weightKgRaw: string,

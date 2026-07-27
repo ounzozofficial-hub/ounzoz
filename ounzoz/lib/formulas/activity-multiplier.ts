@@ -29,3 +29,20 @@ export const ACTIVITY_LEVEL_LABELS: Record<ActivityLevel, string> = {
   active: 'Very active — hard exercise 6–7 days/week',
   very_active: 'Extra active — very hard exercise or a physical job',
 };
+
+// Started inside lib/calculators/tdee.ts (TDEE-only), moved here once a
+// third tool (Water Intake Calculator) also needed the same "is an
+// activity level selected" check — TDEE and Calorie Calculator's own
+// formulas don't actually depend on this validator's logic, only on the
+// ActivityLevel type and the tables above, so keeping it tied to TDEE's
+// tool file stopped making sense once Water Intake needed it too without
+// any relationship to TDEE's BMR × multiplier formula (CLAUDE.md
+// Section 5). Returns the bare literal rather than any one tool's wider
+// validation-error union — every tool's own union includes
+// 'ACTIVITY_LEVEL_REQUIRED' as a member, so this is assignable everywhere
+// it's used.
+export function validateActivityLevelInput(
+  activityLevel: ActivityLevel | null,
+): 'ACTIVITY_LEVEL_REQUIRED' | null {
+  return activityLevel === null ? 'ACTIVITY_LEVEL_REQUIRED' : null;
+}

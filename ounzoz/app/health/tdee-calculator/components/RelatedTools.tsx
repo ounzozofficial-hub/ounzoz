@@ -1,18 +1,15 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Related tools — the health cluster now has 6 tools (PROJECT.md
+// Related tools — the health cluster now has 7 tools (PROJECT.md
 // Section 7), so SEO.md Section 7's 2–4 cap means no page links to every
-// other one. TDEE sits in the "energy" group with BMR and Calorie,
-// bridged to the "body composition / target weight" group via BMI and
-// Ideal Weight Calculator specifically — Body Fat is dropped here as the
-// tool least related to a daily-energy question. Same bridging rule
-// applied consistently across all 6 tools' RelatedTools.tsx.
+// other one. TDEE sits in the "energy / daily needs" group with BMR,
+// Calorie, and now Water Intake Calculator — with 4 members that group
+// already fills 3 in-group slots + 1 bridge to BMI, leaving no room for
+// a second bridge into the "body composition / target weight" group
+// (Ideal Weight and Body Fat are dropped here as a result). Same
+// clustering rule applied consistently across BMR's, Calorie's, and
+// Water Intake's RelatedTools.tsx.
 const HEALTH_CLUSTER_TOOLS = [
-  {
-    name: 'BMI Calculator',
-    description: 'Check your Body Mass Index.',
-    href: '/health/bmi-calculator',
-  },
   {
     name: 'BMR Calculator',
     description: 'Estimate your Basal Metabolic Rate.',
@@ -24,9 +21,14 @@ const HEALTH_CLUSTER_TOOLS = [
     href: '/health/calorie-calculator',
   },
   {
-    name: 'Ideal Weight Calculator',
-    description: 'Estimate your ideal weight for your height.',
-    href: '/health/ideal-weight-calculator',
+    name: 'Water Intake Calculator',
+    description: 'Estimate your daily water intake.',
+    href: '/health/water-intake-calculator',
+  },
+  {
+    name: 'BMI Calculator',
+    description: 'Check your Body Mass Index.',
+    href: '/health/bmi-calculator',
   },
 ];
 
