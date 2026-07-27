@@ -1,19 +1,18 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Related tools — SEO.md Section 7 clusters BMI with BMR, TDEE, Calorie,
-// and Body Fat Calculator in the health cluster (PROJECT.md Section 7).
-// All four now exist and link for real (Phase 8) — SEO.md Section 7 caps
-// related links at 2–4, so this lists every other tool in the cluster.
+// Related tools — the health cluster now has 6 tools (PROJECT.md
+// Section 7), so SEO.md Section 7's 2–4 cap means no page links to every
+// other one. BMI sits in the "body composition / target weight" group
+// with Body Fat and Ideal Weight, bridged to the "energy" group (BMR,
+// TDEE, Calorie) via BMR and Calorie specifically — TDEE is dropped here
+// as the tool least related to a composition/target-weight question.
+// Same bridging rule applied consistently across all 6 tools'
+// RelatedTools.tsx.
 const HEALTH_CLUSTER_TOOLS = [
   {
     name: 'BMR Calculator',
     description: 'Estimate your Basal Metabolic Rate.',
     href: '/health/bmr-calculator',
-  },
-  {
-    name: 'TDEE Calculator',
-    description: 'Find your Total Daily Energy Expenditure.',
-    href: '/health/tdee-calculator',
   },
   {
     name: 'Calorie Calculator',
@@ -24,6 +23,11 @@ const HEALTH_CLUSTER_TOOLS = [
     name: 'Body Fat Calculator',
     description: 'Estimate your body fat percentage.',
     href: '/health/body-fat-calculator',
+  },
+  {
+    name: 'Ideal Weight Calculator',
+    description: 'Estimate your ideal weight for your height.',
+    href: '/health/ideal-weight-calculator',
   },
 ];
 

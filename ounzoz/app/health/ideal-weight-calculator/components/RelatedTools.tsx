@@ -1,12 +1,13 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Related tools — the health cluster now has 6 tools (PROJECT.md
-// Section 7), so SEO.md Section 7's 2–4 cap means no page links to every
-// other one. Calorie sits in the "energy" group with BMR and TDEE,
-// bridged to the "body composition / target weight" group via BMI and
-// Ideal Weight Calculator specifically — Body Fat is dropped here as the
-// tool least related to a daily-energy question. Same bridging rule
-// applied consistently across all 6 tools' RelatedTools.tsx.
+// Related tools — SEO.md Section 7 caps this at 2–4 genuinely relevant
+// links, and the health cluster now has 6 tools, so no page can link to
+// every other one. This tool sits in the "body composition / target
+// weight" group with BMI and Body Fat Calculator, bridged to the
+// "energy" group (BMR, TDEE, Calorie) via BMR and Calorie specifically —
+// TDEE is dropped here since it's the one tool least related to a target
+// weight question. Same bridging rule applied consistently across BMI's,
+// Body Fat's, BMR's, TDEE's, and Calorie's RelatedTools.tsx.
 const HEALTH_CLUSTER_TOOLS = [
   {
     name: 'BMI Calculator',
@@ -19,14 +20,14 @@ const HEALTH_CLUSTER_TOOLS = [
     href: '/health/bmr-calculator',
   },
   {
-    name: 'TDEE Calculator',
-    description: 'Find your Total Daily Energy Expenditure.',
-    href: '/health/tdee-calculator',
+    name: 'Calorie Calculator',
+    description: 'Find your daily calorie target for your goal.',
+    href: '/health/calorie-calculator',
   },
   {
-    name: 'Ideal Weight Calculator',
-    description: 'Estimate your ideal weight for your height.',
-    href: '/health/ideal-weight-calculator',
+    name: 'Body Fat Calculator',
+    description: 'Estimate your body fat percentage.',
+    href: '/health/body-fat-calculator',
   },
 ];
 
