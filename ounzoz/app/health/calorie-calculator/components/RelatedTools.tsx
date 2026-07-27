@@ -1,8 +1,9 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
 // Related tools — SEO.md Section 7 health cluster: BMI ↔ BMR ↔ TDEE ↔
-// Calorie Calculator. All three are real and link; this is the fourth
-// and final tool currently shipped in this cluster.
+// Calorie ↔ Body Fat Calculator. All four now exist and link for real
+// (Phase 8) — SEO.md Section 7 caps related links at 2–4, so this lists
+// every other tool in the cluster.
 const HEALTH_CLUSTER_TOOLS = [
   {
     name: 'BMI Calculator',
@@ -18,6 +19,11 @@ const HEALTH_CLUSTER_TOOLS = [
     name: 'TDEE Calculator',
     description: 'Find your Total Daily Energy Expenditure.',
     href: '/health/tdee-calculator',
+  },
+  {
+    name: 'Body Fat Calculator',
+    description: 'Estimate your body fat percentage.',
+    href: '/health/body-fat-calculator',
   },
 ];
 
