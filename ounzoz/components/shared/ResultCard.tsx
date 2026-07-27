@@ -26,6 +26,10 @@ interface SuccessStateProps extends ResultCardBaseProps {
   unit?: string;
   /** Optional supporting line under the result, e.g. "Normal weight" */
   description?: string;
+  /** Optional advisory/safety note — DESIGN.md Section 11.1: a valid
+   * result that still warrants a caution (e.g. a calorie target below the
+   * safe-minimum floor). Never alters `value`; only adds context. */
+  advisory?: string;
 }
 
 export type ResultCardProps =
@@ -121,6 +125,29 @@ export function ResultCard(props: ResultCardProps) {
       {props.description ? (
         <span className="font-[var(--font-body)] text-[var(--font-size-base)] text-[var(--color-text-primary)]">
           {props.description}
+        </span>
+      ) : null}
+      {props.advisory ? (
+        <span
+          role="note"
+          className="mt-[var(--space-1)] flex items-start gap-[var(--space-2)] rounded-[var(--radius-sm)] bg-[color-mix(in_srgb,var(--color-warning)_12%,transparent)] px-[var(--space-3)] py-[var(--space-2)] text-left font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-warning)]"
+        >
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="mt-0.5 shrink-0"
+            aria-hidden="true"
+          >
+            <path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z" />
+            <path d="M12 9v4M12 17h.01" />
+          </svg>
+          <span>{props.advisory}</span>
         </span>
       ) : null}
     </Card>
