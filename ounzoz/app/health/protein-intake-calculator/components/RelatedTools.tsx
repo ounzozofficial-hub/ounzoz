@@ -2,20 +2,19 @@ import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
 // Related tools — the health cluster now has 8 tools (PROJECT.md
 // Section 7), so SEO.md Section 7's 2–4 cap means no page links to every
-// other one. The "energy / daily needs" group (BMR, TDEE, Calorie, Water
-// Intake, Protein Intake) now has 5 members, more than any page can list
-// alongside a bridge to BMI — so each Group A page shows the BMR-TDEE-
-// Calorie tier chain plus just one of the two weight+activity "sibling"
-// tools (Water Intake, Protein Intake), rotating which sibling appears
-// where so both stay well-linked overall. TDEE shows Protein Intake here
-// (Water Intake already appears on BMR's and Calorie's pages). Same
-// clustering rule applied consistently across all 5 Group A tools'
-// RelatedTools.tsx.
+// other one. Protein Intake reuses the same ActivityLevelSelector as
+// TDEE/Calorie/Water Intake and sits in the "energy / daily needs" group
+// — with 5 members that group fills its 4 slots with the direct tier
+// chain (TDEE, Calorie) plus its closest sibling (Water Intake — same
+// weight+activity field set) and a bridge to BMI, dropping BMR (BMR
+// doesn't use activity level at all, the least relevant member of the
+// group for this tool). Same clustering rule applied consistently
+// across all 5 Group A tools' RelatedTools.tsx.
 const HEALTH_CLUSTER_TOOLS = [
   {
-    name: 'BMR Calculator',
-    description: 'Estimate your Basal Metabolic Rate.',
-    href: '/health/bmr-calculator',
+    name: 'TDEE Calculator',
+    description: 'Find your Total Daily Energy Expenditure.',
+    href: '/health/tdee-calculator',
   },
   {
     name: 'Calorie Calculator',
@@ -23,9 +22,9 @@ const HEALTH_CLUSTER_TOOLS = [
     href: '/health/calorie-calculator',
   },
   {
-    name: 'Protein Intake Calculator',
-    description: 'Estimate your daily protein target.',
-    href: '/health/protein-intake-calculator',
+    name: 'Water Intake Calculator',
+    description: 'Estimate your daily water intake.',
+    href: '/health/water-intake-calculator',
   },
   {
     name: 'BMI Calculator',

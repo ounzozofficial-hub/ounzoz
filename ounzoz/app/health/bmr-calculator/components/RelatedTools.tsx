@@ -1,14 +1,14 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Related tools — the health cluster now has 7 tools (PROJECT.md
+// Related tools — the health cluster now has 8 tools (PROJECT.md
 // Section 7), so SEO.md Section 7's 2–4 cap means no page links to every
-// other one. BMR sits in the "energy / daily needs" group with TDEE,
-// Calorie, and now Water Intake Calculator — with 4 members that group
-// already fills 3 in-group slots + 1 bridge to BMI, leaving no room for
-// a second bridge into the "body composition / target weight" group
-// (Ideal Weight and Body Fat are dropped here as a result). Same
-// clustering rule applied consistently across TDEE's, Calorie's, and
-// Water Intake's RelatedTools.tsx.
+// other one. The "energy / daily needs" group (BMR, TDEE, Calorie, Water
+// Intake, Protein Intake) now has 5 members, more than fits alongside a
+// bridge to BMI — BMR keeps the direct tier chain (TDEE, Calorie) plus
+// Water Intake (Protein Intake appears on TDEE's and Water Intake's
+// pages instead, so both weight+activity siblings stay well-linked
+// overall). Same clustering rule applied consistently across all 5
+// Group A tools' RelatedTools.tsx.
 const HEALTH_CLUSTER_TOOLS = [
   {
     name: 'TDEE Calculator',
