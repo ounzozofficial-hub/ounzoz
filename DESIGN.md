@@ -67,7 +67,7 @@ All colors are defined as CSS custom properties (design tokens), never hardcoded
 | `--color-brand-navy` | Logo, header background, footer background, About/404 pages |
 | `--color-brand-cyan` | Primary buttons, active states, result highlights, links |
 | `--color-brand-yellow` | Secondary accents, icons, checkmarks, small highlight moments — used sparingly, never as a large fill |
-| `--color-success` / `--color-error` / `--color-warning` | Form validation states only |
+| `--color-success` / `--color-error` / `--color-warning` | Form validation states, **and** non-validation advisory/safety notices where a result is technically valid but the user should see a caution (e.g., a calculated value falling below a recommended safe minimum). Reserved for genuinely important information the user must not miss — not decorative emphasis. |
 
 **Rule:** Cyan and yellow are accent colors, not backgrounds. Never fill a large surface area with either — they exist to draw the eye to one thing at a time (a button, a result, a highlight), not to decorate.
 
@@ -234,6 +234,17 @@ Every tool page follows this consistent structure, top to bottom:
 
 - On desktop, the Input Card and Result Panel may sit side-by-side once a result exists (two-column), collapsing to stacked on mobile.
 - The Result Panel is visually the most prominent element on the page after a calculation runs — this is the signature moment from Section 1.
+
+### 11.1 Advisory Slot (Result Panel)
+
+Some tools produce a result that is technically valid but warrants a caution — most commonly health/safety tools where a calculated value falls outside a recommended safe range (e.g., a calorie target below a safe minimum, a BMI in an extreme range). The Result Panel (`ResultCard`) supports an optional **advisory slot**:
+
+- Rendered as a distinct line/block directly below the main result value, inside the Result Panel — not as a separate floating element outside it.
+- Uses `--color-warning` text/icon treatment per Section 2's extended usage rule — never `--color-error` (the result is not invalid, just worth a second look) and never plain `--color-text-secondary` (this under-communicates genuinely important information).
+- Never blocks, clamps, or alters the displayed result — it only adds context. The user always sees their real calculated number.
+- Optional by design: most tools never trigger this slot. It exists specifically for cases where showing a number without context could be misread as an unqualified recommendation.
+
+This is a shared `ResultCard` capability, available to any current or future tool — not something reimplemented per tool.
 
 ---
 
