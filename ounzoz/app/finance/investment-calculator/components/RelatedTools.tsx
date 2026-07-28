@@ -1,25 +1,20 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Related tools — Compound Interest Calculator and Investment Calculator
-// are the closest topical matches (same time-value-of-money growth
-// family: this tool is the contribution-based, savings-account-framed
-// sibling of both). Investment Calculator is now live, so its "coming
-// soon" placeholder is replaced with a real mutual link.
+// Related tools — Savings Calculator is the closest topical match (same
+// contribution-based growth formula, sibling framing: savings-account
+// APY vs. market investing). Compound Interest Calculator rounds this
+// out as the third member of the time-value-of-money growth family
+// (pure lump sum, selectable compounding frequency).
 const FINANCE_CLUSTER_TOOLS = [
+  {
+    name: 'Savings Calculator',
+    description: 'See how your deposits and monthly savings can grow.',
+    href: '/finance/savings-calculator',
+  },
   {
     name: 'Compound Interest Calculator',
     description: 'See how a lump sum grows over time with compounding.',
     href: '/finance/compound-interest-calculator',
-  },
-  {
-    name: 'Investment Calculator',
-    description: 'Project how your investments could grow over time.',
-    href: '/finance/investment-calculator',
-  },
-  {
-    name: 'Loan Calculator',
-    description: 'Estimate your monthly loan payment and total interest.',
-    href: '/finance/loan-calculator',
   },
 ];
 

@@ -1,13 +1,11 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Related tools — Savings Calculator is now the tightest topical match
-// (same time-value-of-money growth family — its contribution-based,
-// savings-account-framed sibling), so it replaces Mortgage Calculator's
-// looser amortization-cluster link here (same "tighten the cluster as
+// Related tools — Savings Calculator and Investment Calculator are the
+// tightest topical matches (same time-value-of-money growth family —
+// this tool's contribution-based siblings), so Investment now replaces
+// Loan Calculator's looser link here (same "tighten the cluster as
 // closer matches ship" pattern the Health category used — see git log
-// "Fix Macro Calculator orphan..."). Loan Calculator stays as a genuinely
-// useful, if looser, Finance-category link. Investment Calculator (the
-// third growth-family member) will be added here once it ships.
+// "Fix Macro Calculator orphan...").
 const FINANCE_CLUSTER_TOOLS = [
   {
     name: 'Savings Calculator',
@@ -15,9 +13,9 @@ const FINANCE_CLUSTER_TOOLS = [
     href: '/finance/savings-calculator',
   },
   {
-    name: 'Loan Calculator',
-    description: 'Estimate your monthly loan payment and total interest.',
-    href: '/finance/loan-calculator',
+    name: 'Investment Calculator',
+    description: 'Project how your investments could grow over time.',
+    href: '/finance/investment-calculator',
   },
 ];
 
