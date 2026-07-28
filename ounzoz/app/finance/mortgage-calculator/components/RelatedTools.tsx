@@ -1,16 +1,15 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Related tools — Mortgage Calculator has now shipped, so its "coming
-// soon" placeholder becomes a real link (mutual link, matching the
-// pattern the Health category used each time a new clustered tool
-// shipped — see git log "Fix Macro Calculator orphan..."). Compound
-// Interest Calculator is next on the roadmap and stays as
-// RelatedToolCard's "coming soon" state (no href) until it ships.
+// Related tools — Loan Calculator is Mortgage's closest sibling (both are
+// amortization/fixed-payment tools), now live. Compound Interest
+// Calculator is next on the roadmap and forms the third leg of the same
+// interest-rate cluster — shown as RelatedToolCard's "coming soon" state
+// (no href) until it ships.
 const FINANCE_CLUSTER_TOOLS = [
   {
-    name: 'Mortgage Calculator',
-    description: 'Estimate your monthly mortgage payment.',
-    href: '/finance/mortgage-calculator',
+    name: 'Loan Calculator',
+    description: 'Estimate your monthly loan payment and total interest.',
+    href: '/finance/loan-calculator',
   },
   {
     name: 'Compound Interest Calculator',
