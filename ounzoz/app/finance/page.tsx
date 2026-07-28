@@ -32,10 +32,8 @@ const breadcrumbSchema = {
 // Finance tools shipped so far, in PROJECT.md Section 7's roadmap order —
 // SEO.md Section 7: "Category pages link to every tool within that
 // category, giving Google and users a clear hub-and-spoke structure."
-// This completes 6 of 7 Finance tools — Currency Converter is deferred
-// per an explicit product decision on its live exchange-rate data source
-// (not an oversight), so it's intentionally omitted here rather than
-// shown as a "coming soon" placeholder that would imply it's imminent.
+// All 7 Finance tools are now live — Currency Converter shipped once the
+// owner decided on its live exchange-rate data source (frankfurter.app).
 const FINANCE_TOOLS = [
   {
     name: 'Loan Calculator',
@@ -66,6 +64,11 @@ const FINANCE_TOOLS = [
     name: 'Percentage Calculator',
     description: 'Find a percentage, a percent share, or a percent change.',
     href: '/finance/percentage-calculator',
+  },
+  {
+    name: 'Currency Converter',
+    description: 'Convert between major currencies using live ECB reference rates.',
+    href: '/finance/currency-converter',
   },
 ];
 
