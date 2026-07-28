@@ -20,13 +20,21 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Nav placeholder — category links are not wired up yet since no
-            category/tool pages exist in this phase (avoids dead links). */}
+        {/* Finance/Student stay plain text — their category pages don't
+            exist yet, so linking them would be a dead link (avoided per
+            CLAUDE.md Section 18). Health is now a real link since
+            app/health/page.tsx exists as of the Pregnancy Due Date
+            Calculator phase. */}
         <nav
           aria-label="Primary"
           className="hidden items-center gap-6 font-[var(--font-body)] text-sm font-medium text-white/70 md:flex"
         >
-          <span>Health</span>
+          <Link
+            href="/health"
+            className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-cyan)]"
+          >
+            Health
+          </Link>
           <span>Finance</span>
           <span>Student</span>
         </nav>
