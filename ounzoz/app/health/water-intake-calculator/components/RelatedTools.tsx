@@ -1,13 +1,15 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Related tools — the health cluster now has 8 tools (PROJECT.md
+// Related tools — the health cluster now has 9 tools (PROJECT.md
 // Section 7), so SEO.md Section 7's 2–4 cap means no page links to every
 // other one. The "energy / daily needs" group (BMR, TDEE, Calorie, Water
-// Intake, Protein Intake) now has 5 members, so Water Intake shows its
-// closest sibling (Protein Intake — same weight+activity field set)
-// alongside BMR, Calorie, and a bridge to BMI, dropping TDEE (TDEE
-// already appears on BMR's and Calorie's pages). Same clustering rule
-// applied consistently across all 5 Group A tools' RelatedTools.tsx.
+// Intake, Protein Intake, Macro) now has 6 members. Water Intake drops
+// the BMI bridge (the weakest link — Water Intake doesn't use BMI at
+// all) to make room for Macro Calculator, whose calorie/protein/activity
+// inputs are the same weight+activity field set Water Intake shares with
+// Protein Intake — and the relationship needs to be mutual (SEO.md
+// Section 7: no orphan pages) rather than one-way. BMR, Calorie, and
+// Protein Intake are unaffected.
 const HEALTH_CLUSTER_TOOLS = [
   {
     name: 'BMR Calculator',
@@ -25,9 +27,9 @@ const HEALTH_CLUSTER_TOOLS = [
     href: '/health/protein-intake-calculator',
   },
   {
-    name: 'BMI Calculator',
-    description: 'Check your Body Mass Index.',
-    href: '/health/bmi-calculator',
+    name: 'Macro Calculator',
+    description: 'Get your daily protein, fat, and carb targets.',
+    href: '/health/macro-calculator',
   },
 ];
 
