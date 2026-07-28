@@ -29,10 +29,9 @@ const breadcrumbSchema = {
   ],
 };
 
-// Student tools shipped so far, in PROJECT.md Section 7's roadmap order —
+// All 3 Student tools from PROJECT.md Section 7's roadmap are now live —
 // SEO.md Section 7: "Category pages link to every tool within that
 // category, giving Google and users a clear hub-and-spoke structure."
-// Study Time Calculator will be appended here once it ships.
 const STUDENT_TOOLS = [
   {
     name: 'GPA Calculator',
@@ -43,6 +42,11 @@ const STUDENT_TOOLS = [
     name: 'Grade Calculator',
     description: 'Calculate your overall course grade from weighted categories.',
     href: '/student/grade-calculator',
+  },
+  {
+    name: 'Study Time Calculator',
+    description: 'Plan how much time to spend studying before an exam.',
+    href: '/student/study-time-calculator',
   },
 ];
 

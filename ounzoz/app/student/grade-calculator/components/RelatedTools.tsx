@@ -1,9 +1,7 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Grade Calculator is the second Student tool to ship — GPA Calculator is
-// live, Study Time Calculator is next on the roadmap (PROJECT.md
-// Section 7) but doesn't exist yet, so it uses RelatedToolCard's
-// href-omitted "coming soon" state rather than a link that would 404.
+// All 3 Student tools are now live (PROJECT.md Section 7) — both entries
+// are real links.
 const STUDENT_CLUSTER_TOOLS = [
   {
     name: 'GPA Calculator',
@@ -13,6 +11,7 @@ const STUDENT_CLUSTER_TOOLS = [
   {
     name: 'Study Time Calculator',
     description: 'Plan how much time to spend studying before an exam.',
+    href: '/student/study-time-calculator',
   },
 ];
 

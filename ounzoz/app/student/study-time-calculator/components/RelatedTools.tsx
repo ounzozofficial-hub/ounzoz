@@ -1,17 +1,19 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// All 3 Student tools are now live (PROJECT.md Section 7) — both entries
-// are real links.
+// Study Time Calculator is the third and final Student tool to ship
+// (PROJECT.md Section 7) — both GPA Calculator and Grade Calculator are
+// already live, so both entries are real links.
 const STUDENT_CLUSTER_TOOLS = [
+  {
+    name: 'GPA Calculator',
+    description:
+      'Calculate your grade point average from your grades and credit hours.',
+    href: '/student/gpa-calculator',
+  },
   {
     name: 'Grade Calculator',
     description: 'Calculate your overall course grade from weighted categories.',
     href: '/student/grade-calculator',
-  },
-  {
-    name: 'Study Time Calculator',
-    description: 'Plan how much time to spend studying before an exam.',
-    href: '/student/study-time-calculator',
   },
 ];
 
