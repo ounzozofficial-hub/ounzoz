@@ -1,22 +1,23 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Related tools — Compound Interest isn't a tight amortization-cluster
-// match with Loan/Mortgage (those are fixed-payment/debt tools; this is
-// a growth/lump-sum tool), but a loose Finance-category link is still
-// genuinely useful to a visitor thinking about their finances broadly.
-// Savings Calculator and Investment Calculator (both closer topical
-// matches — same time-value-of-money family) will be added here once
-// they ship.
+// Related tools — Savings Calculator is now the tightest topical match
+// (same time-value-of-money growth family — its contribution-based,
+// savings-account-framed sibling), so it replaces Mortgage Calculator's
+// looser amortization-cluster link here (same "tighten the cluster as
+// closer matches ship" pattern the Health category used — see git log
+// "Fix Macro Calculator orphan..."). Loan Calculator stays as a genuinely
+// useful, if looser, Finance-category link. Investment Calculator (the
+// third growth-family member) will be added here once it ships.
 const FINANCE_CLUSTER_TOOLS = [
+  {
+    name: 'Savings Calculator',
+    description: 'See how your deposits and monthly savings can grow.',
+    href: '/finance/savings-calculator',
+  },
   {
     name: 'Loan Calculator',
     description: 'Estimate your monthly loan payment and total interest.',
     href: '/finance/loan-calculator',
-  },
-  {
-    name: 'Mortgage Calculator',
-    description: 'Estimate your monthly mortgage payment.',
-    href: '/finance/mortgage-calculator',
   },
 ];
 
