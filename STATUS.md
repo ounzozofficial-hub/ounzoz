@@ -4,10 +4,11 @@
 
 ---
 
-## Built: Health category complete (10/10 tools)
+## Built: Health, Finance, and Student categories (19/20 V1 tools)
 
-All 10 tools from PROJECT.md Section 7's Health roadmap are live, tested, and pushed to `main`:
+All three category hubs (`/health`, `/finance`, `/student`) are live, cross-linked from the homepage and header nav, and every shipped tool is reachable within 2 clicks per SEO.md Section 7.
 
+### 🩺 Health (10/10 complete)
 1. BMI Calculator
 2. BMR Calculator
 3. TDEE Calculator
@@ -19,24 +20,33 @@ All 10 tools from PROJECT.md Section 7's Health roadmap are live, tested, and pu
 9. Macro Calculator
 10. Pregnancy Due Date Calculator
 
-Each tool has a pure `lib/calculators/` function, hand-verified unit tests, full UI (form/result/related tools), unique SEO metadata + FAQ + schema, and 2+ internal links (verified zero orphan pages).
-
-Also built this phase: `app/health/page.tsx` — a real category hub linking all 10 tools — with the homepage and header nav wired to it, giving every tool 2-click reachability from the homepage per SEO.md Section 7.
-
-Latest commit: `984bb3e` (pushed, working tree clean).
-
----
-
-## Next: Finance category (7 tools, per PROJECT.md Section 7)
-
+### 💰 Finance (6/7 — Currency Converter deferred)
 1. Loan Calculator
 2. Mortgage Calculator
 3. Compound Interest Calculator
 4. Savings Calculator
 5. Investment Calculator
-6. Currency Converter
-7. Percentage Calculator
+6. Percentage Calculator
+7. ~~Currency Converter~~ — **deferred by explicit owner decision (2026-07-28)**: a real converter needs a live exchange-rate data source, which is a business decision (which provider, cost/reliability tradeoffs), not a technical one. Not built, not linked as "coming soon" on the `/finance` hub. Revisit only if the owner brings it back up — see PROJECT.md Section 5 for the YMYL content-quality bar this tool would need to clear once a data-source decision is made.
 
-**Note:** Finance is YMYL content (PROJECT.md Section 5) — highest content-quality bar on the platform, stricter than Health. No Finance-specific shared formula/component work exists yet; expect a `/finance` category hub (same pattern as `/health`) once the first tool ships.
+Every Finance tool carries explicit YMYL disclaimers (estimate only, not financial/investment advice, doesn't include fees/PMI/taxes where applicable) per PROJECT.md Section 5's strictest-bar requirement. Notable judgment calls (all logged in their commit messages): Mortgage excludes PMI modeling (no verifiable rate to cite without fabricating one); Compound Interest, Savings, and Investment Calculators are intentionally differentiated in scope (pure lump-sum with selectable compounding vs. fixed-monthly-contribution savings-APY framing vs. investment framing with no historical-return benchmark stated) rather than being the same calculator three times.
 
-Student category (3 tools) remains after Finance, per PROJECT.md's build-order note (ratios are a V1 target, not a rigid queue).
+### 🎓 Student (3/3 complete)
+1. GPA Calculator (unweighted US 4.0 scale)
+2. Grade Calculator (weighted-category assignment average — distinct scope from GPA)
+3. Study Time Calculator (time-allocation planner, not a "you should study X hours" recommendation engine — first Student-category use of `ResultCard`'s advisory slot)
+
+### Every shipped tool has
+Pure `lib/calculators/` function(s), hand-verified unit tests (normal/edge/invalid/boundary), full UI (form/result/related tools), unique SEO metadata + 150–300 word content block + FAQ + BreadcrumbList/FAQPage/SoftwareApplication schema, and 2+ internal links with no orphan pages (each category's related-tools clusters were updated tool-by-tool as siblings shipped).
+
+**Quality gate, session-wide:** `npm run lint` clean, `npm test` → 806/806 passing (19 test files), `npm run build` → all 25 routes compiled and statically generated.
+
+Latest commit: `af384af` — "Add Study Time Calculator (Phase 22) - completes Student category" (pushed, working tree clean).
+
+---
+
+## Remaining V1 scope (per PROJECT.md Section 7)
+
+- **Currency Converter** — blocked on the data-source decision above. Not scheduled; pick back up when the owner decides on an approach (client-side fetch to a free no-key API was the recommended option when this was raised).
+
+With Currency Converter's exclusion, V1's 20-tool roadmap is functionally complete at 19 tools. No further tools are queued unless the owner reopens Currency Converter or adds new scope.
