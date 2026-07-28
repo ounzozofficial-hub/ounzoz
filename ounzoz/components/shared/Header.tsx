@@ -20,10 +20,9 @@ export function Header() {
           </span>
         </Link>
 
-        {/* Student stays plain text — its category page doesn't exist yet,
-            so linking it would be a dead link (avoided per CLAUDE.md
-            Section 18). Health and Finance are real links since
-            app/health/page.tsx and app/finance/page.tsx now exist. */}
+        {/* All three V1 category pages now exist (Health, Finance,
+            Student), so every nav entry is a real link — none point to a
+            page that doesn't exist yet (avoided per CLAUDE.md Section 18). */}
         <nav
           aria-label="Primary"
           className="hidden items-center gap-6 font-[var(--font-body)] text-sm font-medium text-white/70 md:flex"
@@ -40,7 +39,12 @@ export function Header() {
           >
             Finance
           </Link>
-          <span>Student</span>
+          <Link
+            href="/student"
+            className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-cyan)]"
+          >
+            Student
+          </Link>
         </nav>
 
         <ThemeToggle />
