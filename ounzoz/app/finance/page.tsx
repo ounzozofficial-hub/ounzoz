@@ -32,10 +32,9 @@ const breadcrumbSchema = {
 // Finance tools shipped so far, in PROJECT.md Section 7's roadmap order —
 // SEO.md Section 7: "Category pages link to every tool within that
 // category, giving Google and users a clear hub-and-spoke structure."
-// This list grows as each remaining Finance tool ships (Compound
-// Interest, Savings, Investment, Percentage; Currency Converter is
-// deferred per an explicit product decision on its live exchange-rate
-// data source).
+// This list grows as each remaining Finance tool ships (Savings,
+// Investment, Percentage; Currency Converter is deferred per an explicit
+// product decision on its live exchange-rate data source).
 const FINANCE_TOOLS = [
   {
     name: 'Loan Calculator',
@@ -46,6 +45,11 @@ const FINANCE_TOOLS = [
     name: 'Mortgage Calculator',
     description: 'Estimate your monthly mortgage payment.',
     href: '/finance/mortgage-calculator',
+  },
+  {
+    name: 'Compound Interest Calculator',
+    description: 'See how a lump sum grows over time with compounding.',
+    href: '/finance/compound-interest-calculator',
   },
 ];
 
