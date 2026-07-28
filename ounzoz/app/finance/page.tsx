@@ -32,9 +32,10 @@ const breadcrumbSchema = {
 // Finance tools shipped so far, in PROJECT.md Section 7's roadmap order —
 // SEO.md Section 7: "Category pages link to every tool within that
 // category, giving Google and users a clear hub-and-spoke structure."
-// This list grows as each remaining Finance tool ships (Percentage;
-// Currency Converter is deferred per an explicit product decision on its
-// live exchange-rate data source).
+// This completes 6 of 7 Finance tools — Currency Converter is deferred
+// per an explicit product decision on its live exchange-rate data source
+// (not an oversight), so it's intentionally omitted here rather than
+// shown as a "coming soon" placeholder that would imply it's imminent.
 const FINANCE_TOOLS = [
   {
     name: 'Loan Calculator',
@@ -60,6 +61,11 @@ const FINANCE_TOOLS = [
     name: 'Investment Calculator',
     description: 'Project how your investments could grow over time.',
     href: '/finance/investment-calculator',
+  },
+  {
+    name: 'Percentage Calculator',
+    description: 'Find a percentage, a percent share, or a percent change.',
+    href: '/finance/percentage-calculator',
   },
 ];
 
