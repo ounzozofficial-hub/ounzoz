@@ -1,6 +1,6 @@
 import { useId } from 'react';
-import { CALORIE_GOAL_LABELS } from '@/lib/calculators/calorie';
-import type { CalorieGoal } from '@/types/calorie';
+import { CALORIE_GOAL_LABELS } from '@/lib/formulas/calorie-goal';
+import type { CalorieGoal } from '@/types/shared';
 
 export interface GoalSelectorProps {
   value: CalorieGoal | null;
@@ -11,10 +11,15 @@ export interface GoalSelectorProps {
 const GOALS = Object.keys(CALORIE_GOAL_LABELS) as CalorieGoal[];
 
 // A labeled radio group for the 3 goals, styled identically to
-// SexSelector (DESIGN.md Section 9 token usage, has[:focus-visible] outline
-// ring). Kept local to calorie-calculator/ rather than components/shared/
-// — only this tool has a "goal" concept so far (CLAUDE.md Section 4
-// golden rule: extract only once genuinely shared by 2+ tools).
+// SexSelector (DESIGN.md Section 9 token usage, has[:focus-visible]
+// outline ring). Moved to components/shared/ once a second tool (Macro
+// Calculator) needed the same goal input that Calorie Calculator
+// introduced (CLAUDE.md Section 4 golden rule: extract once genuinely
+// shared by 2+ tools) — same pattern as SexSelector's and
+// ActivityLevelSelector's earlier moves. Its data (CALORIE_GOAL_LABELS)
+// comes from lib/formulas/calorie-goal.ts, not from any tool's calculator
+// file, so this component doesn't create a dependency on Calorie
+// Calculator or Macro Calculator specifically.
 export function GoalSelector({ value, onChange, errorText }: GoalSelectorProps) {
   const groupId = useId();
   const hasError = Boolean(errorText);

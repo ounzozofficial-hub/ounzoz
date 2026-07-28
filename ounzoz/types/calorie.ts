@@ -1,6 +1,6 @@
 import type { BMRValidationError } from './bmr';
 
-export type CalorieGoal = 'lose' | 'maintain' | 'gain';
+export type { CalorieGoal } from './shared';
 
 export interface CalorieResult {
   /** Daily calorie target in calories/day, rounded to the nearest whole number */

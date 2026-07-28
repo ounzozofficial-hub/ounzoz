@@ -6,6 +6,9 @@
 //   TDEE Calculator needed it too.
 // - ActivityLevel: started in types/tdee.ts (TDEE-only), moved here
 //   once Calorie Calculator needed the same activity-level input.
+// - CalorieGoal: started in types/calorie.ts (Calorie-only), moved here
+//   once Macro Calculator needed the same goal input (and its
+//   GoalSelector component).
 export type BiologicalSex = 'male' | 'female';
 
 export type ActivityLevel =
@@ -14,3 +17,5 @@ export type ActivityLevel =
   | 'moderate'
   | 'active'
   | 'very_active';
+
+export type CalorieGoal = 'lose' | 'maintain' | 'gain';

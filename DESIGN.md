@@ -246,6 +246,18 @@ Some tools produce a result that is technically valid but warrants a caution —
 
 This is a shared `ResultCard` capability, available to any current or future tool — not something reimplemented per tool.
 
+### 11.2 Breakdown Grid (Result Panel)
+
+Some tools don't produce one headline number — their result is a small set of co-equal named values (e.g., a macro split: protein / fat / carbohydrates). Forcing a single number to be "the" signature value would misrepresent the result, and cramming multiple numbers into the description line (Section 11.1's plain text) reads as clutter, not the confident, quiet-everything-else signature moment defined in Section 1. The Result Panel (`ResultCard`) supports an optional **breakdown grid** for exactly this case:
+
+- Mutually exclusive with the standard single `value` — a tool's result uses one or the other, never both.
+- Renders as an equal-weight row of stat tiles (one per value), each with its own small label above a number, at a smaller scale than the standard `--font-size-result` (this is a set of results, not the one signature number) — `--font-size-xl` is the right scale, matching card-heading weight.
+- A smaller context line (using the existing `description` slot) sits above the grid when there's a natural "total" the breakdown sums to (e.g., total daily calories above a protein/fat/carb grid) — optional, since not every breakdown has a natural total.
+- Still lives inside the same Result Panel card, with the same `shadow-lg` treatment and fade/slide-in entrance as every other success state (Section 6, Section 15) — this is a variant of the signature moment, not a different component.
+- Tiles stack to a single column on narrow mobile widths if 3+ values don't comfortably fit side by side, per Section 12's mobile-first rule.
+
+This is a shared `ResultCard` capability, available to any current or future tool whose result is genuinely multi-valued — not something reimplemented per tool, and not used just to show two numbers side by side when one is clearly primary (that's still a single `value` + `description`, per Section 11.1's existing pattern).
+
 ---
 
 ## 12. Mobile Design

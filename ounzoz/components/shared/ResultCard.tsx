@@ -16,20 +16,36 @@ interface ErrorStateProps extends ResultCardBaseProps {
   message: string;
 }
 
+export interface BreakdownItem {
+  /** e.g. "Protein" */
+  label: string;
+  /** e.g. "98" */
+  value: string;
+  /** e.g. "g" */
+  unit?: string;
+}
+
 interface SuccessStateProps extends ResultCardBaseProps {
   state: 'success';
   /** Short label above the result, e.g. "Your BMI" */
   label: string;
-  /** The result itself, e.g. "22.4" — rendered at the signature scale. */
-  value: string;
+  /** The result itself, e.g. "22.4" — rendered at the signature scale.
+   * Mutually exclusive with `breakdown` — provide exactly one. */
+  value?: string;
   /** Optional unit or qualifier next to the value, e.g. "kg/m²" */
   unit?: string;
-  /** Optional supporting line under the result, e.g. "Normal weight" */
+  /** Optional supporting line, e.g. "Normal weight". With `breakdown`,
+   * this is the total/context line shown above the grid instead (e.g.
+   * "2,556 cal/day total") — DESIGN.md Section 11.2. */
   description?: string;
   /** Optional advisory/safety note — DESIGN.md Section 11.1: a valid
    * result that still warrants a caution (e.g. a calorie target below the
    * safe-minimum floor). Never alters `value`; only adds context. */
   advisory?: string;
+  /** For tools whose result is a small set of co-equal named values (e.g.
+   * a protein/fat/carb split) rather than one headline number — DESIGN.md
+   * Section 11.2. Mutually exclusive with `value` — provide exactly one. */
+  breakdown?: BreakdownItem[];
 }
 
 export type ResultCardProps =
@@ -112,21 +128,58 @@ export function ResultCard(props: ResultCardProps) {
       <span className="font-[var(--font-body)] text-[var(--font-size-sm)] font-medium text-[var(--color-text-secondary)]">
         {props.label}
       </span>
-      <span className="flex items-baseline gap-[var(--space-2)]">
-        <span className="font-[var(--font-display)] text-[var(--font-size-result)] font-extrabold leading-none text-[var(--color-brand-cyan)]">
-          {props.value}
-        </span>
-        {props.unit ? (
-          <span className="font-[var(--font-body)] text-[var(--font-size-lg)] text-[var(--color-text-secondary)]">
-            {props.unit}
+      {props.breakdown ? (
+        // DESIGN.md Section 11.2: a small set of co-equal named values
+        // (e.g. protein/fat/carbs) rather than one headline number. The
+        // total/context line (if any) comes first, then an equal-weight
+        // grid of stat tiles at --font-size-xl — a smaller scale than
+        // --font-size-result, since this is a set of results, not THE
+        // signature number.
+        <>
+          {props.description ? (
+            <span className="font-[var(--font-body)] text-[var(--font-size-base)] text-[var(--color-text-secondary)]">
+              {props.description}
+            </span>
+          ) : null}
+          <div className="mt-[var(--space-2)] grid w-full grid-cols-1 gap-[var(--space-4)] sm:grid-cols-3">
+            {props.breakdown.map((item) => (
+              <div key={item.label} className="flex flex-col items-center">
+                <span className="font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
+                  {item.label}
+                </span>
+                <span className="flex items-baseline gap-[var(--space-1)]">
+                  <span className="font-[var(--font-display)] text-[var(--font-size-xl)] font-extrabold leading-none text-[var(--color-brand-cyan)]">
+                    {item.value}
+                  </span>
+                  {item.unit ? (
+                    <span className="font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
+                      {item.unit}
+                    </span>
+                  ) : null}
+                </span>
+              </div>
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <span className="flex items-baseline gap-[var(--space-2)]">
+            <span className="font-[var(--font-display)] text-[var(--font-size-result)] font-extrabold leading-none text-[var(--color-brand-cyan)]">
+              {props.value}
+            </span>
+            {props.unit ? (
+              <span className="font-[var(--font-body)] text-[var(--font-size-lg)] text-[var(--color-text-secondary)]">
+                {props.unit}
+              </span>
+            ) : null}
           </span>
-        ) : null}
-      </span>
-      {props.description ? (
-        <span className="font-[var(--font-body)] text-[var(--font-size-base)] text-[var(--color-text-primary)]">
-          {props.description}
-        </span>
-      ) : null}
+          {props.description ? (
+            <span className="font-[var(--font-body)] text-[var(--font-size-base)] text-[var(--color-text-primary)]">
+              {props.description}
+            </span>
+          ) : null}
+        </>
+      )}
       {props.advisory ? (
         <span
           role="note"

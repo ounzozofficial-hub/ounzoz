@@ -10,6 +10,7 @@ import {
   getTDEEResult,
   validateActivityLevelInput,
 } from '@/lib/calculators/tdee';
+import { CALORIE_GOAL_LABELS } from '@/lib/formulas/calorie-goal';
 import type { ActivityLevel, BiologicalSex } from '@/types/shared';
 import type {
   CalorieGoal,
@@ -19,22 +20,20 @@ import type {
 
 // Re-exported so a consumer only needs to import from this one file for
 // everything Calorie Calculator needs, same convention as bmr.ts/tdee.ts.
-export { validateActivityLevelInput };
+// CALORIE_GOAL_LABELS itself now lives in the neutral
+// lib/formulas/calorie-goal.ts — moved there once Macro Calculator also
+// needed it for its own GoalSelector usage.
+export { validateActivityLevelInput, CALORIE_GOAL_LABELS };
 
-// Goal-related constants live here, not in lib/formulas/ — Calorie
-// Calculator is currently the only tool with a goal concept, so this
-// stays local per CLAUDE.md Section 5's explicit "genuinely shared by 2+
-// tools" threshold, not extracted preemptively.
+// The ±500 kcal/day adjustment formula stays local here — Calorie
+// Calculator is currently the only tool that needs the adjustment
+// itself (not just the goal labels), so this stays put per CLAUDE.md
+// Section 5's explicit "genuinely shared by 2+ tools" threshold, not
+// extracted preemptively.
 export const CALORIE_ADJUSTMENTS: Record<CalorieGoal, number> = {
   lose: -500,
   maintain: 0,
   gain: 500,
-};
-
-export const CALORIE_GOAL_LABELS: Record<CalorieGoal, string> = {
-  lose: 'Lose weight',
-  maintain: 'Maintain weight',
-  gain: 'Gain weight',
 };
 
 // Standard safe-minimum floors (kcal/day), the widely cited convention
@@ -82,7 +81,22 @@ export function calculateCalorieTarget(
     throw new RangeError('goal must be a recognized CalorieGoal');
   }
 
-  return tdee + adjustment;
+  const calories = tdee + adjustment;
+
+  // A flat -500 kcal/day "lose" adjustment can drive the target to zero
+  // or negative at the extreme low end of the accepted weight/height/age
+  // sanity bounds (e.g. a very small TDEE minus 500). That's never a
+  // meaningful calorie target, so this throws rather than ever returning
+  // a non-positive "target" (CLAUDE.md Section 8) — distinct from
+  // belowSafeMinimum below, which flags a real but low value; this
+  // guards against a value that isn't real at all.
+  if (calories <= 0) {
+    throw new RangeError(
+      'Resulting calorie target is not a valid positive number for these inputs',
+    );
+  }
+
+  return calories;
 }
 
 /**
@@ -115,6 +129,14 @@ export function getCalorieResult(
   }
 
   const calories = tdee + adjustment;
+
+  // See the identical guard in calculateCalorieTarget above for why this
+  // throws rather than ever returning a non-positive "target".
+  if (calories <= 0) {
+    throw new RangeError(
+      'Resulting calorie target is not a valid positive number for these inputs',
+    );
+  }
 
   return {
     calories,

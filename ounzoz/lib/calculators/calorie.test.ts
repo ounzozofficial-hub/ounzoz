@@ -62,6 +62,11 @@ describe('calculateCalorieTarget', () => {
 
   // --- Edge cases: very low/high but valid values ---
   it('handles the minimum allowed weight/height/age bounds', () => {
+    // 'maintain' here, not 'lose': at these extreme sanity-bound inputs
+    // TDEE itself is tiny, so a -500 kcal/day "lose" adjustment would
+    // legitimately trip the non-positive-result guard tested separately
+    // below — this test is only checking that the underlying BMR/TDEE
+    // math handles the bounds without crashing.
     expect(() =>
       calculateCalorieTarget(
         CALORIE_INPUT_BOUNDS.MIN_WEIGHT_KG,
@@ -69,7 +74,7 @@ describe('calculateCalorieTarget', () => {
         CALORIE_INPUT_BOUNDS.MIN_AGE_YEARS,
         'male',
         'sedentary',
-        'lose',
+        'maintain',
       ),
     ).not.toThrow();
   });
@@ -132,6 +137,24 @@ describe('calculateCalorieTarget', () => {
     ).toThrow(RangeError);
   });
 
+  it('throws rather than returning a non-positive calorie target at extreme sanity-bound inputs', () => {
+    // At the accepted MIN weight/height/age bounds, TDEE itself is small
+    // enough that a -500 kcal/day "lose" adjustment drives the target to
+    // zero or negative — guarded explicitly so a caller that bypasses
+    // front-end validation never sees a broken "calorie target"
+    // (CLAUDE.md Section 8).
+    expect(() =>
+      calculateCalorieTarget(
+        CALORIE_INPUT_BOUNDS.MIN_WEIGHT_KG,
+        CALORIE_INPUT_BOUNDS.MIN_HEIGHT_CM,
+        CALORIE_INPUT_BOUNDS.MIN_AGE_YEARS,
+        'male',
+        'very_active',
+        'lose',
+      ),
+    ).toThrow(RangeError);
+  });
+
   it('never returns NaN or Infinity for any successful call', () => {
     const result = calculateCalorieTarget(70, 175, 30, 'male', 'moderate', 'lose');
     expect(Number.isFinite(result)).toBe(true);
@@ -179,6 +202,19 @@ describe('getCalorieResult', () => {
   it('propagates validation errors from the underlying BMR calculation', () => {
     expect(() =>
       getCalorieResult(0, 175, 30, 'male', 'sedentary', 'maintain'),
+    ).toThrow(RangeError);
+  });
+
+  it('throws rather than returning a non-positive calorie target at extreme sanity-bound inputs', () => {
+    expect(() =>
+      getCalorieResult(
+        CALORIE_INPUT_BOUNDS.MIN_WEIGHT_KG,
+        CALORIE_INPUT_BOUNDS.MIN_HEIGHT_CM,
+        CALORIE_INPUT_BOUNDS.MIN_AGE_YEARS,
+        'male',
+        'very_active',
+        'lose',
+      ),
     ).toThrow(RangeError);
   });
 

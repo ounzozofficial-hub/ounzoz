@@ -3,6 +3,7 @@ import {
   ACTIVITY_LEVEL_LABELS,
   validateActivityLevelInput,
 } from '@/lib/formulas/activity-multiplier';
+import { PROTEIN_G_PER_KG } from '@/lib/formulas/protein-formula';
 import type { ActivityLevel } from '@/types/shared';
 import type {
   ProteinIntakeResult,
@@ -11,38 +12,15 @@ import type {
 
 // Re-exported so a consumer only needs to import from this one file for
 // everything Protein Intake Calculator needs, same convention as
-// bmr.ts/tdee.ts/calorie.ts/water-intake.ts.
-export { ACTIVITY_LEVEL_LABELS, validateActivityLevelInput };
+// bmr.ts/tdee.ts/calorie.ts/water-intake.ts. PROTEIN_G_PER_KG itself now
+// lives in the neutral lib/formulas/protein-formula.ts (see that file for
+// the sourcing notes behind each activity tier) — moved there once Macro
+// Calculator also needed the same table.
+export { ACTIVITY_LEVEL_LABELS, validateActivityLevelInput, PROTEIN_G_PER_KG };
 
 // Weight bounds are the same "realistic human weight" sanity range every
 // other tool already uses (lib/formulas/bmr-formula.ts).
 const { MIN_WEIGHT_KG, MAX_WEIGHT_KG } = BMR_INPUT_BOUNDS;
-
-// Protein target per kg of body weight per day, by activity level.
-//
-// sedentary (0.8 g/kg) is the RDA (Recommended Dietary Allowance) for
-// protein — a precise, well-established figure from the U.S./Canada
-// Dietary Reference Intakes (National Academies of Medicine, 2005,
-// "Dietary Reference Intakes for Energy, Carbohydrate, Fiber, Fat,
-// Fatty Acids, Cholesterol, Protein, and Amino Acids"). This is the
-// single most solidly backed number in this table.
-//
-// light/moderate/active/very_active (1.2–2.0 g/kg) reflect the general,
-// widely cited principle that protein needs rise with activity level —
-// e.g. the International Society of Sports Nutrition's position stand
-// (Jäger et al., 2017, Journal of the International Society of Sports
-// Nutrition) cites roughly 1.4–2.0 g/kg/day for exercising individuals.
-// Unlike the sedentary RDA, there is no single standardized figure per
-// activity tier — these four values are practical increments across the
-// commonly cited range, not each one an individually cited number. This
-// distinction is called out directly in this tool's FAQ.
-export const PROTEIN_G_PER_KG: Record<ActivityLevel, number> = {
-  sedentary: 0.8,
-  light: 1.2,
-  moderate: 1.4,
-  active: 1.6,
-  very_active: 2.0,
-};
 
 /**
  * Estimates daily protein target from body weight and activity level.
