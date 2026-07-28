@@ -1,15 +1,14 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// GPA Calculator was the first Student tool to ship. Grade Calculator is
-// now live too; Study Time Calculator is still next on the roadmap
-// (PROJECT.md Section 7) and doesn't exist yet, so it keeps
-// RelatedToolCard's href-omitted "coming soon" state rather than a link
-// that would 404.
+// Grade Calculator is the second Student tool to ship — GPA Calculator is
+// live, Study Time Calculator is next on the roadmap (PROJECT.md
+// Section 7) but doesn't exist yet, so it uses RelatedToolCard's
+// href-omitted "coming soon" state rather than a link that would 404.
 const STUDENT_CLUSTER_TOOLS = [
   {
-    name: 'Grade Calculator',
-    description: 'Calculate your overall course grade from weighted categories.',
-    href: '/student/grade-calculator',
+    name: 'GPA Calculator',
+    description: 'Calculate your grade point average from your grades and credit hours.',
+    href: '/student/gpa-calculator',
   },
   {
     name: 'Study Time Calculator',

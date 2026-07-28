@@ -32,13 +32,17 @@ const breadcrumbSchema = {
 // Student tools shipped so far, in PROJECT.md Section 7's roadmap order —
 // SEO.md Section 7: "Category pages link to every tool within that
 // category, giving Google and users a clear hub-and-spoke structure."
-// Only GPA Calculator exists at this point; Grade Calculator and Study
-// Time Calculator will be appended here as they ship.
+// Study Time Calculator will be appended here once it ships.
 const STUDENT_TOOLS = [
   {
     name: 'GPA Calculator',
     description: 'Calculate your grade point average from your grades and credit hours.',
     href: '/student/gpa-calculator',
+  },
+  {
+    name: 'Grade Calculator',
+    description: 'Calculate your overall course grade from weighted categories.',
+    href: '/student/grade-calculator',
   },
 ];
 
