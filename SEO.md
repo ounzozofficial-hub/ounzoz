@@ -123,7 +123,7 @@ Every tool page includes an FAQ section. This is not optional per tool — it's 
 - **Title tag:** primary keyword first, under 60 characters, human-readable — not keyword-stuffed. Example: `BMI Calculator — Check Your Body Mass Index | OUNZOZ`
 - **Meta description:** under 160 characters, states what the tool does and the value of using it, includes the primary keyword naturally. Example: `Calculate your BMI instantly and see what it means for your health. Free, accurate, and based on WHO standards.`
 - **Canonical URL:** set explicitly on every page, even where duplication risk seems low — this prevents the `www`/non-`www` and trailing-slash issues encountered in a prior project.
-- **Open Graph tags:** title, description, and `og-image.png` (per `DESIGN.md` Section 20 file convention) for clean social/link-preview sharing.
+- **Open Graph tags:** title, description, and `og-image.png` (per `DESIGN.md` Section 22 file convention) for clean social/link-preview sharing.
 
 ---
 

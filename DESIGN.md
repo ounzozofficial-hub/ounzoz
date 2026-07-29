@@ -246,18 +246,6 @@ Some tools produce a result that is technically valid but warrants a caution —
 
 This is a shared `ResultCard` capability, available to any current or future tool — not something reimplemented per tool.
 
-### 11.2 Breakdown Grid (Result Panel)
-
-Some tools don't produce one headline number — their result is a small set of co-equal named values (e.g., a macro split: protein / fat / carbohydrates). Forcing a single number to be "the" signature value would misrepresent the result, and cramming multiple numbers into the description line (Section 11.1's plain text) reads as clutter, not the confident, quiet-everything-else signature moment defined in Section 1. The Result Panel (`ResultCard`) supports an optional **breakdown grid** for exactly this case:
-
-- Mutually exclusive with the standard single `value` — a tool's result uses one or the other, never both.
-- Renders as an equal-weight row of stat tiles (one per value), each with its own small label above a number, at a smaller scale than the standard `--font-size-result` (this is a set of results, not the one signature number) — `--font-size-xl` is the right scale, matching card-heading weight.
-- A smaller context line (using the existing `description` slot) sits above the grid when there's a natural "total" the breakdown sums to (e.g., total daily calories above a protein/fat/carb grid) — optional, since not every breakdown has a natural total.
-- Still lives inside the same Result Panel card, with the same `shadow-lg` treatment and fade/slide-in entrance as every other success state (Section 6, Section 15) — this is a variant of the signature moment, not a different component.
-- Tiles stack to a single column on narrow mobile widths if 3+ values don't comfortably fit side by side, per Section 12's mobile-first rule.
-
-This is a shared `ResultCard` capability, available to any current or future tool whose result is genuinely multi-valued — not something reimplemented per tool, and not used just to show two numbers side by side when one is clearly primary (that's still a single `value` + `description`, per Section 11.1's existing pattern).
-
 ---
 
 ## 12. Mobile Design
@@ -339,9 +327,46 @@ Even though calculations are near-instant client-side, a consistent loading patt
 
 ---
 
-## 20. Logo System
+## 20. Breadcrumb Navigation (Visible UI)
 
-### Official versions
+**Gap identified during pre-launch review:** `SEO.md` requires `BreadcrumbList` structured data (schema.org) on every tool page, but that schema is invisible metadata for search engines only — it was mistakenly treated as satisfying the need for a visible, human-facing breadcrumb, which it does not. Every tool page needs an actual on-screen breadcrumb, not just its hidden schema counterpart.
+
+**Placement:** directly below the Header, above the page H1, on every tool page and every category hub page. Not shown on the homepage itself (nothing to break down there).
+
+**Format:** `Home / {Category} / {Tool Name}` — e.g., `Home / Health / BMI Calculator`. On a category hub page: `Home / Health`.
+
+**Visual treatment:**
+- Text size `--font-size-sm`, color `--color-text-secondary`
+- Each segment except the current page is a real link (`Home` → `/`, `{Category}` → `/{category}`)
+- The current page's segment (last one) is plain text, not a link, in `--color-text-primary` for slight emphasis
+- Separator between segments: a simple `/` or `›` character, `--color-text-secondary`
+- Links underline on hover, and show the standard focus-visible outline per Section 8
+
+**Why this matters:** without a visible breadcrumb, a tool page reads as an isolated, disconnected page with no path back — this was flagged directly in pre-launch review as making the site feel like "an empty room" with no sense of place. The schema alone helps Google; the visible breadcrumb helps the actual visitor navigate and understand where they are.
+
+---
+
+## 21. Homepage (Beyond the Placeholder Shell)
+
+**Gap identified during pre-launch review:** the homepage was built in Phase 1 as an intentional placeholder shell ("no tool content yet") and was never revisited with real visual design once tools existed. By launch, it must read as a genuine front door to the platform, not a leftover scaffold.
+
+**Required elements (in order):**
+
+1. **Hero section** (existing H1 + tagline + three category CTA buttons stay, but need visual support — see below)
+2. **Featured/popular tools strip** — a row of 4-6 tool cards (reusing the same tool-card component from category hub pages) showing a cross-section of the platform's actual tools (e.g., BMI, Loan, GPA — one from each category), giving an immediate concrete sense of "here's what you can actually do here" rather than only abstract category buttons
+3. **Trust/value strip** — 3 short value props with a small icon each (e.g., "Fast — instant results, no signup", "Accurate — every formula sourced and cited", "Free — no account needed"), addressing exactly the credibility signal a first-time visitor (and, later, an AdSense reviewer) looks for
+4. Category hub links and footer remain as already built
+
+**Visual richness requirement:** the hero and value strip must not be plain centered text on an empty background. At minimum:
+- A subtle background treatment behind the hero (e.g., a soft radial gradient in the brand navy/cyan, or a large, quiet background illustration element in the established doodle brand style) — something behind the text so the page doesn't read as bare
+- Icons for the trust strip (simple line icons per Section 7)
+- Real spacing rhythm between sections (Section 4's scale) so the page has visual sections, not one undifferentiated block
+
+**This is not a request to add decoration for its own sake** — Section 1's "quiet, disciplined" personality still applies. The goal is a homepage that feels considered and complete, not empty. A calm, well-composed page with real structure is not the same as a blank one.
+
+---
+
+## 22. Logo System
 
 1. **Full Logo** — Symbol + "OUNZOZ" + "Smart Tools" tagline. Used where there's room to establish full brand context (hero sections, About page header, promotional materials).
 2. **Horizontal Logo** — Symbol + "OUNZOZ" (no tagline). Used in constrained horizontal spaces (header bar, footer).
@@ -377,7 +402,7 @@ og-image.png           — Marketing version, for social/link previews (1200×63
 
 ---
 
-## 21. Source of Truth
+## 23. Source of Truth
 
 This file works alongside:
 - `CLAUDE.md` — technical rules, including Section 12 (Design Consistency enforcement) and Section 16 (Accessibility)
