@@ -1,6 +1,56 @@
+import Link from 'next/link';
+
+interface FooterColumn {
+  category: string;
+  href: string;
+  tools: { name: string; href: string }[];
+}
+
+// All three V1 category hubs and a cross-section of their tools are now
+// live, so the footer links to real pages instead of Phase 1's "Coming
+// soon" placeholder text. Each category heading links to its hub (which
+// lists every tool in that category); the 4 tools below it are a
+// cross-section, not the exhaustive list, mirroring the same
+// "curated, not exhaustive" link pattern used for Related Tools
+// (SEO.md Section 7) rather than repeating every tool in the footer.
+const FOOTER_COLUMNS: FooterColumn[] = [
+  {
+    category: 'Health',
+    href: '/health',
+    tools: [
+      { name: 'BMI Calculator', href: '/health/bmi-calculator' },
+      { name: 'Calorie Calculator', href: '/health/calorie-calculator' },
+      { name: 'TDEE Calculator', href: '/health/tdee-calculator' },
+      { name: 'Macro Calculator', href: '/health/macro-calculator' },
+    ],
+  },
+  {
+    category: 'Finance',
+    href: '/finance',
+    tools: [
+      { name: 'Loan Calculator', href: '/finance/loan-calculator' },
+      { name: 'Mortgage Calculator', href: '/finance/mortgage-calculator' },
+      { name: 'Savings Calculator', href: '/finance/savings-calculator' },
+      { name: 'Currency Converter', href: '/finance/currency-converter' },
+    ],
+  },
+  {
+    category: 'Student',
+    href: '/student',
+    tools: [
+      { name: 'GPA Calculator', href: '/student/gpa-calculator' },
+      { name: 'Grade Calculator', href: '/student/grade-calculator' },
+      { name: 'Statistics Calculator', href: '/student/statistics-calculator' },
+      { name: 'Unit Converter', href: '/student/unit-converter' },
+    ],
+  },
+];
+
+const FOOTER_LINK_CLASSES =
+  'text-white/50 transition-colors duration-150 hover:text-white/90 hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-cyan)]';
+
 // Site footer — DESIGN.md Section 1 & 2: brand-defining surface, navy
-// background. Category/legal links are placeholders (plain text, not
-// anchors) until those pages exist, to avoid publishing dead links.
+// background.
 export function Footer() {
   const year = new Date().getFullYear();
 
@@ -17,32 +67,30 @@ export function Footer() {
             </p>
           </div>
 
-          <div>
-            <h2 className="font-[family-name:var(--font-body)] text-sm font-semibold text-white">
-              Health
-            </h2>
-            <p className="mt-3 font-[family-name:var(--font-body)] text-sm text-white/50">
-              Coming soon
-            </p>
-          </div>
-
-          <div>
-            <h2 className="font-[family-name:var(--font-body)] text-sm font-semibold text-white">
-              Finance
-            </h2>
-            <p className="mt-3 font-[family-name:var(--font-body)] text-sm text-white/50">
-              Coming soon
-            </p>
-          </div>
-
-          <div>
-            <h2 className="font-[family-name:var(--font-body)] text-sm font-semibold text-white">
-              Student
-            </h2>
-            <p className="mt-3 font-[family-name:var(--font-body)] text-sm text-white/50">
-              Coming soon
-            </p>
-          </div>
+          {FOOTER_COLUMNS.map((column) => (
+            <div key={column.category}>
+              <h2 className="font-[family-name:var(--font-body)] text-sm font-semibold text-white">
+                <Link
+                  href={column.href}
+                  className="transition-colors duration-150 hover:text-white/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-cyan)]"
+                >
+                  {column.category}
+                </Link>
+              </h2>
+              <ul className="mt-3 flex flex-col gap-2">
+                {column.tools.map((tool) => (
+                  <li key={tool.href}>
+                    <Link
+                      href={tool.href}
+                      className={`font-[family-name:var(--font-body)] text-sm ${FOOTER_LINK_CLASSES}`}
+                    >
+                      {tool.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
         <div className="mt-10 border-t border-white/10 pt-6">
