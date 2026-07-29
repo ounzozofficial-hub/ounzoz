@@ -35,7 +35,7 @@ This is not "a tools website." It is a digital asset built to compound in value 
 ## 3. Goals
 
 ### V1 Goal (first ~2 months)
-Launch a professional, fast, genuinely useful platform with 20 excellent tools that begins receiving organic traffic from Google.
+Launch a professional, fast, genuinely useful platform with 24 excellent tools that begins receiving organic traffic from Google.
 
 **Success is measured by:**
 - Tools are indexed by Google
@@ -48,7 +48,7 @@ Launch a professional, fast, genuinely useful platform with 20 excellent tools t
 - Hundreds of tools
 
 ### Why this goal, and not a bigger one
-Building 100+ tools or a full SaaS platform before validating that the first 20 tools attract any search traffic is exactly the kind of premature scaling this project is designed to avoid. If V1 doesn't gain traction, the loss is two months — not a year of wasted infrastructure work.
+Building 100+ tools or a full SaaS platform before validating that the first 24 tools attract any search traffic is exactly the kind of premature scaling this project is designed to avoid. If V1 doesn't gain traction, the loss is two months — not a year of wasted infrastructure work.
 
 ---
 
@@ -141,10 +141,19 @@ A tool that scores well on most of these criteria is a stronger V1 candidate tha
 6. Currency Converter
 7. Percentage Calculator
 
-### 🎓 Student (3)
+### 🎓 Student (3 + 4 pre-launch addition = 7)
 1. GPA Calculator
 2. Grade Calculator
 3. Study Time Calculator
+
+**Pre-launch addition (2026-07-29):** the original 3 tools are all student-life/administrative tools (grade tracking, time planning) — none actually help a student solve a real coursework problem. This gap was caught in pre-launch review. Four genuine academic/homework-helper tools were added to close it, chosen against the same High Search Intent + Easy to Build + Evergreen + Easy to Expand formula:
+
+4. Quadratic Equation Solver — solves ax² + bx + c = 0, core algebra topic
+5. Fraction Calculator — add/subtract/multiply/divide/simplify fractions, core arithmetic
+6. Statistics Calculator — mean, median, mode, standard deviation, core statistics
+7. Unit Converter — length, weight, temperature, volume, spans math/physics/chemistry coursework
+
+These four join the Student cluster and cross-link with the existing 3, giving the category genuine breadth: administrative tools (GPA/Grade/Study Time) and subject-matter tools (the four above) together.
 
 ### Build order note
 Category weighting reflects overall V1 composition, not a rigid build sequence. If keyword/opportunity research (see `SEO.md`) shows a Finance or Student tool has a stronger near-term opportunity than the "next" Health tool on the list, build order can adapt — the category ratios above are the target for the finished V1, not a strict queue.
@@ -155,7 +164,7 @@ Category weighting reflects overall V1 composition, not a rigid build sequence. 
 
 | Phase | Scope | Trigger to move to next phase |
 |---|---|---|
-| **V1** | 20 tools, no backend, static-first, AdSense + optional contextual affiliate | Site is live, indexed, receiving organic traffic |
+| **V1** | 24 tools, no backend, static-first, AdSense + optional contextual affiliate | Site is live, indexed, receiving organic traffic |
 | **V2** | Grow to 50 tools, dedicated SEO optimization pass, site speed optimization | V1 tools show consistent organic traffic growth |
 | **V3** | Grow to 100 tools, AdSense fully optimized | V2 tools maintain/grow traffic; content quality bar holds at scale |
 | **V4** | Grow to 200 tools, evaluate demand for accounts/saved results | Clear, repeated user requests or usage signals indicate demand — not assumption |
