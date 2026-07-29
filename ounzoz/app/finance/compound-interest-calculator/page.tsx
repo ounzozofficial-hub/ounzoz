@@ -3,6 +3,7 @@ import { FAQ } from '@/components/shared/FAQ';
 import { CompoundInterestCalculator } from './components/CompoundInterestCalculator';
 import { RelatedTools } from './components/RelatedTools';
 import { COMPOUND_INTEREST_FAQ_ITEMS } from './faq-content';
+import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
 
@@ -34,6 +35,13 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+// DESIGN.md Section 20: visible breadcrumb, mirrors breadcrumbSchema above.
+const breadcrumbItems: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Finance', href: '/finance' },
+  { name: 'Compound Interest Calculator' },
+];
 
 // FAQPage — standard on every tool page per SEO.md Section 6, built
 // directly from the same content rendered in the FAQ accordion below.
@@ -90,6 +98,7 @@ export default function CompoundInterestCalculatorPage() {
       />
 
       <CompoundInterestCalculator
+        breadcrumbItems={breadcrumbItems}
         title="Compound Interest Calculator"
         description="See how a lump-sum amount grows over time at a given interest rate and compounding frequency."
         contentSlot={

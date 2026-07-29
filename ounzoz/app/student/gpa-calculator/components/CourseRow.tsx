@@ -30,7 +30,7 @@ export function CourseRow({
   return (
     <div className="flex flex-col gap-[var(--space-3)] border-b border-[var(--color-border)] pb-[var(--space-4)] last:border-b-0 last:pb-0">
       <div className="flex items-center justify-between">
-        <span className="font-[var(--font-body)] text-[var(--font-size-sm)] font-medium text-[var(--color-text-secondary)]">
+        <span className="font-[family-name:var(--font-body)] text-[var(--font-size-sm)] font-medium text-[var(--color-text-secondary)]">
           Course {index + 1}
         </span>
         {canRemove ? (

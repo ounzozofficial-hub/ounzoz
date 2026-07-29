@@ -158,6 +158,25 @@ body {
   animation: result-panel-in 200ms ease-out;
 }
 
+/* Homepage hero background — DESIGN.md Section 21: "a subtle background
+   treatment behind the hero ... so the page doesn't read as bare." A
+   quiet radial blend of the two brand accents, low opacity, fading out
+   well before the featured-tools strip — visual support for the hero,
+   not a decorative wash (Section 1: "quiet, disciplined, not decorated"). */
+.hero-background {
+  background-image:
+    radial-gradient(
+      55% 45% at 50% 0%,
+      color-mix(in srgb, var(--color-brand-cyan) 14%, transparent) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      35% 35% at 85% 10%,
+      color-mix(in srgb, var(--color-brand-yellow) 8%, transparent) 0%,
+      transparent 70%
+    );
+}
+
 /* Respect prefers-reduced-motion platform-wide — DESIGN.md Section 15 */
 @media (prefers-reduced-motion: reduce) {
   *,

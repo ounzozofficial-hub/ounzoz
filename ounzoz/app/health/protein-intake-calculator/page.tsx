@@ -3,6 +3,7 @@ import { FAQ } from '@/components/shared/FAQ';
 import { ProteinIntakeCalculator } from './components/ProteinIntakeCalculator';
 import { RelatedTools } from './components/RelatedTools';
 import { PROTEIN_INTAKE_FAQ_ITEMS } from './faq-content';
+import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
 
@@ -34,6 +35,13 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+// DESIGN.md Section 20: visible breadcrumb, mirrors breadcrumbSchema above.
+const breadcrumbItems: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Health', href: '/health' },
+  { name: 'Protein Intake Calculator' },
+];
 
 // FAQPage — standard on every tool page per SEO.md Section 6, built
 // directly from the same content rendered in the FAQ accordion below.
@@ -90,6 +98,7 @@ export default function ProteinIntakeCalculatorPage() {
       />
 
       <ProteinIntakeCalculator
+        breadcrumbItems={breadcrumbItems}
         title="Protein Intake Calculator"
         description="Estimate your daily protein target based on your weight and activity level."
         contentSlot={

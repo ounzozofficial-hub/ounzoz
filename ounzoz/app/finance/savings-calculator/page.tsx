@@ -3,6 +3,7 @@ import { FAQ } from '@/components/shared/FAQ';
 import { SavingsCalculator } from './components/SavingsCalculator';
 import { RelatedTools } from './components/RelatedTools';
 import { SAVINGS_FAQ_ITEMS } from './faq-content';
+import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
 
@@ -34,6 +35,13 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+// DESIGN.md Section 20: visible breadcrumb, mirrors breadcrumbSchema above.
+const breadcrumbItems: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Finance', href: '/finance' },
+  { name: 'Savings Calculator' },
+];
 
 // FAQPage — standard on every tool page per SEO.md Section 6, built
 // directly from the same content rendered in the FAQ accordion below.
@@ -90,6 +98,7 @@ export default function SavingsCalculatorPage() {
       />
 
       <SavingsCalculator
+        breadcrumbItems={breadcrumbItems}
         title="Savings Calculator"
         description="See how your initial deposit and monthly contributions can grow over time."
         contentSlot={

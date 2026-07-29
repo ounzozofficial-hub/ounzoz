@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import {
   getGPAResult,
@@ -22,6 +23,7 @@ const EMPTY_ROW: CourseRowState = {
 };
 
 export interface GPACalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -40,6 +42,7 @@ export interface GPACalculatorProps {
 // input validated, no partial rows silently ignored) rather than a flat
 // set of named fields.
 export function GPACalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -123,6 +126,7 @@ export function GPACalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

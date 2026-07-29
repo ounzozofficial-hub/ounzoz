@@ -24,7 +24,7 @@ export function ModeSelector({ value, onChange }: ModeSelectorProps) {
 
   return (
     <fieldset className="flex flex-col gap-[var(--space-2)]">
-      <legend className="font-[var(--font-body)] text-[var(--font-size-sm)] font-medium text-[var(--color-text-primary)]">
+      <legend className="font-[family-name:var(--font-body)] text-[var(--font-size-sm)] font-medium text-[var(--color-text-primary)]">
         What do you want to calculate?
       </legend>
       <div
@@ -38,7 +38,7 @@ export function ModeSelector({ value, onChange }: ModeSelectorProps) {
             <label
               key={option.mode}
               htmlFor={optionId}
-              className={`flex h-11 flex-1 cursor-pointer items-center justify-center rounded-[var(--radius-sm)] border px-[var(--space-3)] text-center font-[var(--font-body)] text-[var(--font-size-base)] transition-colors duration-150 max-md:h-12 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--color-brand-cyan)] ${
+              className={`flex h-11 flex-1 cursor-pointer items-center justify-center rounded-[var(--radius-sm)] border px-[var(--space-3)] text-center font-[family-name:var(--font-body)] text-[var(--font-size-base)] transition-colors duration-150 max-md:h-12 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--color-brand-cyan)] ${
                 isSelected
                   ? 'border-[var(--color-brand-cyan)] border-2 bg-[var(--color-surface)] text-[var(--color-text-primary)] font-medium'
                   : 'border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text-secondary)]'

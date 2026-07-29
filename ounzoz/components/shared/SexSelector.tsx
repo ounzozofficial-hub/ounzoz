@@ -25,7 +25,7 @@ export function SexSelector({ value, onChange, errorText }: SexSelectorProps) {
 
   return (
     <fieldset className="flex flex-col gap-[var(--space-2)]">
-      <legend className="font-[var(--font-body)] text-[var(--font-size-sm)] font-medium text-[var(--color-text-primary)]">
+      <legend className="font-[family-name:var(--font-body)] text-[var(--font-size-sm)] font-medium text-[var(--color-text-primary)]">
         Sex
       </legend>
       <div className="flex gap-[var(--space-3)]" role="radiogroup">
@@ -36,7 +36,7 @@ export function SexSelector({ value, onChange, errorText }: SexSelectorProps) {
             <label
               key={option.value}
               htmlFor={optionId}
-              className={`flex h-11 flex-1 cursor-pointer items-center justify-center rounded-[var(--radius-sm)] border font-[var(--font-body)] text-[var(--font-size-base)] transition-colors duration-150 max-md:h-12 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--color-brand-cyan)] ${
+              className={`flex h-11 flex-1 cursor-pointer items-center justify-center rounded-[var(--radius-sm)] border font-[family-name:var(--font-body)] text-[var(--font-size-base)] transition-colors duration-150 max-md:h-12 has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-[var(--color-brand-cyan)] ${
                 isSelected
                   ? 'border-[var(--color-brand-cyan)] border-2 bg-[var(--color-surface)] text-[var(--color-text-primary)] font-medium'
                   : hasError
@@ -59,7 +59,7 @@ export function SexSelector({ value, onChange, errorText }: SexSelectorProps) {
         })}
       </div>
       {hasError ? (
-        <p className="font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-error)]">
+        <p className="font-[family-name:var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-error)]">
           {errorText}
         </p>
       ) : null}

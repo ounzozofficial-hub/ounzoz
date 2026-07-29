@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import { getCalorieResult, validateCalorieInputs } from '@/lib/calculators/calorie';
 import type { ActivityLevel, BiologicalSex } from '@/types/shared';
@@ -17,6 +18,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface CalorieCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -32,6 +34,7 @@ export interface CalorieCalculatorProps {
 // that calls into lib/calculators/calorie.ts. Mirrors TDEECalculator's
 // structure exactly (established Phase 3/4/6 template).
 export function CalorieCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -150,6 +153,7 @@ export function CalorieCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

@@ -9,6 +9,7 @@ import type {
   BMRResult as BMRResultType,
   BMRValidationError,
 } from '@/types/bmr';
+import type { BreadcrumbItem } from '@/types/shared';
 import { BMRForm } from './BMRForm';
 import { BMRResult } from './BMRResult';
 
@@ -16,6 +17,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface BMRCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -34,6 +36,7 @@ export interface BMRCalculatorProps {
 // come pre-rendered from page.tsx (a Server Component). Mirrors
 // BMICalculator's structure exactly (Phase 3 template).
 export function BMRCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -118,6 +121,7 @@ export function BMRCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

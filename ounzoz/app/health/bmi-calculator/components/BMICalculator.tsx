@@ -8,6 +8,7 @@ import type {
   BMIResult as BMIResultType,
   BMIValidationError,
 } from '@/types/bmi';
+import type { BreadcrumbItem } from '@/types/shared';
 import { BMIForm } from './BMIForm';
 import { BMIResult } from './BMIResult';
 
@@ -15,6 +16,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface BMICalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -34,6 +36,7 @@ export interface BMICalculatorProps {
 // CLAUDE.md Section 14 ("Server Components by default") intact for
 // everything that doesn't need interactivity.
 export function BMICalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -90,6 +93,7 @@ export function BMICalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

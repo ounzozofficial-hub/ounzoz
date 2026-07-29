@@ -1,6 +1,10 @@
 import type { ReactNode } from 'react';
+import { Breadcrumb } from './Breadcrumb';
+import type { BreadcrumbItem } from '@/types/shared';
 
 export interface CalculatorLayoutProps {
+  /** Home / Category / Tool path, rendered directly above the H1 (DESIGN.md Section 20). Last item is the current page (no href). */
+  breadcrumbItems: BreadcrumbItem[];
   /** The tool name, matching search intent exactly — e.g. "BMI Calculator". Rendered as the page's one <h1>. */
   title: string;
   /** One-line plain-language description directly under the H1. */
@@ -28,6 +32,7 @@ export interface CalculatorLayoutProps {
 // content is read — input/result slots sit directly under the H1, ahead
 // of the content, FAQ, and related-tools slots.
 export function CalculatorLayout({
+  breadcrumbItems,
   title,
   description,
   inputSlot,
@@ -39,10 +44,11 @@ export function CalculatorLayout({
   return (
     <div className="mx-auto flex max-w-[var(--content-max-width)] flex-col gap-[var(--space-7)] px-4 py-[var(--space-7)] md:px-6">
       <header className="flex flex-col gap-[var(--space-2)]">
-        <h1 className="font-[var(--font-display)] text-[var(--font-size-2xl)] font-extrabold text-[var(--color-text-primary)]">
+        <Breadcrumb items={breadcrumbItems} />
+        <h1 className="font-[family-name:var(--font-display)] text-[var(--font-size-2xl)] font-extrabold text-[var(--color-text-primary)]">
           {title}
         </h1>
-        <p className="font-[var(--font-body)] text-[var(--font-size-lg)] text-[var(--color-text-secondary)]">
+        <p className="font-[family-name:var(--font-body)] text-[var(--font-size-lg)] text-[var(--color-text-secondary)]">
           {description}
         </p>
       </header>

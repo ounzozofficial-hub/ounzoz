@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import { getLoanResult, validateLoanInputs } from '@/lib/calculators/loan';
 import type {
@@ -15,6 +16,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface LoanCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -31,6 +33,7 @@ export interface LoanCalculatorProps {
 // (established Health-tool template), adapted to three numeric fields
 // instead of weight + activity level.
 export function LoanCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -101,6 +104,7 @@ export function LoanCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

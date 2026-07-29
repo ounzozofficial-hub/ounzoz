@@ -1,4 +1,6 @@
+import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
+import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
 
@@ -28,6 +30,12 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+// DESIGN.md Section 20: visible breadcrumb, mirrors breadcrumbSchema above.
+const breadcrumbItems: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Student' },
+];
 
 // All 3 Student tools from PROJECT.md Section 7's roadmap are now live —
 // SEO.md Section 7: "Category pages link to every tool within that
@@ -60,10 +68,11 @@ export default function StudentCategoryPage() {
 
       <div className="mx-auto flex max-w-[var(--content-max-width)] flex-col gap-[var(--space-7)] px-4 py-[var(--space-7)] md:px-6">
         <header className="flex flex-col gap-[var(--space-2)]">
-          <h1 className="font-[var(--font-display)] text-[var(--font-size-2xl)] font-extrabold text-[var(--color-text-primary)]">
+          <Breadcrumb items={breadcrumbItems} />
+          <h1 className="font-[family-name:var(--font-display)] text-[var(--font-size-2xl)] font-extrabold text-[var(--color-text-primary)]">
             Student Calculators
           </h1>
-          <p className="max-w-2xl font-[var(--font-body)] text-[var(--font-size-lg)] text-[var(--color-text-secondary)]">
+          <p className="max-w-2xl font-[family-name:var(--font-body)] text-[var(--font-size-lg)] text-[var(--color-text-secondary)]">
             Free, instant calculators for students — GPA, grades, and
             study planning. Every tool runs its calculation entirely in
             your browser: no signup, no data stored.

@@ -85,7 +85,7 @@ export function GradeForm({
           ))}
         </div>
 
-        <p className="font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
+        <p className="font-[family-name:var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
           Weights total: {Math.round(weightTotal * 100) / 100}%
         </p>
 

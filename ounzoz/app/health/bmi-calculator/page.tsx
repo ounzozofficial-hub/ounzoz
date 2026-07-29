@@ -3,10 +3,19 @@ import { FAQ } from '@/components/shared/FAQ';
 import { BMICalculator } from './components/BMICalculator';
 import { RelatedTools } from './components/RelatedTools';
 import { BMI_FAQ_ITEMS } from './faq-content';
+import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
 
 const TOOL_URL = 'https://ounzoz.com/health/bmi-calculator';
+
+// DESIGN.md Section 20: visible breadcrumb, mirrors breadcrumbSchema below
+// (same Home / Health / BMI Calculator path) but as on-screen UI.
+const breadcrumbItems: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Health', href: '/health' },
+  { name: 'BMI Calculator' },
+];
 
 // SEO.md Section 5: schema reflects actual page content only.
 // BreadcrumbList — the category → tool path (SEO.md Section 5 table).
@@ -91,6 +100,7 @@ export default function BMICalculatorPage() {
       />
 
       <BMICalculator
+        breadcrumbItems={breadcrumbItems}
         title="BMI Calculator"
         description="Calculate your Body Mass Index and see which WHO weight category you fall into."
         contentSlot={

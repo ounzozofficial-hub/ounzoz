@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import {
   getBodyFatResult,
@@ -19,6 +20,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface BodyFatCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -34,6 +36,7 @@ export interface BodyFatCalculatorProps {
 // into lib/calculators/body-fat.ts. Mirrors BMICalculator/TDEECalculator's
 // structure exactly (established Phase 3+ template).
 export function BodyFatCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -139,6 +142,7 @@ export function BodyFatCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

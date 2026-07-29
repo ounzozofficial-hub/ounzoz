@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import {
   convertAmount,
@@ -21,6 +22,7 @@ const API_UNAVAILABLE_MESSAGE =
   "Exchange rates are temporarily unavailable. Please try again in a moment.";
 
 export interface CurrencyCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -39,6 +41,7 @@ export interface CurrencyCalculatorProps {
 // fall back to a session-cached rate for the same pair if the fetch
 // fails, and only show the hard error state if neither is available.
 export function CurrencyCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -120,6 +123,7 @@ export function CurrencyCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

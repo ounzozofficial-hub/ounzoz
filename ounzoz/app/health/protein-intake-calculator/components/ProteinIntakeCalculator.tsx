@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import {
   getProteinIntakeResult,
@@ -19,6 +20,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface ProteinIntakeCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -34,6 +36,7 @@ export interface ProteinIntakeCalculatorProps {
 // lib/calculators/protein-intake.ts. Mirrors WaterIntakeCalculator's
 // structure exactly (same field set: weight + activity level only).
 export function ProteinIntakeCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -95,6 +98,7 @@ export function ProteinIntakeCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

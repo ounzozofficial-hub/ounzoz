@@ -3,6 +3,7 @@ import { FAQ } from '@/components/shared/FAQ';
 import { CurrencyCalculator } from './components/CurrencyCalculator';
 import { RelatedTools } from './components/RelatedTools';
 import { CURRENCY_FAQ_ITEMS } from './faq-content';
+import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
 
@@ -34,6 +35,13 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+// DESIGN.md Section 20: visible breadcrumb, mirrors breadcrumbSchema above.
+const breadcrumbItems: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Finance', href: '/finance' },
+  { name: 'Currency Converter' },
+];
 
 // FAQPage — standard on every tool page per SEO.md Section 6, built
 // directly from the same content rendered in the FAQ accordion below.
@@ -90,6 +98,7 @@ export default function CurrencyConverterPage() {
       />
 
       <CurrencyCalculator
+        breadcrumbItems={breadcrumbItems}
         title="Currency Converter"
         description="Convert between major world currencies using European Central Bank reference rates."
         contentSlot={

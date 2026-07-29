@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import { getMacroResult, validateMacroInputs } from '@/lib/calculators/macro';
 import type { ActivityLevel, BiologicalSex, CalorieGoal } from '@/types/shared';
@@ -16,6 +17,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface MacroCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -32,6 +34,7 @@ export interface MacroCalculatorProps {
 // structure exactly (same 6 fields, since Macro genuinely builds on
 // Calorie's result — CLAUDE.md Section 5).
 export function MacroCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -148,6 +151,7 @@ export function MacroCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

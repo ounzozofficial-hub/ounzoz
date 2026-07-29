@@ -31,7 +31,7 @@ export function FAQ({ items }: FAQProps) {
 
   return (
     <div className="flex flex-col gap-[var(--space-3)]">
-      <h2 className="font-[var(--font-body)] text-[var(--font-size-xl)] font-semibold text-[var(--color-text-primary)]">
+      <h2 className="font-[family-name:var(--font-body)] text-[var(--font-size-xl)] font-semibold text-[var(--color-text-primary)]">
         Frequently asked questions
       </h2>
       <div className="flex flex-col gap-[var(--space-3)]">
@@ -49,7 +49,7 @@ export function FAQ({ items }: FAQProps) {
                   aria-expanded={isOpen}
                   aria-controls={panelId}
                   onClick={() => toggle(index)}
-                  className="flex w-full items-center justify-between gap-[var(--space-4)] px-[var(--space-4)] py-[var(--space-4)] text-left font-[var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--color-brand-cyan)] md:px-[var(--space-5)]"
+                  className="flex w-full items-center justify-between gap-[var(--space-4)] px-[var(--space-4)] py-[var(--space-4)] text-left font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--color-brand-cyan)] md:px-[var(--space-5)]"
                 >
                   <span>{item.question}</span>
                   <svg
@@ -73,7 +73,7 @@ export function FAQ({ items }: FAQProps) {
                   id={panelId}
                   role="region"
                   aria-labelledby={buttonId}
-                  className="px-[var(--space-4)] pb-[var(--space-4)] font-[var(--font-body)] text-[var(--font-size-base)] text-[var(--color-text-secondary)] md:px-[var(--space-5)]"
+                  className="px-[var(--space-4)] pb-[var(--space-4)] font-[family-name:var(--font-body)] text-[var(--font-size-base)] text-[var(--color-text-secondary)] md:px-[var(--space-5)]"
                 >
                   {item.answer}
                 </div>

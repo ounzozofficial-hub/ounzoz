@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import {
   getWaterIntakeResult,
@@ -19,6 +20,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface WaterIntakeCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -35,6 +37,7 @@ export interface WaterIntakeCalculatorProps {
 // (established Phase 3+ template), minus the fields this tool doesn't
 // need (height/age/sex).
 export function WaterIntakeCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -96,6 +99,7 @@ export function WaterIntakeCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

@@ -3,6 +3,7 @@ import { FAQ } from '@/components/shared/FAQ';
 import { BodyFatCalculator } from './components/BodyFatCalculator';
 import { RelatedTools } from './components/RelatedTools';
 import { BODY_FAT_FAQ_ITEMS } from './faq-content';
+import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
 
@@ -34,6 +35,13 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+// DESIGN.md Section 20: visible breadcrumb, mirrors breadcrumbSchema above.
+const breadcrumbItems: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Health', href: '/health' },
+  { name: 'Body Fat Calculator' },
+];
 
 // FAQPage — standard on every tool page per SEO.md Section 6, built
 // directly from the same content rendered in the FAQ accordion below.
@@ -90,6 +98,7 @@ export default function BodyFatCalculatorPage() {
       />
 
       <BodyFatCalculator
+        breadcrumbItems={breadcrumbItems}
         title="Body Fat Calculator"
         description="Estimate your body fat percentage using the US Navy circumference method — just a tape measure needed."
         contentSlot={

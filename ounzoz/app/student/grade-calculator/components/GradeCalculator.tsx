@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import { getGradeResult, validateCategoryRow } from '@/lib/calculators/grade';
 import type { GradeResult as GradeResultType } from '@/types/grade';
@@ -20,6 +21,7 @@ const EMPTY_ROW: CategoryRowState = {
 };
 
 export interface GradeCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -37,6 +39,7 @@ export interface GradeCalculatorProps {
 // state is an array validated row-by-row (CLAUDE.md Section 8 — every
 // input validated, no partial rows silently ignored).
 export function GradeCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -128,6 +131,7 @@ export function GradeCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

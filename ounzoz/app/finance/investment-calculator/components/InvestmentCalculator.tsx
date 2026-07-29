@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import {
   getInvestmentResult,
@@ -18,6 +19,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface InvestmentCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -34,6 +36,7 @@ export interface InvestmentCalculatorProps {
 // SavingsCalculator's structure (same field shape, independent
 // implementation per CLAUDE.md Section 5).
 export function InvestmentCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -123,6 +126,7 @@ export function InvestmentCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

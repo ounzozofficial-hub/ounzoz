@@ -3,6 +3,7 @@ import { FAQ } from '@/components/shared/FAQ';
 import { StudyTimeCalculator } from './components/StudyTimeCalculator';
 import { RelatedTools } from './components/RelatedTools';
 import { STUDY_TIME_FAQ_ITEMS } from './faq-content';
+import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
 
@@ -34,6 +35,13 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+// DESIGN.md Section 20: visible breadcrumb, mirrors breadcrumbSchema above.
+const breadcrumbItems: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Student', href: '/student' },
+  { name: 'Study Time Calculator' },
+];
 
 // FAQPage — standard on every tool page per SEO.md Section 6, built
 // directly from the same content rendered in the FAQ accordion below.
@@ -90,6 +98,7 @@ export default function StudyTimeCalculatorPage() {
       />
 
       <StudyTimeCalculator
+        breadcrumbItems={breadcrumbItems}
         title="Study Time Calculator"
         description="Split your available study time evenly across your exam topics based on your deadline and daily schedule."
         contentSlot={

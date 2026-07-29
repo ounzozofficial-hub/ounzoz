@@ -20,7 +20,7 @@ const STUDENT_CLUSTER_TOOLS = [
 export function RelatedTools() {
   return (
     <div className="flex flex-col gap-[var(--space-4)]">
-      <h2 className="font-[var(--font-body)] text-[var(--font-size-xl)] font-semibold text-[var(--color-text-primary)]">
+      <h2 className="font-[family-name:var(--font-body)] text-[var(--font-size-xl)] font-semibold text-[var(--color-text-primary)]">
         Related tools
       </h2>
       <div className="grid grid-cols-1 gap-[var(--space-4)] md:grid-cols-3">

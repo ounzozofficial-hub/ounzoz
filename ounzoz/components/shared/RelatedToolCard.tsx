@@ -22,13 +22,13 @@ export function RelatedToolCard({
   if (!href) {
     return (
       <Card className="flex flex-col gap-[var(--space-1)] opacity-70">
-        <span className="inline-block w-fit rounded-[var(--radius-full)] bg-[var(--color-background)] px-[var(--space-3)] py-[var(--space-1)] font-[var(--font-body)] text-[var(--font-size-xs)] font-semibold text-[var(--color-text-secondary)]">
+        <span className="inline-block w-fit rounded-[var(--radius-full)] bg-[var(--color-background)] px-[var(--space-3)] py-[var(--space-1)] font-[family-name:var(--font-body)] text-[var(--font-size-xs)] font-semibold text-[var(--color-text-secondary)]">
           Coming soon
         </span>
-        <span className="font-[var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+        <span className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
           {name}
         </span>
-        <span className="font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
+        <span className="font-[family-name:var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
           {description}
         </span>
       </Card>
@@ -38,10 +38,10 @@ export function RelatedToolCard({
   return (
     <Link href={href} className="block">
       <Card className="flex flex-col gap-[var(--space-1)] transition-shadow duration-150 hover:shadow-[var(--shadow-md)]">
-        <span className="font-[var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+        <span className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
           {name}
         </span>
-        <span className="font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
+        <span className="font-[family-name:var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
           {description}
         </span>
       </Card>

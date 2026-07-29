@@ -4,9 +4,8 @@ import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
 import { ResultCard } from '@/components/shared/ResultCard';
 import { getTDEEResult, validateTDEEInputs } from '@/lib/calculators/tdee';
-import type { BiologicalSex } from '@/types/shared';
+import type { ActivityLevel, BiologicalSex, BreadcrumbItem } from '@/types/shared';
 import type {
-  ActivityLevel,
   TDEEResult as TDEEResultType,
   TDEEValidationError,
 } from '@/types/tdee';
@@ -17,6 +16,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface TDEECalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -32,6 +32,7 @@ export interface TDEECalculatorProps {
 // that calls into lib/calculators/tdee.ts. Mirrors BMICalculator and
 // BMRCalculator's structure exactly (established Phase 3/4 template).
 export function TDEECalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -135,6 +136,7 @@ export function TDEECalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

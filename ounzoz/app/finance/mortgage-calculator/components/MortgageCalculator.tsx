@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import {
   getMortgageResult,
@@ -18,6 +19,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface MortgageCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -33,6 +35,7 @@ export interface MortgageCalculatorProps {
 // LoanCalculator's structure, extended with three optional escrow fields
 // (property tax, home insurance, HOA) that default to 0 when left blank.
 export function MortgageCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -167,6 +170,7 @@ export function MortgageCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

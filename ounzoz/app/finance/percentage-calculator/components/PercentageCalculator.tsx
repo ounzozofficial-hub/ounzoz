@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import {
   getIsWhatPercentResult,
@@ -21,6 +22,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface PercentageCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -38,6 +40,7 @@ export interface PercentageCalculatorProps {
 // mode switch resets both fields/errors/result rather than carrying
 // stale values across modes that no longer mean the same thing.
 export function PercentageCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -110,6 +113,7 @@ export function PercentageCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

@@ -3,6 +3,7 @@ import { FAQ } from '@/components/shared/FAQ';
 import { IdealWeightCalculator } from './components/IdealWeightCalculator';
 import { RelatedTools } from './components/RelatedTools';
 import { IDEAL_WEIGHT_FAQ_ITEMS } from './faq-content';
+import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
 
@@ -34,6 +35,13 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+// DESIGN.md Section 20: visible breadcrumb, mirrors breadcrumbSchema above.
+const breadcrumbItems: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Health', href: '/health' },
+  { name: 'Ideal Weight Calculator' },
+];
 
 // FAQPage — standard on every tool page per SEO.md Section 6, built
 // directly from the same content rendered in the FAQ accordion below.
@@ -90,6 +98,7 @@ export default function IdealWeightCalculatorPage() {
       />
 
       <IdealWeightCalculator
+        breadcrumbItems={breadcrumbItems}
         title="Ideal Weight Calculator"
         description="Estimate your ideal body weight from your height and sex using the Devine formula."
         contentSlot={

@@ -3,6 +3,7 @@ import { FAQ } from '@/components/shared/FAQ';
 import { MacroCalculator } from './components/MacroCalculator';
 import { RelatedTools } from './components/RelatedTools';
 import { MACRO_FAQ_ITEMS } from './faq-content';
+import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
 
@@ -34,6 +35,13 @@ const breadcrumbSchema = {
     },
   ],
 };
+
+// DESIGN.md Section 20: visible breadcrumb, mirrors breadcrumbSchema above.
+const breadcrumbItems: BreadcrumbItem[] = [
+  { name: 'Home', href: '/' },
+  { name: 'Health', href: '/health' },
+  { name: 'Macro Calculator' },
+];
 
 // FAQPage — standard on every tool page per SEO.md Section 6, built
 // directly from the same content rendered in the FAQ accordion below.
@@ -90,6 +98,7 @@ export default function MacroCalculatorPage() {
       />
 
       <MacroCalculator
+        breadcrumbItems={breadcrumbItems}
         title="Macro Calculator"
         description="Find your daily protein, fat, and carbohydrate targets based on your calorie goal and activity level."
         contentSlot={

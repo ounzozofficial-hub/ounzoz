@@ -81,7 +81,7 @@ export function ResultCard(props: ResultCardProps) {
           <circle cx="12" cy="12" r="10" />
           <path d="M12 8v4M12 16h.01" />
         </svg>
-        <p className="max-w-xs font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
+        <p className="max-w-xs font-[family-name:var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
           {props.message}
         </p>
       </Card>
@@ -111,7 +111,7 @@ export function ResultCard(props: ResultCardProps) {
           <circle cx="12" cy="12" r="10" />
           <path d="M12 8v5M12 16h.01" />
         </svg>
-        <p className="max-w-xs font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-error)]">
+        <p className="max-w-xs font-[family-name:var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-error)]">
           {props.message}
         </p>
       </Card>
@@ -125,7 +125,7 @@ export function ResultCard(props: ResultCardProps) {
     <Card
       className={`animate-result-in flex flex-col items-center gap-[var(--space-2)] text-center shadow-[var(--shadow-lg)] ${props.className ?? ''}`}
     >
-      <span className="font-[var(--font-body)] text-[var(--font-size-sm)] font-medium text-[var(--color-text-secondary)]">
+      <span className="font-[family-name:var(--font-body)] text-[var(--font-size-sm)] font-medium text-[var(--color-text-secondary)]">
         {props.label}
       </span>
       {props.breakdown ? (
@@ -137,22 +137,22 @@ export function ResultCard(props: ResultCardProps) {
         // signature number.
         <>
           {props.description ? (
-            <span className="font-[var(--font-body)] text-[var(--font-size-base)] text-[var(--color-text-secondary)]">
+            <span className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] text-[var(--color-text-secondary)]">
               {props.description}
             </span>
           ) : null}
           <div className="mt-[var(--space-2)] grid w-full grid-cols-1 gap-[var(--space-4)] sm:grid-cols-3">
             {props.breakdown.map((item) => (
               <div key={item.label} className="flex flex-col items-center">
-                <span className="font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
+                <span className="font-[family-name:var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
                   {item.label}
                 </span>
                 <span className="flex items-baseline gap-[var(--space-1)]">
-                  <span className="font-[var(--font-display)] text-[var(--font-size-xl)] font-extrabold leading-none text-[var(--color-brand-cyan)]">
+                  <span className="font-[family-name:var(--font-display)] text-[var(--font-size-xl)] font-extrabold leading-none text-[var(--color-brand-cyan)]">
                     {item.value}
                   </span>
                   {item.unit ? (
-                    <span className="font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
+                    <span className="font-[family-name:var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">
                       {item.unit}
                     </span>
                   ) : null}
@@ -164,17 +164,17 @@ export function ResultCard(props: ResultCardProps) {
       ) : (
         <>
           <span className="flex items-baseline gap-[var(--space-2)]">
-            <span className="font-[var(--font-display)] text-[var(--font-size-result)] font-extrabold leading-none text-[var(--color-brand-cyan)]">
+            <span className="font-[family-name:var(--font-display)] text-[var(--font-size-result)] font-extrabold leading-none text-[var(--color-brand-cyan)]">
               {props.value}
             </span>
             {props.unit ? (
-              <span className="font-[var(--font-body)] text-[var(--font-size-lg)] text-[var(--color-text-secondary)]">
+              <span className="font-[family-name:var(--font-body)] text-[var(--font-size-lg)] text-[var(--color-text-secondary)]">
                 {props.unit}
               </span>
             ) : null}
           </span>
           {props.description ? (
-            <span className="font-[var(--font-body)] text-[var(--font-size-base)] text-[var(--color-text-primary)]">
+            <span className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] text-[var(--color-text-primary)]">
               {props.description}
             </span>
           ) : null}
@@ -183,7 +183,7 @@ export function ResultCard(props: ResultCardProps) {
       {props.advisory ? (
         <span
           role="note"
-          className="mt-[var(--space-1)] flex items-start gap-[var(--space-2)] rounded-[var(--radius-sm)] bg-[color-mix(in_srgb,var(--color-warning)_12%,transparent)] px-[var(--space-3)] py-[var(--space-2)] text-left font-[var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-warning)]"
+          className="mt-[var(--space-1)] flex items-start gap-[var(--space-2)] rounded-[var(--radius-sm)] bg-[color-mix(in_srgb,var(--color-warning)_12%,transparent)] px-[var(--space-3)] py-[var(--space-2)] text-left font-[family-name:var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-warning)]"
         >
           <svg
             width="16"

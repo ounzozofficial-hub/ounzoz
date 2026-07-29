@@ -22,14 +22,14 @@ export function ArticleLayout({
 }: ArticleLayoutProps) {
   return (
     <article className="flex flex-col gap-[var(--space-4)]">
-      <h2 className="font-[var(--font-body)] text-[var(--font-size-xl)] font-semibold text-[var(--color-text-primary)]">
+      <h2 className="font-[family-name:var(--font-body)] text-[var(--font-size-xl)] font-semibold text-[var(--color-text-primary)]">
         {title}
       </h2>
-      <div className="flex flex-col gap-[var(--space-4)] font-[var(--font-body)] text-[var(--font-size-base)] leading-relaxed text-[var(--color-text-secondary)]">
+      <div className="flex flex-col gap-[var(--space-4)] font-[family-name:var(--font-body)] text-[var(--font-size-base)] leading-relaxed text-[var(--color-text-secondary)]">
         {children}
       </div>
       {sourceCitation ? (
-        <p className="font-[var(--font-body)] text-[var(--font-size-xs)] text-[var(--color-text-secondary)]">
+        <p className="font-[family-name:var(--font-body)] text-[var(--font-size-xs)] text-[var(--color-text-secondary)]">
           {sourceCitation}
         </p>
       ) : null}

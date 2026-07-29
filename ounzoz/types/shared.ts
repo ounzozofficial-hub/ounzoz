@@ -19,3 +19,12 @@ export type ActivityLevel =
   | 'very_active';
 
 export type CalorieGoal = 'lose' | 'maintain' | 'gain';
+
+// BreadcrumbItem: needed by CalculatorLayout plus every tool and category
+// hub page from the start (DESIGN.md Section 20), so it lives here rather
+// than starting in a single tool's types file. `href` omitted marks the
+// current page (rendered as plain text, not a link).
+export interface BreadcrumbItem {
+  name: string;
+  href?: string;
+}

@@ -2,6 +2,7 @@
 
 import { useState, type ReactNode } from 'react';
 import { CalculatorLayout } from '@/components/shared/CalculatorLayout';
+import type { BreadcrumbItem } from '@/types/shared';
 import { ResultCard } from '@/components/shared/ResultCard';
 import {
   getSavingsResult,
@@ -18,6 +19,7 @@ const UNEXPECTED_ERROR_MESSAGE =
   "We couldn't calculate that — please check your inputs and try again.";
 
 export interface SavingsCalculatorProps {
+  breadcrumbItems: BreadcrumbItem[];
   title: string;
   description: string;
   /** Pre-rendered server content — ArticleLayout, FAQ, related tools.
@@ -35,6 +37,7 @@ export interface SavingsCalculatorProps {
 // template), with initial deposit + monthly contribution in place of a
 // single principal + selectable frequency.
 export function SavingsCalculator({
+  breadcrumbItems,
   title,
   description,
   contentSlot,
@@ -126,6 +129,7 @@ export function SavingsCalculator({
 
   return (
     <CalculatorLayout
+      breadcrumbItems={breadcrumbItems}
       title={title}
       description={description}
       inputSlot={

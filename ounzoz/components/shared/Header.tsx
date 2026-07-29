@@ -9,10 +9,12 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full bg-[var(--color-brand-navy)] shadow-[var(--shadow-sm)]">
       <div className="mx-auto flex h-16 max-w-[var(--content-max-width)] items-center justify-between px-4 md:px-6">
-        {/* Horizontal logo — wordmark in Poppins ExtraBold per DESIGN.md Section 3 */}
+        {/* Horizontal logo — wordmark in Poppins ExtraBold per DESIGN.md
+            Section 3. Hover/focus opacity shift gives it a clickable
+            affordance, matching the nav links beside it. */}
         <Link
           href="/"
-          className="flex items-center gap-2 font-[var(--font-display)] text-xl font-extrabold tracking-tight text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-cyan)]"
+          className="flex items-center gap-2 font-[family-name:var(--font-display)] text-xl font-extrabold tracking-tight text-white transition-opacity duration-150 hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-cyan)]"
         >
           <span>
             OUNZO
@@ -25,7 +27,7 @@ export function Header() {
             page that doesn't exist yet (avoided per CLAUDE.md Section 18). */}
         <nav
           aria-label="Primary"
-          className="hidden items-center gap-6 font-[var(--font-body)] text-sm font-medium text-white/70 md:flex"
+          className="hidden items-center gap-6 font-[family-name:var(--font-body)] text-sm font-medium text-white/70 md:flex"
         >
           <Link
             href="/health"

@@ -29,7 +29,7 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={`inline-flex h-11 md:h-11 items-center justify-center rounded-[var(--radius-sm)] px-[var(--space-5)] font-[var(--font-body)] text-[var(--font-size-base)] font-semibold transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-navy)] disabled:cursor-not-allowed disabled:opacity-50 max-md:h-12 ${variantClasses[variant]} ${className}`}
+      className={`inline-flex h-11 md:h-11 items-center justify-center rounded-[var(--radius-sm)] px-[var(--space-5)] font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold transition-colors duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-navy)] disabled:cursor-not-allowed disabled:opacity-50 max-md:h-12 ${variantClasses[variant]} ${className}`}
       {...rest}
     >
       {children}
