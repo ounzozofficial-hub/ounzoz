@@ -1,7 +1,12 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// All 3 Student tools are now live (PROJECT.md Section 7) — both entries
-// are real links.
+// Curated cluster, not exhaustive (SEO.md Section 7's 2–4-link,
+// genuine-relevance rule) — PROJECT.md Section 7's pre-launch addition
+// grew Student to 7 tools across two clusters (administrative: GPA/
+// Grade/Study Time; subject-matter: Quadratic/Fraction/Statistics/Unit
+// Converter). GPA Calculator links to its two administrative siblings
+// plus Statistics Calculator, the natural bridge into the subject
+// cluster (a GPA is itself a weighted average, statistics-adjacent).
 const STUDENT_CLUSTER_TOOLS = [
   {
     name: 'Grade Calculator',
@@ -12,6 +17,11 @@ const STUDENT_CLUSTER_TOOLS = [
     name: 'Study Time Calculator',
     description: 'Plan how much time to spend studying before an exam.',
     href: '/student/study-time-calculator',
+  },
+  {
+    name: 'Statistics Calculator',
+    description: 'Get the mean, median, mode, and standard deviation of a data set.',
+    href: '/student/statistics-calculator',
   },
 ];
 

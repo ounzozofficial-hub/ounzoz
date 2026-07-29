@@ -37,9 +37,13 @@ const breadcrumbItems: BreadcrumbItem[] = [
   { name: 'Student' },
 ];
 
-// All 3 Student tools from PROJECT.md Section 7's roadmap are now live —
+// All 7 Student tools from PROJECT.md Section 7's roadmap are now live —
 // SEO.md Section 7: "Category pages link to every tool within that
 // category, giving Google and users a clear hub-and-spoke structure."
+// The original 3 administrative tools (GPA/Grade/Study Time) are joined
+// by 4 subject-matter tools added in pre-launch review (2026-07-29) to
+// close a gap: none of the original 3 actually help solve a coursework
+// problem directly.
 const STUDENT_TOOLS = [
   {
     name: 'GPA Calculator',
@@ -55,6 +59,26 @@ const STUDENT_TOOLS = [
     name: 'Study Time Calculator',
     description: 'Plan how much time to spend studying before an exam.',
     href: '/student/study-time-calculator',
+  },
+  {
+    name: 'Quadratic Equation Solver',
+    description: 'Solve ax² + bx + c = 0 for x.',
+    href: '/student/quadratic-equation-solver',
+  },
+  {
+    name: 'Fraction Calculator',
+    description: 'Add, subtract, multiply, or divide two fractions.',
+    href: '/student/fraction-calculator',
+  },
+  {
+    name: 'Statistics Calculator',
+    description: 'Get the mean, median, mode, and standard deviation of a data set.',
+    href: '/student/statistics-calculator',
+  },
+  {
+    name: 'Unit Converter',
+    description: 'Convert length, weight, temperature, and volume units.',
+    href: '/student/unit-converter',
   },
 ];
 
@@ -73,9 +97,11 @@ export default function StudentCategoryPage() {
             Student Calculators
           </h1>
           <p className="max-w-2xl font-[family-name:var(--font-body)] text-[var(--font-size-lg)] text-[var(--color-text-secondary)]">
-            Free, instant calculators for students — GPA, grades, and
-            study planning. Every tool runs its calculation entirely in
-            your browser: no signup, no data stored.
+            Free, instant calculators for students — from tracking grades
+            and planning study time to solving algebra, fraction, and
+            statistics problems and converting units. Every tool runs its
+            calculation entirely in your browser: no signup, no data
+            stored.
           </p>
         </header>
 

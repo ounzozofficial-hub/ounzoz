@@ -1,8 +1,12 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
-// Study Time Calculator is the third and final Student tool to ship
-// (PROJECT.md Section 7) — both GPA Calculator and Grade Calculator are
-// already live, so both entries are real links.
+// Curated cluster, not exhaustive (SEO.md Section 7's 2–4-link,
+// genuine-relevance rule) — PROJECT.md Section 7's pre-launch addition
+// grew Student to 7 tools across two clusters (administrative: GPA/
+// Grade/Study Time; subject-matter: Quadratic/Fraction/Statistics/Unit
+// Converter). Study Time Calculator links to its two administrative
+// siblings plus Statistics Calculator, the natural bridge into the
+// subject cluster.
 const STUDENT_CLUSTER_TOOLS = [
   {
     name: 'GPA Calculator',
@@ -14,6 +18,11 @@ const STUDENT_CLUSTER_TOOLS = [
     name: 'Grade Calculator',
     description: 'Calculate your overall course grade from weighted categories.',
     href: '/student/grade-calculator',
+  },
+  {
+    name: 'Statistics Calculator',
+    description: 'Get the mean, median, mode, and standard deviation of a data set.',
+    href: '/student/statistics-calculator',
   },
 ];
 

@@ -141,7 +141,15 @@ export function ResultCard(props: ResultCardProps) {
               {props.description}
             </span>
           ) : null}
-          <div className="mt-[var(--space-2)] grid w-full grid-cols-1 gap-[var(--space-4)] sm:grid-cols-3">
+          <div
+            className={`mt-[var(--space-2)] grid w-full grid-cols-1 gap-[var(--space-4)] ${
+              props.breakdown.length >= 4
+                ? 'sm:grid-cols-2 lg:grid-cols-4'
+                : props.breakdown.length === 2
+                  ? 'sm:grid-cols-2'
+                  : 'sm:grid-cols-3'
+            }`}
+          >
             {props.breakdown.map((item) => (
               <div key={item.label} className="flex flex-col items-center">
                 <span className="font-[family-name:var(--font-body)] text-[var(--font-size-sm)] text-[var(--color-text-secondary)]">

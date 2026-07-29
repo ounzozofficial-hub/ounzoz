@@ -1,22 +1,19 @@
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
 
 // Curated cluster, not exhaustive (SEO.md Section 7's 2–4-link,
-// genuine-relevance rule) — PROJECT.md Section 7's pre-launch addition
-// grew Student to 7 tools across two clusters (administrative: GPA/
-// Grade/Study Time; subject-matter: Quadratic/Fraction/Statistics/Unit
-// Converter). Grade Calculator links to its two administrative siblings
-// plus Statistics Calculator, the natural bridge into the subject
-// cluster.
+// genuine-relevance rule) — Unit Converter is a subject-matter tool that
+// spans math/physics/chemistry coursework, so it links to its closest
+// arithmetic/homework siblings.
 const STUDENT_CLUSTER_TOOLS = [
   {
-    name: 'GPA Calculator',
-    description: 'Calculate your grade point average from your grades and credit hours.',
-    href: '/student/gpa-calculator',
+    name: 'Quadratic Equation Solver',
+    description: 'Solve ax² + bx + c = 0 for x.',
+    href: '/student/quadratic-equation-solver',
   },
   {
-    name: 'Study Time Calculator',
-    description: 'Plan how much time to spend studying before an exam.',
-    href: '/student/study-time-calculator',
+    name: 'Fraction Calculator',
+    description: 'Add, subtract, multiply, or divide two fractions.',
+    href: '/student/fraction-calculator',
   },
   {
     name: 'Statistics Calculator',

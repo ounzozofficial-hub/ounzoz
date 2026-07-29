@@ -36,9 +36,9 @@ const FEATURED_TOOLS = [
     href: '/student/gpa-calculator',
   },
   {
-    name: 'Grade Calculator',
-    description: 'Calculate your overall course grade from weighted categories.',
-    href: '/student/grade-calculator',
+    name: 'Unit Converter',
+    description: 'Convert length, weight, temperature, and volume units.',
+    href: '/student/unit-converter',
   },
 ];
 
