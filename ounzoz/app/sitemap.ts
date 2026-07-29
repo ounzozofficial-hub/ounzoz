@@ -1,10 +1,21 @@
 import type { MetadataRoute } from 'next';
+import { HEALTH_TOOLS } from '@/constants/health-tools';
+import { FINANCE_TOOLS } from '@/constants/finance-tools';
+import { STUDENT_TOOLS } from '@/constants/student-tools';
 
 // SEO.md Section 9: sitemap.xml, generated and kept in sync whenever a
 // tool is added. Uses Next's built-in metadata-route convention
 // (this file → /sitemap.xml at build time) rather than a hand-maintained
 // static XML file or an external dependency, consistent with CLAUDE.md
 // Section 14's "no heavy library for something a few lines can do."
+//
+// Tool routes are derived from the same constants/{category}-tools.ts
+// lists each hub page renders its tool grid from, rather than a
+// separately hand-maintained slug array — this file's old STUDENT
+// slug list silently fell out of sync when 4 Student tools shipped
+// (caught via a live sitemap.xml audit), which this structurally
+// prevents from happening again: there's only one list per category to
+// update, and both the hub page and the sitemap read from it.
 //
 // BASE_URL matches the canonical/OG domain every page's own metadata.ts
 // already uses (CLAUDE.md Section 3 — published URLs never change) —
@@ -15,41 +26,10 @@ const BASE_URL = 'https://ounzoz.com';
 // Every category hub — SEO.md Section 7: hub-and-spoke structure.
 const CATEGORY_ROUTES = ['/health', '/finance', '/student'];
 
-// Every tool, grouped by category, in the same order as each category's
-// own hub page (PROJECT.md Section 7 roadmap order).
-const HEALTH_TOOL_SLUGS = [
-  'bmi-calculator',
-  'bmr-calculator',
-  'tdee-calculator',
-  'body-fat-calculator',
-  'ideal-weight-calculator',
-  'calorie-calculator',
-  'water-intake-calculator',
-  'protein-intake-calculator',
-  'macro-calculator',
-  'pregnancy-due-date-calculator',
-];
-
-const FINANCE_TOOL_SLUGS = [
-  'loan-calculator',
-  'mortgage-calculator',
-  'compound-interest-calculator',
-  'savings-calculator',
-  'investment-calculator',
-  'percentage-calculator',
-  'currency-converter',
-];
-
-const STUDENT_TOOL_SLUGS = [
-  'gpa-calculator',
-  'grade-calculator',
-  'study-time-calculator',
-];
-
 const TOOL_ROUTES = [
-  ...HEALTH_TOOL_SLUGS.map((slug) => `/health/${slug}`),
-  ...FINANCE_TOOL_SLUGS.map((slug) => `/finance/${slug}`),
-  ...STUDENT_TOOL_SLUGS.map((slug) => `/student/${slug}`),
+  ...HEALTH_TOOLS.map((tool) => tool.href),
+  ...FINANCE_TOOLS.map((tool) => tool.href),
+  ...STUDENT_TOOLS.map((tool) => tool.href),
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -1,5 +1,6 @@
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
+import { HEALTH_TOOLS } from '@/constants/health-tools';
 import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
@@ -42,59 +43,10 @@ const breadcrumbItems: BreadcrumbItem[] = [
 // giving Google and users a clear hub-and-spoke structure." This is the
 // one page on the site allowed to list every tool in the category,
 // unlike a tool page's own Related Tools section (capped at 2–4 by
-// Section 7's genuine-relevance rule).
-const HEALTH_TOOLS = [
-  {
-    name: 'BMI Calculator',
-    description: 'Check your Body Mass Index and WHO weight category.',
-    href: '/health/bmi-calculator',
-  },
-  {
-    name: 'BMR Calculator',
-    description: 'Estimate your Basal Metabolic Rate.',
-    href: '/health/bmr-calculator',
-  },
-  {
-    name: 'TDEE Calculator',
-    description: 'Find your Total Daily Energy Expenditure.',
-    href: '/health/tdee-calculator',
-  },
-  {
-    name: 'Body Fat Calculator',
-    description: 'Estimate body fat percentage using the U.S. Navy method.',
-    href: '/health/body-fat-calculator',
-  },
-  {
-    name: 'Ideal Weight Calculator',
-    description: 'See an estimated healthy weight range for your height.',
-    href: '/health/ideal-weight-calculator',
-  },
-  {
-    name: 'Calorie Calculator',
-    description: 'Find your daily calorie target for your goal.',
-    href: '/health/calorie-calculator',
-  },
-  {
-    name: 'Water Intake Calculator',
-    description: 'Estimate your daily water intake.',
-    href: '/health/water-intake-calculator',
-  },
-  {
-    name: 'Protein Intake Calculator',
-    description: 'Estimate your daily protein target.',
-    href: '/health/protein-intake-calculator',
-  },
-  {
-    name: 'Macro Calculator',
-    description: 'Get your daily protein, fat, and carb targets.',
-    href: '/health/macro-calculator',
-  },
-  {
-    name: 'Pregnancy Due Date Calculator',
-    description: 'Estimate your due date from your last period.',
-    href: '/health/pregnancy-due-date-calculator',
-  },
-];
+// Section 7's genuine-relevance rule). List itself lives in
+// constants/health-tools.ts, shared with app/sitemap.ts, so the two
+// can't silently drift apart the way sitemap.ts's old hand-maintained
+// slug list once did.
 
 export default function HealthCategoryPage() {
   return (

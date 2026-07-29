@@ -1,5 +1,6 @@
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
+import { STUDENT_TOOLS } from '@/constants/student-tools';
 import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
@@ -43,44 +44,9 @@ const breadcrumbItems: BreadcrumbItem[] = [
 // The original 3 administrative tools (GPA/Grade/Study Time) are joined
 // by 4 subject-matter tools added in pre-launch review (2026-07-29) to
 // close a gap: none of the original 3 actually help solve a coursework
-// problem directly.
-const STUDENT_TOOLS = [
-  {
-    name: 'GPA Calculator',
-    description: 'Calculate your grade point average from your grades and credit hours.',
-    href: '/student/gpa-calculator',
-  },
-  {
-    name: 'Grade Calculator',
-    description: 'Calculate your overall course grade from weighted categories.',
-    href: '/student/grade-calculator',
-  },
-  {
-    name: 'Study Time Calculator',
-    description: 'Plan how much time to spend studying before an exam.',
-    href: '/student/study-time-calculator',
-  },
-  {
-    name: 'Quadratic Equation Solver',
-    description: 'Solve ax² + bx + c = 0 for x.',
-    href: '/student/quadratic-equation-solver',
-  },
-  {
-    name: 'Fraction Calculator',
-    description: 'Add, subtract, multiply, or divide two fractions.',
-    href: '/student/fraction-calculator',
-  },
-  {
-    name: 'Statistics Calculator',
-    description: 'Get the mean, median, mode, and standard deviation of a data set.',
-    href: '/student/statistics-calculator',
-  },
-  {
-    name: 'Unit Converter',
-    description: 'Convert length, weight, temperature, and volume units.',
-    href: '/student/unit-converter',
-  },
-];
+// problem directly. List itself lives in constants/student-tools.ts,
+// shared with app/sitemap.ts, so the two can't silently drift apart the
+// way sitemap.ts's old hand-maintained slug list once did.
 
 export default function StudentCategoryPage() {
   return (

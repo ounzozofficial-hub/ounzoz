@@ -1,5 +1,6 @@
 import { Breadcrumb } from '@/components/shared/Breadcrumb';
 import { RelatedToolCard } from '@/components/shared/RelatedToolCard';
+import { FINANCE_TOOLS } from '@/constants/finance-tools';
 import type { BreadcrumbItem } from '@/types/shared';
 
 export { metadata } from './metadata';
@@ -40,45 +41,9 @@ const breadcrumbItems: BreadcrumbItem[] = [
 // Finance tools shipped so far, in PROJECT.md Section 7's roadmap order —
 // SEO.md Section 7: "Category pages link to every tool within that
 // category, giving Google and users a clear hub-and-spoke structure."
-// All 7 Finance tools are now live — Currency Converter shipped once the
-// owner decided on its live exchange-rate data source (frankfurter.app).
-const FINANCE_TOOLS = [
-  {
-    name: 'Loan Calculator',
-    description: 'Estimate your monthly loan payment and total interest.',
-    href: '/finance/loan-calculator',
-  },
-  {
-    name: 'Mortgage Calculator',
-    description: 'Estimate your monthly mortgage payment.',
-    href: '/finance/mortgage-calculator',
-  },
-  {
-    name: 'Compound Interest Calculator',
-    description: 'See how a lump sum grows over time with compounding.',
-    href: '/finance/compound-interest-calculator',
-  },
-  {
-    name: 'Savings Calculator',
-    description: 'See how your deposits and monthly savings can grow.',
-    href: '/finance/savings-calculator',
-  },
-  {
-    name: 'Investment Calculator',
-    description: 'Project how your investments could grow over time.',
-    href: '/finance/investment-calculator',
-  },
-  {
-    name: 'Percentage Calculator',
-    description: 'Find a percentage, a percent share, or a percent change.',
-    href: '/finance/percentage-calculator',
-  },
-  {
-    name: 'Currency Converter',
-    description: 'Convert between major currencies using live ECB reference rates.',
-    href: '/finance/currency-converter',
-  },
-];
+// List itself lives in constants/finance-tools.ts, shared with
+// app/sitemap.ts, so the two can't silently drift apart the way
+// sitemap.ts's old hand-maintained slug list once did.
 
 export default function FinanceCategoryPage() {
   return (
