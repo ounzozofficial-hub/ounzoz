@@ -36,6 +36,9 @@ export const metadata: Metadata = {
   title: 'OUNZOZ — Fast, Practical Tools',
   description:
     'A global platform of fast, practical, trustworthy tools — starting with calculators.',
+  verification: {
+    google: 'wb1sFiWGk3AQnOtAsHg8DoF8jM2qsU-vZz8fdebgpAs',
+  },
 };
 
 // Sets data-theme before first paint to avoid a flash of the wrong theme.
