@@ -100,30 +100,32 @@ export default function CurrencyConverterPage() {
       <CurrencyCalculator
         breadcrumbItems={breadcrumbItems}
         title="Currency Converter"
-        description="Convert between major world currencies using European Central Bank reference rates."
+        description="Convert between 59 world currencies, including every major Arabic currency, using daily blended central-bank reference rates."
         contentSlot={
           <ArticleLayout
             title="About the Currency Converter"
-            sourceCitation="Exchange rates are sourced from the European Central Bank's daily reference rates, delivered via the free frankfurter.app API. Rates update once per business day and are not real-time market or retail rates."
+            sourceCitation="Exchange rates are sourced from frankfurter.dev's free v2 API, which blends daily reference rates published by dozens of central banks worldwide (including the European Central Bank). Rates update once per business day and are not real-time market or retail rates."
           >
             <p>
               This tool converts an amount from one currency to another
-              using the European Central Bank&apos;s official daily
-              reference rates — the same benchmark rates used across much
-              of the financial industry as a neutral point of comparison.
-              Enter an amount, choose your two currencies, and the
-              converted amount updates using the latest published rate.
+              using daily reference rates blended from dozens of central
+              banks worldwide — the same kind of benchmark rates used
+              across much of the financial industry as a neutral point of
+              comparison. Enter an amount, choose your two currencies, and
+              the converted amount updates using the latest published
+              rate.
             </p>
             <p>
               It&apos;s important to understand what these rates are, and
-              aren&apos;t. The ECB publishes its reference rates once per
-              business day, so this is an indicative, recently-updated
-              figure rather than a live, second-by-second market quote.
-              It also doesn&apos;t include the spread or fees that banks,
-              card networks, and money-transfer services add on top when
-              you actually exchange currency — the amount you&apos;re
-              quoted or charged for a real transaction will typically
-              differ from the number shown here.
+              aren&apos;t. Most contributing central banks publish their
+              reference rates once per business day, so this is an
+              indicative, recently-updated figure rather than a live,
+              second-by-second market quote. It also doesn&apos;t include
+              the spread or fees that banks, card networks, and
+              money-transfer services add on top when you actually
+              exchange currency — the amount you&apos;re quoted or charged
+              for a real transaction will typically differ from the number
+              shown here.
             </p>
             <p>
               Because this tool depends on a live rate service, it&apos;s

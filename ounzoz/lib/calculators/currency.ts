@@ -1,19 +1,32 @@
 import type { CurrencyCode, CurrencyValidationError } from '@/types/currency';
 
-// ECB reference-rate currencies as served by frankfurter.app's /currencies
-// endpoint (verified live 2026-07-28) — a fixed, documented dataset, not
-// fabricated or guessed. Hardcoded rather than fetched at runtime: this
-// list changes rarely (on the order of years, not days), and fetching it
-// would add a second network dependency/failure point for no real benefit
-// over a static constant.
+// Currencies as served by frankfurter.dev v2's /currencies endpoint
+// (verified live 2026-08-01 via a real request — see PROJECT.md currency
+// converter entry) — a fixed, documented dataset, not fabricated or
+// guessed. This is the 30 legacy ECB-only currencies (v1) plus every
+// Arabic-region currency v2 added (AED, BHD, DZD, EGP, IQD, JOD, KWD,
+// LBP, LYD, MAD, OMR, QAR, SAR, SDG, SYP, TND, YER) plus a set of other
+// globally major currencies v1 didn't cover (ARS, BDT, CLP, COP, KES,
+// NGN, PEN, PKR, RUB, TWD, UAH, VND). Hardcoded rather than fetched at
+// runtime: this list changes rarely (on the order of years, not days),
+// and fetching it would add a second network dependency/failure point
+// for no real benefit over a static constant.
 export const CURRENCY_LABELS: Record<CurrencyCode, string> = {
+  AED: 'United Arab Emirates Dirham',
+  ARS: 'Argentine Peso',
   AUD: 'Australian Dollar',
+  BDT: 'Bangladeshi Taka',
+  BHD: 'Bahraini Dinar',
   BRL: 'Brazilian Real',
   CAD: 'Canadian Dollar',
   CHF: 'Swiss Franc',
+  CLP: 'Chilean Peso',
   CNY: 'Chinese Renminbi Yuan',
+  COP: 'Colombian Peso',
   CZK: 'Czech Koruna',
   DKK: 'Danish Krone',
+  DZD: 'Algerian Dinar',
+  EGP: 'Egyptian Pound',
   EUR: 'Euro',
   GBP: 'British Pound',
   HKD: 'Hong Kong Dollar',
@@ -21,27 +34,55 @@ export const CURRENCY_LABELS: Record<CurrencyCode, string> = {
   IDR: 'Indonesian Rupiah',
   ILS: 'Israeli New Shekel',
   INR: 'Indian Rupee',
+  IQD: 'Iraqi Dinar',
   ISK: 'Icelandic Króna',
+  JOD: 'Jordanian Dinar',
   JPY: 'Japanese Yen',
+  KES: 'Kenyan Shilling',
   KRW: 'South Korean Won',
+  KWD: 'Kuwaiti Dinar',
+  LBP: 'Lebanese Pound',
+  LYD: 'Libyan Dinar',
+  MAD: 'Moroccan Dirham',
   MXN: 'Mexican Peso',
   MYR: 'Malaysian Ringgit',
+  NGN: 'Nigerian Naira',
   NOK: 'Norwegian Krone',
   NZD: 'New Zealand Dollar',
+  OMR: 'Omani Rial',
+  PEN: 'Peruvian Sol',
   PHP: 'Philippine Peso',
+  PKR: 'Pakistani Rupee',
   PLN: 'Polish Złoty',
+  QAR: 'Qatari Riyal',
   RON: 'Romanian Leu',
+  RUB: 'Russian Ruble',
+  SAR: 'Saudi Riyal',
+  SDG: 'Sudanese Pound',
   SEK: 'Swedish Krona',
   SGD: 'Singapore Dollar',
+  SYP: 'Syrian Pound',
   THB: 'Thai Baht',
+  TND: 'Tunisian Dinar',
   TRY: 'Turkish Lira',
+  TWD: 'New Taiwan Dollar',
+  UAH: 'Ukrainian Hryvnia',
   USD: 'United States Dollar',
+  VND: 'Vietnamese Đồng',
+  YER: 'Yemeni Rial',
   ZAR: 'South African Rand',
 };
 
 export const CURRENCY_CODES = Object.keys(CURRENCY_LABELS) as CurrencyCode[];
 
-const FRANKFURTER_BASE_URL = 'https://api.frankfurter.app/latest';
+// v2 (api.frankfurter.dev/v2) — not v1 (api.frankfurter.app / .dev/v1,
+// now frozen). v2 covers 165 active currencies including every Arabic
+// currency, which v1's ECB-only ~30 did not. Confirmed via a live request
+// before switching: v2's /rates endpoint takes base+quotes (not
+// v1's /latest with from+to) and returns an array of {date, base, quote,
+// rate} records (not v1's single {rates: {...}} object) — see
+// FrankfurterRate below and fetchExchangeRate's parsing.
+const FRANKFURTER_BASE_URL = 'https://api.frankfurter.dev/v2/rates';
 const FETCH_TIMEOUT_MS = 8000;
 
 const MIN_AMOUNT = 0.01;
@@ -68,19 +109,20 @@ export function convertAmount(amount: number, rate: number): number {
   return Math.round(amount * rate * 100) / 100;
 }
 
-interface FrankfurterLatestResponse {
-  amount: number;
-  base: string;
+interface FrankfurterRate {
   date: string;
-  rates: Record<string, number>;
+  base: string;
+  quote: string;
+  rate: number;
 }
 
 /**
- * Fetches the current from→to exchange rate from frankfurter.app (a free,
- * keyless, ECB reference-rate service — see the tool's ArticleLayout
- * content for the full sourcing/timeliness disclaimer). Identical
- * currencies short-circuit to a rate of 1 without a network call, since
- * that's mathematically certain rather than fetched data.
+ * Fetches the current from→to exchange rate from frankfurter.dev's v2 API
+ * (a free, keyless service blending rates from many central banks — see
+ * the tool's ArticleLayout content for the full sourcing/timeliness
+ * disclaimer). Identical currencies short-circuit to a rate of 1 without
+ * a network call, since that's mathematically certain rather than fetched
+ * data.
  *
  * Not a pure function (network I/O) — deliberately thin and isolated from
  * convertAmount so its error paths (non-OK response, malformed body,
@@ -104,7 +146,7 @@ export async function fetchExchangeRate(
 
   try {
     const response = await fetch(
-      `${FRANKFURTER_BASE_URL}?from=${from}&to=${to}`,
+      `${FRANKFURTER_BASE_URL}?base=${from}&quotes=${to}`,
       { signal: controller.signal },
     );
 
@@ -114,8 +156,15 @@ export async function fetchExchangeRate(
       );
     }
 
-    const data = (await response.json()) as FrankfurterLatestResponse;
-    const rate = data?.rates?.[to];
+    // v2's /rates returns an array of {date, base, quote, rate} records
+    // (one per requested quote currency), unlike v1's single
+    // {rates: {CODE: number}} object — find the record for `to` rather
+    // than indexing into a map.
+    const data = (await response.json()) as FrankfurterRate[];
+    const match = Array.isArray(data)
+      ? data.find((entry) => entry.quote === to)
+      : undefined;
+    const rate = match?.rate;
 
     if (typeof rate !== 'number' || !Number.isFinite(rate) || rate <= 0) {
       throw new Error('Exchange rate response did not include a valid rate');

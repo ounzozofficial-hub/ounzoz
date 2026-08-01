@@ -36,7 +36,7 @@ export const FINANCE_TOOLS: CategoryTool[] = [
   },
   {
     name: 'Currency Converter',
-    description: 'Convert between major currencies using live ECB reference rates.',
+    description: 'Convert between 59 world currencies, including Arabic currencies, using live blended central-bank reference rates.',
     href: '/finance/currency-converter',
   },
 ];

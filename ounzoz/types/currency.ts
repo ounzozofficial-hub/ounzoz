@@ -1,15 +1,25 @@
-// ECB reference-rate currencies as served by frankfurter.app — a fixed,
-// documented dataset (verified live 2026-07-28), not fabricated. See
-// lib/calculators/currency.ts for the matching CURRENCY_LABELS/CURRENCY_CODES
-// runtime data.
+// Frankfurter v2 (api.frankfurter.dev/v2) currencies — a blended,
+// multi-central-bank dataset (verified live 2026-08-01), not fabricated.
+// This is the 30 legacy ECB-only currencies plus every Arabic-region
+// currency and a set of other globally major currencies v2 added beyond
+// v1's ECB-only list. See lib/calculators/currency.ts for the matching
+// CURRENCY_LABELS/CURRENCY_CODES runtime data.
 export type CurrencyCode =
+  | 'AED'
+  | 'ARS'
   | 'AUD'
+  | 'BDT'
+  | 'BHD'
   | 'BRL'
   | 'CAD'
   | 'CHF'
+  | 'CLP'
   | 'CNY'
+  | 'COP'
   | 'CZK'
   | 'DKK'
+  | 'DZD'
+  | 'EGP'
   | 'EUR'
   | 'GBP'
   | 'HKD'
@@ -17,21 +27,42 @@ export type CurrencyCode =
   | 'IDR'
   | 'ILS'
   | 'INR'
+  | 'IQD'
   | 'ISK'
+  | 'JOD'
   | 'JPY'
+  | 'KES'
   | 'KRW'
+  | 'KWD'
+  | 'LBP'
+  | 'LYD'
+  | 'MAD'
   | 'MXN'
   | 'MYR'
+  | 'NGN'
   | 'NOK'
   | 'NZD'
+  | 'OMR'
+  | 'PEN'
   | 'PHP'
+  | 'PKR'
   | 'PLN'
+  | 'QAR'
   | 'RON'
+  | 'RUB'
+  | 'SAR'
+  | 'SDG'
   | 'SEK'
   | 'SGD'
+  | 'SYP'
   | 'THB'
+  | 'TND'
   | 'TRY'
+  | 'TWD'
+  | 'UAH'
   | 'USD'
+  | 'VND'
+  | 'YER'
   | 'ZAR';
 
 export interface CurrencyConversionResult {

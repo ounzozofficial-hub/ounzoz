@@ -106,12 +106,9 @@ describe('fetchExchangeRate', () => {
   it('parses a successful response into the requested rate', async () => {
     mockFetchOnce({
       ok: true,
-      json: async () => ({
-        amount: 1,
-        base: 'USD',
-        date: '2026-07-28',
-        rates: { EUR: 0.87974 },
-      }),
+      json: async () => [
+        { date: '2026-08-01', base: 'USD', quote: 'EUR', rate: 0.87974 },
+      ],
     });
     await expect(fetchExchangeRate('USD', 'EUR')).resolves.toBe(0.87974);
   });
@@ -123,15 +120,10 @@ describe('fetchExchangeRate', () => {
     );
   });
 
-  it('rejects when the response is missing the requested rate', async () => {
+  it('rejects when the response array has no record for the requested quote', async () => {
     mockFetchOnce({
       ok: true,
-      json: async () => ({
-        amount: 1,
-        base: 'USD',
-        date: '2026-07-28',
-        rates: {},
-      }),
+      json: async () => [],
     });
     await expect(fetchExchangeRate('USD', 'EUR')).rejects.toThrow(
       /did not include a valid rate/,
@@ -141,12 +133,9 @@ describe('fetchExchangeRate', () => {
   it('rejects when the rate in the response is not a finite positive number', async () => {
     mockFetchOnce({
       ok: true,
-      json: async () => ({
-        amount: 1,
-        base: 'USD',
-        date: '2026-07-28',
-        rates: { EUR: 'not-a-number' },
-      }),
+      json: async () => [
+        { date: '2026-08-01', base: 'USD', quote: 'EUR', rate: 'not-a-number' },
+      ],
     });
     await expect(fetchExchangeRate('USD', 'EUR')).rejects.toThrow(
       /did not include a valid rate/,
@@ -160,21 +149,29 @@ describe('fetchExchangeRate', () => {
     );
   });
 
-  it('requests the documented frankfurter.app endpoint shape', async () => {
+  it('requests the documented frankfurter.dev v2 endpoint shape', async () => {
     const fetchMock = mockFetchOnce({
       ok: true,
-      json: async () => ({
-        amount: 1,
-        base: 'GBP',
-        date: '2026-07-28',
-        rates: { JPY: 195.2 },
-      }),
+      json: async () => [
+        { date: '2026-08-01', base: 'GBP', quote: 'JPY', rate: 195.2 },
+      ],
     });
     await fetchExchangeRate('GBP', 'JPY');
     expect(fetchMock).toHaveBeenCalledWith(
-      'https://api.frankfurter.app/latest?from=GBP&to=JPY',
+      'https://api.frankfurter.dev/v2/rates?base=GBP&quotes=JPY',
       expect.objectContaining({ signal: expect.anything() }),
     );
+  });
+
+  it('parses an Arabic-currency rate from a multi-entry response, ignoring other entries', async () => {
+    mockFetchOnce({
+      ok: true,
+      json: async () => [
+        { date: '2026-08-01', base: 'USD', quote: 'AED', rate: 3.6725 },
+        { date: '2026-08-01', base: 'USD', quote: 'SAR', rate: 3.75 },
+      ],
+    });
+    await expect(fetchExchangeRate('USD', 'SAR')).resolves.toBe(3.75);
   });
 });
 
@@ -236,8 +233,55 @@ describe('CURRENCY_CODES / CURRENCY_LABELS', () => {
     }
   });
 
-  it('includes the 30 verified ECB reference currencies', () => {
-    expect(CURRENCY_CODES).toHaveLength(30);
+  it('includes the 59 verified frankfurter.dev v2 currencies', () => {
+    expect(CURRENCY_CODES).toHaveLength(59);
     expect(CURRENCY_CODES).toEqual(expect.arrayContaining(['USD', 'EUR', 'GBP', 'JPY']));
+  });
+
+  it('includes every Arabic-region currency added via the v2 migration', () => {
+    expect(CURRENCY_CODES).toEqual(
+      expect.arrayContaining([
+        'SAR',
+        'AED',
+        'EGP',
+        'QAR',
+        'KWD',
+        'BHD',
+        'OMR',
+        'JOD',
+        'IQD',
+        'LBP',
+        'MAD',
+        'TND',
+        'DZD',
+        'LYD',
+        'SYP',
+        'YER',
+        'SDG',
+      ]),
+    );
+  });
+
+  it('includes other major currencies v1 (ECB-only) lacked', () => {
+    expect(CURRENCY_CODES).toEqual(
+      expect.arrayContaining([
+        'RUB',
+        'TWD',
+        'PKR',
+        'VND',
+        'NGN',
+        'UAH',
+        'COP',
+        'ARS',
+        'CLP',
+        'PEN',
+        'KES',
+        'BDT',
+      ]),
+    );
+  });
+
+  it('has no duplicate currency codes', () => {
+    expect(new Set(CURRENCY_CODES).size).toBe(CURRENCY_CODES.length);
   });
 });

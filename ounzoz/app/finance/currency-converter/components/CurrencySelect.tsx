@@ -8,7 +8,7 @@ export interface CurrencySelectProps {
   onChange: (value: CurrencyCode) => void;
 }
 
-// Native <select> for one of the 30 supported currencies — same generic
+// Native <select> for one of the 59 supported currencies — same generic
 // form-control language as FrequencySelector on Compound Interest
 // Calculator (label above, 44/48px height, cyan 2px focus border). Reused
 // for both "From" and "To" via the `label` prop. No error state: unlike

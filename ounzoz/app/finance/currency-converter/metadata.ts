@@ -10,14 +10,14 @@ const OG_IMAGE_PATH = '/og/finance/currency-converter.png';
 export const metadata: Metadata = {
   title: 'Currency Converter — Live Exchange Rates | OUNZOZ',
   description:
-    'Convert between 30 major currencies using European Central Bank reference rates — free, instant, and easy to use.',
+    'Convert between 59 world currencies, including every major Arabic currency, using daily blended central-bank reference rates — free, instant, and easy to use.',
   alternates: {
     canonical: TOOL_URL,
   },
   openGraph: {
     title: 'Currency Converter — Live Exchange Rates',
     description:
-      'Convert between 30 major currencies using European Central Bank reference rates.',
+      'Convert between 59 world currencies, including every major Arabic currency, using daily blended central-bank reference rates.',
     url: TOOL_URL,
     siteName: 'OUNZOZ',
     images: [{ url: OG_IMAGE_PATH, width: 1200, height: 630 }],
