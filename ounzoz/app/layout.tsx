@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import Script from 'next/script';
 import { Header } from '@/components/shared/Header';
 import { Footer } from '@/components/shared/Footer';
 import './globals.css';
@@ -66,6 +67,18 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+        {/* Google AdSense site verification/loader — `beforeInteractive`
+            is the only next/script strategy Next.js guarantees loads in
+            the initial HTML <head>, before hydration, on every route; per
+            Next's own docs it's meant specifically for scripts "needed by
+            the entire site" and must live in the root layout, which is
+            exactly this script's requirement. */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1249057454842226"
+          crossOrigin="anonymous"
+          strategy="beforeInteractive"
+        />
       </head>
       <body className="flex min-h-screen flex-col antialiased">
         <Header />
