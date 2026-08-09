@@ -99,6 +99,7 @@ export function Footer() {
           </p>
         </div>
       </div>
+    <div className="mt-4 flex justify-center"><a href="https://www.saashub.com/ounzoz?utm_source=badge&utm_campaign=badge&utm_content=ounzoz&badge_variant=color&badge_kind=approved" target="_blank" rel="noopener noreferrer"><img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="OUNZOZ badge" style={{ maxWidth: "150px" }} /></a></div>
     </footer>
   );
 }
