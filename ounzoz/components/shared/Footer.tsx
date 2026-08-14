@@ -93,10 +93,32 @@ export function Footer() {
           ))}
         </div>
 
-        <div className="mt-10 border-t border-white/10 pt-6">
+        <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-[family-name:var(--font-body)] text-xs text-white/40">
             © {year} OUNZOZ. All rights reserved.
           </p>
+          <nav aria-label="Legal">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2">
+              <li>
+                <Link href="/about" className={`text-xs ${FOOTER_LINK_CLASSES}`}>
+                  About
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/privacy-policy"
+                  className={`text-xs ${FOOTER_LINK_CLASSES}`}
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className={`text-xs ${FOOTER_LINK_CLASSES}`}>
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     <div className="mt-4 flex justify-center"><a href="https://www.saashub.com/ounzoz?utm_source=badge&utm_campaign=badge&utm_content=ounzoz&badge_variant=color&badge_kind=approved" target="_blank" rel="noopener noreferrer"><img src="https://cdn-b.saashub.com/img/badges/approved-color.png?v=1" alt="OUNZOZ badge" style={{ maxWidth: "150px" }} /></a></div>

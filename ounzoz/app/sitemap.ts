@@ -26,6 +26,11 @@ const BASE_URL = 'https://ounzoz.com';
 // Every category hub — SEO.md Section 7: hub-and-spoke structure.
 const CATEGORY_ROUTES = ['/health', '/finance', '/student'];
 
+// Standalone informational/legal pages — not tools or category hubs, but
+// still real, indexable pages every crawler (including AdSense's
+// reviewer) should be able to find via the sitemap.
+const STATIC_ROUTES = ['/about', '/privacy-policy', '/contact'];
+
 const TOOL_ROUTES = [
   ...HEALTH_TOOLS.map((tool) => tool.href),
   ...FINANCE_TOOLS.map((tool) => tool.href),
@@ -47,6 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified,
       changeFrequency: 'weekly' as const,
       priority: 0.8,
+    })),
+    ...STATIC_ROUTES.map((route) => ({
+      url: `${BASE_URL}${route}`,
+      lastModified,
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
     })),
     ...TOOL_ROUTES.map((route) => ({
       url: `${BASE_URL}${route}`,
