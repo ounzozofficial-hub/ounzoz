@@ -104,7 +104,7 @@ export default function BMRCalculatorPage() {
         contentSlot={
           <ArticleLayout
             title="About the BMR Calculator"
-            sourceCitation="Formula based on the Mifflin-St Jeor equation, recommended by the Academy of Nutrition and Dietetics."
+            sourceCitation="Formula based on the Mifflin-St Jeor equation (Mifflin et al., 1990), recommended by the Academy of Nutrition and Dietetics over the older Harris-Benedict equation."
           >
             <p>
               Basal Metabolic Rate (BMR) is the number of calories your
@@ -136,6 +136,86 @@ export default function BMRCalculatorPage() {
               individual factors like genetics, muscle mass, and
               hormone levels can shift your real BMR up or down from
               what&apos;s shown here.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A worked example
+            </h3>
+            <p>
+              Take a 30-year-old woman who weighs 65 kg and is 165 cm
+              tall. The shared part of the formula first: 10 × 65 = 650,
+              plus 6.25 × 165 = 1,031.25, minus 5 × 30 = 150. That&apos;s
+              650 + 1,031.25 − 150 = 1,531.25. For women, the equation
+              subtracts 161: 1,531.25 − 161 = 1,370.25, which rounds to a
+              BMR of about 1,370 calories a day. For a man with the same
+              weight, height, and age, the equation adds 5 instead:
+              1,531.25 + 5 = 1,536.25, rounding to 1,536 — about 166
+              calories higher, the entire size of the male/female
+              difference in this formula.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Common mistakes when using your BMR
+            </h3>
+            <p>
+              The biggest one is eating at or near your BMR number
+              expecting fast weight loss. BMR only covers the energy your
+              body needs lying still and unconscious — it doesn&apos;t
+              include a single calorie for walking, working, digesting
+              food, or exercising, so eating that little while living a
+              normal day creates a much larger deficit than intended and
+              isn&apos;t a sustainable target. BMR is also sometimes
+              confused with RMR (Resting Metabolic Rate), a closely
+              related but slightly higher number usually measured while
+              awake that includes a small amount of digestion and arousal
+              cost; the two get used interchangeably in everyday
+              conversation, but they&apos;re measured under different
+              conditions.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              When the equation is less reliable
+            </h3>
+            <p>
+              Mifflin-St Jeor was built from a sample of 498 people
+              spanning normal-weight and obese adults, and clinical
+              comparisons against measured resting metabolic rate have
+              found it predicts within ±10% for about 82% of subjects —
+              noticeably better than the older Harris-Benedict
+              equation&apos;s roughly 68% — which is why the Academy of
+              Nutrition and Dietetics recommends it as the default choice
+              absent direct measurement. Still, &quot;most people&quot;
+              isn&apos;t &quot;everyone&quot;: prediction-equation studies
+              consistently show lower accuracy in people with obesity than
+              in people of average weight, and very muscular individuals
+              can be underestimated too, since the formula only sees total
+              weight and can&apos;t tell how much of it is lean muscle,
+              which burns more at rest than fat tissue.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Turning BMR into a daily calorie plan
+            </h3>
+            <p>
+              BMR by itself isn&apos;t a number to eat to — it&apos;s the
+              foundation TDEE (Total Daily Energy Expenditure) is built
+              on. TDEE multiplies BMR by an activity factor that accounts
+              for movement, exercise, and digestion, and that larger
+              number is what actually reflects how many calories you burn
+              — and should generally aim to eat — across a full day. Use
+              this BMR result as an input to a TDEE or calorie
+              calculation, not as a daily target on its own.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Mifflin-St Jeor vs. Harris-Benedict
+            </h3>
+            <p>
+              Harris-Benedict dates to 1919, built from calorimetry on 239
+              subjects, and was revised once in 1984; it tends to run
+              higher than modern equations for today&apos;s average body
+              composition. Mifflin-St Jeor, published seven decades later
+              in 1990 on a larger and more representative sample, replaced
+              it as the preferred formula for healthy adults. Both
+              estimate the same underlying quantity from similar inputs,
+              but Mifflin-St Jeor&apos;s better fit to modern populations
+              is why it&apos;s the formula this calculator — and most
+              current clinical nutrition guidance — uses by default.
             </p>
           </ArticleLayout>
         }

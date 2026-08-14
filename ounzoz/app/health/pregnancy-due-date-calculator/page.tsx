@@ -108,7 +108,7 @@ export default function PregnancyDueDateCalculatorPage() {
         contentSlot={
           <ArticleLayout
             title="About the Pregnancy Due Date Calculator"
-            sourceCitation="Estimate based on Naegele's Rule (LMP + 280 days / 40 weeks), the standard method cited by ACOG (American College of Obstetricians and Gynecologists) and the NHS. Trimester boundaries per the same ACOG guidance."
+            sourceCitation="Estimate based on Naegele's Rule (LMP + 280 days / 40 weeks), per ACOG Committee Opinion No. 700, 'Methods for Estimating the Due Date' (2017). Twin gestational-length guidance per the same ACOG source; due-date framing per Mayo Clinic."
           >
             <p>
               This calculator estimates your due date using Naegele&apos;s
@@ -138,6 +138,84 @@ export default function PregnancyDueDateCalculatorPage() {
               disagree. Use this calculator as a general planning
               reference, and confirm your due date with a doctor or
               midwife.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A worked example
+            </h3>
+            <p>
+              Say the first day of your last menstrual period was March 1.
+              Naegele&apos;s Rule adds 280 days (40 weeks) to that date:
+              March 1 plus 280 days lands on December 6 — the estimated
+              due date this calculator would show. If today&apos;s date
+              is May 10, that&apos;s 70 days after March 1 — exactly 10
+              completed weeks and 0 extra days of gestational age, placing
+              you in the first trimester (weeks 1–13), with 210 days (30
+              weeks) remaining until the December 6 estimate.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A common misconception
+            </h3>
+            <p>
+              A due date reads like a deadline, but it isn&apos;t one.
+              Mayo Clinic describes it plainly: the due date is simply the
+              date on which you&apos;ll be 40 weeks pregnant, not a
+              prediction of the exact day labor will start — few
+              pregnancies end precisely on that day, and a birth anywhere
+              within a few weeks of it is entirely normal. It&apos;s also
+              worth knowing that ACOG&apos;s own guidance on this topic is
+              titled &quot;Methods for Estimating the Due Date&quot; —
+              plural — because Naegele&apos;s Rule (LMP-based) is one of
+              several accepted methods, alongside first-trimester
+              ultrasound dating and, for pregnancies conceived via
+              assisted reproductive technology, the known transfer date;
+              ACOG recommends using whichever is most accurate for a given
+              pregnancy, not always defaulting to LMP.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              When Naegele&apos;s Rule doesn&apos;t apply well
+            </h3>
+            <p>
+              This calculator, like Naegele&apos;s Rule itself, is built
+              for a single typical pregnancy with a regular 28-day
+              cycle — it doesn&apos;t apply well to twin or multiple
+              pregnancies, which reliably run shorter than a
+              singleton&apos;s 40 weeks. ACOG guidance points to delivery
+              around 38 weeks for uncomplicated dichorionic twin
+              pregnancies, and around 36–37 weeks for monochorionic twin
+              pregnancies — well before this calculator&apos;s 280-day
+              estimate. A due date calculated this way for a twin
+              pregnancy should be understood as a singleton-style
+              reference point, not the expected delivery timing, which a
+              doctor manages separately based on the specific pregnancy.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              What to actually do with this date
+            </h3>
+            <p>
+              Use this estimate to orient early planning — roughly which
+              trimester you&apos;re in, when to schedule early prenatal
+              visits, when parental leave or travel plans might need to
+              work around. Per ACOG&apos;s own committee opinion on due
+              date methods, a first-trimester ultrasound is considered the
+              most accurate way to confirm or revise gestational age,
+              accurate to within about 6 days; once your provider gives
+              you a confirmed due date, that figure should take priority
+              over this calculator&apos;s LMP-based estimate.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              LMP dating vs. ultrasound dating
+            </h3>
+            <p>
+              LMP-based dating — what this calculator does — only needs a
+              date you likely already know, which makes it useful before
+              any clinical visit has happened, but it assumes a textbook
+              cycle and is only as accurate as your memory of when your
+              last period actually started. Ultrasound dating measures the
+              embryo or fetus directly and doesn&apos;t depend on cycle
+              regularity or recall at all, which is why ACOG considers a
+              first-trimester ultrasound the more accurate method whenever
+              the two disagree. Use this calculator as a starting estimate
+              before that appointment, not as a substitute for it.
             </p>
           </ArticleLayout>
         }

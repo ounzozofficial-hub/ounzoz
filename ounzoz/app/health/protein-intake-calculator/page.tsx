@@ -104,7 +104,7 @@ export default function ProteinIntakeCalculatorPage() {
         contentSlot={
           <ArticleLayout
             title="About the Protein Intake Calculator"
-            sourceCitation="Sedentary baseline (0.8 g/kg) is the RDA per the U.S./Canada Dietary Reference Intakes (National Academies of Medicine, 2005). Higher activity levels (1.2–2.0 g/kg) reflect the general range cited in sports nutrition literature, e.g. the International Society of Sports Nutrition's position stand (Jäger et al., 2017) — a practical range, not a single precise figure."
+            sourceCitation="Sedentary baseline (0.8 g/kg) is the RDA per the U.S./Canada Dietary Reference Intakes (National Academies of Medicine, 2005), corroborated by the WHO/FAO/UNU's 0.83 g/kg safe intake level (WHO Technical Report Series 935, 2007). Higher activity levels (1.2–2.0 g/kg) reflect the general range cited in sports nutrition literature, e.g. the International Society of Sports Nutrition's position stand (Jäger et al., 2017) — a practical range, not a single precise figure."
           >
             <p>
               Protein needs aren&apos;t the same for everyone — how much
@@ -134,6 +134,89 @@ export default function ProteinIntakeCalculatorPage() {
               gradually increasing scale across activity levels rather
               than one precisely cited figure per tier, and the FAQ below
               explains that distinction in more detail.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A worked example
+            </h3>
+            <p>
+              Say you weigh 80 kg and select &quot;moderately active.&quot;
+              This calculator&apos;s table sets 1.4 g of protein per kg of
+              body weight at that tier, so 80 × 1.4 = 112 g of protein per
+              day — the exact calculation the result panel runs on your
+              own weight and activity selection. Change only the activity
+              level to &quot;sedentary&quot; (0.8 g/kg) with the same 80 kg
+              body weight, and the target drops to 80 × 0.8 = 64 g/day —
+              the same body, a very different number, entirely because of
+              activity level.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A common misconception
+            </h3>
+            <p>
+              More protein isn&apos;t automatically better once
+              you&apos;re already above your target — protein needs have a
+              practical ceiling tied to activity level and goals, not an
+              &quot;always higher is better&quot; curve. It&apos;s also
+              easy to conflate two different global figures: the
+              U.S./Canada Dietary Reference Intakes set the RDA at 0.8
+              g/kg, while a 2007 joint WHO/FAO/UNU expert report (WHO
+              Technical Report Series 935) set a very similar &quot;safe
+              intake&quot; of 0.83 g/kg for the same sedentary baseline —
+              two independent expert bodies landing within 0.03 g/kg of
+              each other. That closeness is a sign the sedentary figure is
+              genuinely well-established, not that one of the two numbers
+              is wrong.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Special cases the standard range doesn&apos;t fully cover
+            </h3>
+            <p>
+              The 1.2–2.0 g/kg activity-tiered range on this calculator
+              reflects general training; it doesn&apos;t account for
+              active weight loss. The International Society of Sports
+              Nutrition&apos;s position stand notes that during a calorie
+              deficit, resistance-trained individuals may need
+              substantially more — 2.3 to 3.1 g/kg — to help protect
+              muscle mass while losing fat, meaningfully above what this
+              calculator&apos;s &quot;active&quot; or &quot;very
+              active&quot; tiers estimate. The same position stand also
+              found that spreading protein across the day in doses of
+              roughly 20–25 g every few hours supports muscle protein
+              synthesis better than concentrating the same daily total
+              into one or two large meals — so how your total is
+              distributed across meals matters, not just the total
+              itself.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              How to use your target
+            </h3>
+            <p>
+              Treat the number as a daily total to build meals toward, not
+              a threshold to hit exactly every single day — a day or two
+              below target rarely matters if your weekly average lands
+              near it. If you&apos;re actively trying to lose weight while
+              preserving muscle, or you&apos;re a resistance-trained
+              athlete in a calorie deficit, the special case above is
+              worth discussing with a coach or dietitian, since this
+              calculator&apos;s tiers are built for general activity
+              levels, not deficit-specific needs.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Comparing the sources behind this number
+            </h3>
+            <p>
+              The sedentary baseline (0.8 g/kg) is the most rigorously
+              established figure here, set by the Institute of
+              Medicine&apos;s Dietary Reference Intakes and independently
+              corroborated by the WHO/FAO/UNU&apos;s 0.83 g/kg safe intake
+              level. The higher, activity-scaled tiers (1.2–2.0 g/kg) rest
+              on a different kind of evidence — sports nutrition research
+              showing protein needs rise with training load, without one
+              single number the field agrees is exactly correct. Both are
+              legitimate, sourced figures; they just carry different
+              degrees of precision, which is why this calculator presents
+              the sedentary number as a firm RDA and the higher tiers as a
+              practical range.
             </p>
           </ArticleLayout>
         }
