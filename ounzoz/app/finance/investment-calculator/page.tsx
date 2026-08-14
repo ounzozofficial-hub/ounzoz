@@ -104,7 +104,7 @@ export default function InvestmentCalculatorPage() {
         contentSlot={
           <ArticleLayout
             title="About the Investment Calculator"
-            sourceCitation="Calculated using the standard future-value-of-annuity formula: FV = P(1+i)ⁿ + PMT[((1+i)ⁿ − 1)/i], where P is your initial investment, PMT is your monthly contribution, i is the monthly rate, and n is the number of months. The expected annual return is a figure you supply — this tool does not suggest, estimate, or imply a historical or expected market return."
+            sourceCitation="Calculated using the standard future-value-of-annuity formula: FV = P(1+i)ⁿ + PMT[((1+i)ⁿ − 1)/i], where P is your initial investment, PMT is your monthly contribution, i is the monthly rate, and n is the number of months. The expected annual return is a figure you supply — this tool does not suggest, estimate, or imply a historical or expected market return. Dollar-cost averaging defined per the SEC's investor.gov."
           >
             <p>
               This calculator projects how an initial investment, plus a
@@ -135,6 +135,93 @@ export default function InvestmentCalculatorPage() {
               assumption — rather than to predict an exact future
               balance. Nothing here is financial advice or a
               recommendation to invest.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A worked example
+            </h3>
+            <p>
+              Say you start with a $5,000 initial investment, contribute
+              $300 every month, and assume a 7% expected annual return
+              for 20 years. Plugging into the formula gives a projected
+              balance of $176,471.69. Of that, $77,000 came directly from
+              your own contributions ($5,000 + $300 × 240 months), and
+              the remaining $99,471.69 is projected growth — in this
+              example, growth outweighs your own contributions by more
+              than 2 to 1, largely a function of time: the earliest
+              contributions had two full decades to compound, while the
+              last ones barely had any time to grow at all.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A common misconception
+            </h3>
+            <p>
+              An &quot;average&quot; annual return and a guaranteed,
+              steady return are not the same thing, even though this
+              calculator&apos;s constant-rate math can make them look
+              interchangeable. Two investments can post the exact same
+              average annual return over 20 years and still leave you
+              with very different final balances, depending on when the
+              good years and bad years actually happened — a pattern
+              often called sequence-of-returns risk. A portfolio that
+              loses money early, before most contributions have gone in,
+              tends to recover better than one that loses money late,
+              after a large balance has already built up — timing
+              matters in a way a single constant &quot;expected
+              return&quot; figure can&apos;t capture.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Where the growth assumption breaks down
+            </h3>
+            <p>
+              This tool deliberately doesn&apos;t suggest a return
+              figure — real returns vary by asset class, and no single
+              defensible number applies to &quot;investing&quot; in
+              general. It also doesn&apos;t subtract fees (fund expense
+              ratios, brokerage or advisor fees), which compound against
+              you the same way returns compound for you, quietly eating
+              into the final balance over a multi-decade horizon even at
+              seemingly small annual percentages. Taxes on gains and
+              dividends, and inflation eroding what that future balance
+              can actually buy, are left out too — reasons the number
+              shown here is best read as a hypothetical ceiling on a
+              &quot;smooth&quot; outcome, not a number to expect exactly.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              How to use this projection
+            </h3>
+            <p>
+              Investing a fixed amount every month, the way this
+              calculator&apos;s monthly-contribution field works, is
+              generally called dollar-cost averaging — per the
+              SEC&apos;s investor.gov, it means buying at whatever price
+              the market happens to offer each period rather than trying
+              to time a single lump-sum entry, which smooths out the
+              effect of short-term price swings without changing the
+              underlying return your investments earn. Use this tool to
+              compare scenarios — a larger contribution, a longer
+              horizon, a different return assumption — and treat the gap
+              between &quot;contributions&quot; and &quot;growth&quot; in
+              your result as a reminder of how much of long-term
+              investing&apos;s payoff depends on time in the market, not
+              the size of any one contribution.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Expected return vs. actual market return
+            </h3>
+            <p>
+              The rate you enter is an assumption you supply, not a
+              benchmark this tool implies or endorses. Compound annual
+              growth rate (CAGR) — the standard way analysts describe how
+              an investment actually performed over a past multi-year
+              period, calculated as (ending value ÷ starting
+              value)^(1/years) − 1 — measures history after the fact; the
+              &quot;expected annual return&quot; field on this calculator
+              asks you to guess at the future instead, which is an
+              inherently less certain exercise. If you&apos;re
+              benchmarking an assumption, comparing it to a real
+              investment&apos;s historical CAGR over a similar length of
+              time is a more grounded starting point than picking a round
+              number.
             </p>
           </ArticleLayout>
         }

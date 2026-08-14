@@ -104,7 +104,7 @@ export default function SavingsCalculatorPage() {
         contentSlot={
           <ArticleLayout
             title="About the Savings Calculator"
-            sourceCitation="Calculated using the standard future-value-of-annuity formula: FV = P(1+i)ⁿ + PMT[((1+i)ⁿ − 1)/i], where P is your initial deposit, PMT is your monthly contribution, i is the monthly interest rate, and n is the number of months."
+            sourceCitation="Calculated using the standard future-value-of-annuity formula: FV = P(1+i)ⁿ + PMT[((1+i)ⁿ − 1)/i], where P is your initial deposit, PMT is your monthly contribution, i is the monthly interest rate, and n is the number of months. APY defined per the Truth in Savings Act's implementing Regulation DD; emergency-fund guidance per the CFPB (Consumer Financial Protection Bureau)."
           >
             <p>
               A savings account grows two ways: the interest your balance
@@ -131,6 +131,89 @@ export default function SavingsCalculatorPage() {
               eroding the real value of that balance. Use it to compare
               scenarios (a higher contribution, a longer timeline, a
               better rate) rather than as a promised future balance.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A worked example
+            </h3>
+            <p>
+              Say you start with a $1,000 initial deposit, add $200 every
+              month, and earn a 4% APY for 10 years. Plugging into the
+              formula gives a final balance of $30,940.79. Of that,
+              $25,000 came directly from your own deposits and
+              contributions ($1,000 + $200 × 120 months), and the
+              remaining $5,940.79 is interest the account earned along
+              the way — roughly 19% of the final balance came from
+              interest alone, not from money you put in.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A common misconception
+            </h3>
+            <p>
+              People often assume any two rates with the same number mean
+              the same thing, but the number that matters for comparing
+              accounts is APY specifically, not a plain, uncompounded
+              interest rate. Per the Truth in Savings Act (implemented
+              through Regulation DD, now maintained by the CFPB), banks
+              are required to disclose the APY precisely because it
+              already factors in compounding, making it the only number
+              that lets you compare two accounts on equal footing — a
+              bank quoting a lower nominal rate with more frequent
+              compounding can sometimes out-earn a higher rate compounded
+              less often.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Where this projection runs into limits
+            </h3>
+            <p>
+              This tool assumes your rate holds perfectly steady for the
+              entire time horizon, but real savings APYs move with
+              broader interest-rate conditions — a bank can and does
+              change its rate with little notice, so a 10-year projection
+              at today&apos;s rate is a snapshot, not a forecast. It also
+              doesn&apos;t subtract taxes owed on the interest you earn
+              (interest income is generally taxable) or account for
+              inflation, which erodes what that final balance can
+              actually buy by the time you reach it — both mean the real,
+              spendable value of the projected balance is lower than the
+              raw number shown.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              How to use this result
+            </h3>
+            <p>
+              Use the final-balance and interest-earned breakdown to test
+              how sensitive your goal is to each input — a higher monthly
+              contribution, a longer timeline, or a better rate. Because a
+              meaningful share of long-term growth comes from
+              interest-on-interest rather than your own contributions (as
+              in the worked example above), starting sooner, even with a
+              smaller amount, is usually more powerful than waiting to
+              contribute more later. If this balance is meant to be an
+              emergency fund specifically, the CFPB&apos;s general
+              guidance is to target roughly three to six months of
+              essential expenses — housing, groceries, utilities,
+              transportation, and routine medical costs — as a savings
+              goal, though the right amount depends on your own income
+              stability and expenses.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Savings vs. investing
+            </h3>
+            <p>
+              This calculator models a savings-account-style APY, which
+              is why its rate is capped at a realistic bank-savings
+              range: savings accounts prioritize safety and liquidity
+              over growth, typically holding your balance in
+              cash-equivalent, FDIC-insured deposits. Investment
+              Calculator models a different kind of growth — money placed
+              in securities like stocks or funds, which can earn a higher
+              expected return over the long run but carries real risk of
+              loss that a savings account doesn&apos;t. Which is
+              appropriate depends on the money&apos;s purpose: savings
+              for a near-term goal or emergency fund generally belongs
+              somewhere safe and liquid, while money with a longer time
+              horizon can typically afford to take on the added risk
+              investing carries.
             </p>
           </ArticleLayout>
         }

@@ -104,7 +104,7 @@ export default function TDEECalculatorPage() {
         contentSlot={
           <ArticleLayout
             title="About the TDEE Calculator"
-            sourceCitation="BMR based on the Mifflin-St Jeor equation; activity multipliers from the standard scale commonly paired with it."
+            sourceCitation="BMR based on the Mifflin-St Jeor equation; activity multipliers from the standard scale commonly paired with it. Metabolic adaptation figures per Fothergill et al., 'Persistent metabolic adaptation 6 years after The Biggest Loser competition,' Obesity, 2016."
           >
             <p>
               Total Daily Energy Expenditure (TDEE) is the total number
@@ -137,6 +137,82 @@ export default function TDEECalculatorPage() {
               it periodically as your weight or routine changes, and
               treat it as a starting point for adjustment rather than a
               fixed target.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A worked example
+            </h3>
+            <p>
+              Take a 35-year-old man who weighs 80 kg, stands 180 cm tall,
+              and is &quot;moderately active.&quot; His BMR works out to
+              10 × 80 + 6.25 × 180 − 5 × 35 + 5 = 800 + 1,125 − 175 + 5 =
+              1,755 calories a day. Multiply that by the &quot;moderately
+              active&quot; multiplier of 1.55: 1,755 × 1.55 = 2,720.25,
+              which rounds to a TDEE of about 2,720 calories a day. If the
+              same person were sedentary instead, the multiplier drops to
+              1.2: 1,755 × 1.2 = 2,106 — over 600 calories a day less,
+              entirely from activity level, with body weight, height, and
+              age unchanged.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A common misconception
+            </h3>
+            <p>
+              People often treat TDEE as a fixed number rather than a
+              moving target. It&apos;s calculated from your current
+              weight, so as you lose or gain weight, your TDEE shifts
+              too — a person who&apos;s lost 10 kg burns meaningfully less
+              at the same activity level than they did before, which is
+              part of why weight loss tends to slow down even when the
+              plan hasn&apos;t changed. It&apos;s also easy to overestimate
+              your own activity tier: most people who exercise a few
+              times a week but otherwise sit most of the day fall under
+              &quot;lightly active,&quot; not &quot;moderately&quot; or
+              &quot;very active,&quot; and picking too high a tier is the
+              most common reason a TDEE estimate runs high.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Where the estimate breaks down
+            </h3>
+            <p>
+              TDEE formulas assume metabolism responds in a simple, static
+              way to weight change, but the body adapts. A widely cited
+              2016 follow-up study of &quot;The Biggest Loser&quot;
+              contestants, published in the journal Obesity, found that
+              resting metabolic rate dropped by an average of 610
+              calories a day by the end of the competition — and was
+              still roughly 700 calories a day below the contestants&apos;
+              original baseline six years later, even after most of the
+              weight had been regained. This &quot;metabolic
+              adaptation&quot; means a TDEE estimate calculated from your
+              current stats can overstate how many calories you actually
+              burn after a sustained diet, which is one reason long-term
+              calorie targets often need real-world adjustment, not just
+              formula math.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Using your TDEE
+            </h3>
+            <p>
+              Treat TDEE as a starting estimate for your maintenance
+              calories, then adjust based on what actually happens to
+              your weight over 2–3 weeks of eating near that number. If
+              your weight is drifting up or down at that intake, your
+              real TDEE is different from the estimate — trust the trend
+              on the scale over the formula. Recalculate periodically,
+              especially after a meaningful weight change or a shift in
+              your routine.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              TDEE vs. BMR
+            </h3>
+            <p>
+              BMR is the calorie floor — what your body burns doing
+              absolutely nothing. TDEE is the full picture, adding
+              activity, exercise, and digestion on top of that floor. The
+              gap between the two can be large: in the example above,
+              activity alone accounts for nearly 1,000 of the 2,720 total
+              calories. Use BMR to understand your baseline; use TDEE for
+              anything related to actually planning what to eat.
             </p>
           </ArticleLayout>
         }

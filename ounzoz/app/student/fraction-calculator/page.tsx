@@ -135,6 +135,82 @@ export default function FractionCalculatorPage() {
               you&apos;re starting from a decimal, convert it to a
               fraction first.
             </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A worked example
+            </h3>
+            <p>
+              Say you&apos;re adding 3/4 and 5/6. Cross-multiply into a
+              common denominator: (3 × 6 + 5 × 4) / (4 × 6) = (18 + 20)
+              / 24 = 38/24. That fraction isn&apos;t in lowest terms yet
+              — the greatest common divisor of 38 and 24 is 2, so
+              dividing both by 2 simplifies it to 19/12. Since the
+              numerator is larger than the denominator, this calculator
+              also shows it as a mixed number: 1 whole plus 7/12
+              remaining (12 fits into 19 once, with 7 left over), and as
+              a decimal: 19 ÷ 12 = 1.5833.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A common misconception
+            </h3>
+            <p>
+              The single most common fraction-arithmetic mistake is
+              adding or subtracting numerators and denominators straight
+              across — treating 3/4 + 5/6 as (3+5)/(4+6) = 8/10. That&apos;s
+              wrong; fractions only add correctly once they share a
+              common denominator, which is exactly why this calculator
+              cross-multiplies rather than combining the numbers
+              directly. That pitfall is specific to addition and
+              subtraction — multiplication genuinely does work straight
+              across (numerator × numerator, denominator ×
+              denominator), which is part of why the two operations get
+              confused.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Cases worth double-checking
+            </h3>
+            <p>
+              Mixed numbers (like 1½) can&apos;t be entered directly —
+              this tool expects a plain numerator and denominator, so
+              convert a mixed number to an improper fraction first
+              (multiply the whole number by the denominator and add the
+              numerator: 1½ becomes (1×2+1)/2 = 3/2). Negative fractions
+              work correctly regardless of which term carries the minus
+              sign, but the simplified result always normalizes the sign
+              onto the numerator with a positive denominator, so −3/4 and
+              3/−4 both simplify to the same −3/4. And a whole number is
+              just a fraction with a denominator of 1 — enter 5 as 5/1 if
+              you need to combine it with another fraction.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Reading your result
+            </h3>
+            <p>
+              Which form of the answer to use depends on what you&apos;re
+              doing with it next. The simplified fraction is generally
+              the expected form for a homework answer unless told
+              otherwise; the mixed number is often preferred when the
+              result represents a real-world quantity, like a length or
+              a recipe measurement, since “1 and 7/12” is easier to picture
+              than “19/12.” The decimal is most useful when you need to
+              compare the result against another number quickly, or feed
+              it into a further calculation that doesn&apos;t use
+              fractions.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Fractions vs. decimals vs. percentages
+            </h3>
+            <p>
+              All three are different notations for the same underlying
+              value — 3/4, 0.75, and 75% all represent an identical
+              quantity. Fractions are exact and show the relationship
+              between parts and a whole clearly, which is why they&apos;re
+              the standard form in algebra and geometry. Decimals are
+              easier to compare at a glance and to type into most
+              calculators, but some fractions (like 1/3) only convert to
+              a decimal that repeats forever, so a decimal answer is
+              sometimes a rounded approximation rather than an exact
+              value the way the fraction itself is.
+            </p>
           </ArticleLayout>
         }
         faqSlot={<FAQ items={FRACTION_FAQ_ITEMS} />}

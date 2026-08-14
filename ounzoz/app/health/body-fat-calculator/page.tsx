@@ -104,7 +104,7 @@ export default function BodyFatCalculatorPage() {
         contentSlot={
           <ArticleLayout
             title="About the Body Fat Calculator"
-            sourceCitation="US Navy circumference method (Hodgdon & Beckett, 1984, Naval Health Research Center); body fat categories per the American Council on Exercise (ACE)."
+            sourceCitation="US Navy circumference method (Hodgdon & Beckett, 1984, Naval Health Research Center); body fat categories per the American Council on Exercise (ACE). Accuracy/limitation figures per published comparisons against DEXA scanning."
           >
             <p>
               Body fat percentage tells you what portion of your body
@@ -134,6 +134,81 @@ export default function BodyFatCalculatorPage() {
               most reliable trend over time, measure at the same time of
               day, in the same conditions, and track changes over weeks
               rather than reacting to any single reading.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A worked example
+            </h3>
+            <p>
+              Take a man who is 180 cm tall with a 38 cm neck and an 85 cm
+              waist. The male formula uses waist minus neck: 85 − 38 = 47
+              cm. Take the base-10 logarithm of that (log₁₀47 ≈ 1.6721)
+              and of the height (log₁₀180 ≈ 2.2553), then plug both into
+              the denominator: 1.0324 − 0.19077 × 1.6721 + 0.15456 ×
+              2.2553 ≈ 1.0620. Divide 495 by that and subtract 450: 495 ÷
+              1.0620 − 450 ≈ 16.1% body fat — landing in the
+              &quot;Fitness&quot; category on the ACE scale (13.1–17% for
+              men).
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A common misconception
+            </h3>
+            <p>
+              A single body fat percentage often gets read as more
+              precise than it actually is. The Navy circumference method
+              is generally within about 3–4% of a DEXA scan for people in
+              the roughly 15–30% body fat range it was originally
+              validated on — a real but imperfect level of agreement, not
+              lab-grade precision. It&apos;s also easy to compare your
+              number directly to someone else&apos;s without accounting
+              for how differently fat is distributed between individuals —
+              two people at the same body fat percentage can look quite
+              different depending on where that fat sits.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Where the standard method is less reliable
+            </h3>
+            <p>
+              The Navy method was developed and validated on a population
+              resembling active-duty military personnel — generally fit,
+              within a normal weight range, and mostly under 50 — so its
+              accuracy drops for people well outside that profile. It
+              tends to underestimate body fat in people with obesity, and
+              can be thrown off by atypical fat distribution or unusually
+              high muscle mass, since it infers body fat purely from a few
+              circumference measurements rather than measuring tissue
+              directly. DEXA scanning, by contrast, images bone, fat, and
+              lean tissue separately and is accurate to within about
+              1–2%, which is why it — not a tape-measure formula — is
+              considered the clinical gold standard when precision
+              genuinely matters.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              How to use your result
+            </h3>
+            <p>
+              A single reading is less useful than a trend. Because the
+              Navy method depends on precise circumference measurements,
+              small differences in where or how snugly you place the tape
+              can shift the result by a percentage point or two —
+              measuring at the same time of day, in the same way, and
+              tracking the number over weeks smooths out that noise and
+              shows real change far more reliably than any one
+              measurement.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Body fat vs. BMI
+            </h3>
+            <p>
+              BMI and body fat percentage answer different questions from
+              the same starting point. BMI only needs weight and height
+              and says nothing about what that weight is made of; body
+              fat percentage, estimated here from actual circumference
+              measurements, describes body composition directly. Two
+              people can share an identical BMI and land in very
+              different body fat categories — which is exactly the gap
+              this calculator is built to fill, particularly for anyone
+              whose BMI reading doesn&apos;t match how they actually look
+              or feel.
             </p>
           </ArticleLayout>
         }

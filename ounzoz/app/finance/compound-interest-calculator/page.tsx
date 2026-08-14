@@ -104,7 +104,7 @@ export default function CompoundInterestCalculatorPage() {
         contentSlot={
           <ArticleLayout
             title="About the Compound Interest Calculator"
-            sourceCitation="Calculated using the standard compound interest formula: A = P × (1 + r/n)ⁿᵗ, where P is the starting principal, r is the annual interest rate, n is the number of compounding periods per year, and t is the number of years."
+            sourceCitation="Calculated using the standard compound interest formula: A = P × (1 + r/n)ⁿᵗ, where P is the starting principal, r is the annual interest rate, n is the number of compounding periods per year, and t is the number of years. Nominal rate vs. effective annual yield (APY) distinction per the Truth in Savings Act's implementing Regulation DD."
           >
             <p>
               Compound interest is what makes money grow faster over time
@@ -137,6 +137,80 @@ export default function CompoundInterestCalculatorPage() {
               over time, so use this as an illustration of how compounding
               works rather than a promise of what you&apos;ll actually
               earn.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A worked example
+            </h3>
+            <p>
+              Say you deposit a $5,000 lump sum at a 5% annual rate for
+              10 years. Compounded annually, the formula gives a final
+              balance of $8,144.47 — $3,144.47 in interest on top of the
+              original $5,000. Switch only the compounding frequency to
+              monthly, and the balance rises to $8,235.05 ($3,235.05 in
+              interest); switch it again to daily, and it reaches
+              $8,243.32 ($3,243.32 in interest). Notice how much of the
+              gain from more frequent compounding — $90.58 of it — comes
+              from the jump between annual and monthly, while the jump
+              from monthly to daily adds only another $8.27: the same
+              diminishing-returns pattern the FAQ below describes, shown
+              here with real numbers.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A common misconception
+            </h3>
+            <p>
+              It&apos;s easy to assume interest rate is the only variable
+              that matters, but time does more of the work than most
+              people expect, because of how compounding stacks on itself.
+              Doubling the interest rate in the example above (5% to 10%)
+              more than doubles the interest earned over the same 10
+              years, since each year&apos;s larger balance also
+              compounds — growth under compound interest isn&apos;t
+              linear with either rate or time, even though it can look
+              that way over short periods.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Where a single lump-sum projection falls short
+            </h3>
+            <p>
+              This tool intentionally models one deposit growing alone
+              with no further money added — it doesn&apos;t represent an
+              account you keep contributing to, which is a different (and
+              for most savers, more realistic) scenario covered by
+              Savings Calculator or Investment Calculator instead. It also
+              can&apos;t account for a rate that changes over the
+              projection period, taxes owed on interest as it&apos;s
+              earned, or account fees — all of which would pull a real
+              balance below this pure-math projection.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              How to use this result
+            </h3>
+            <p>
+              Use the final balance and interest-earned figures to build
+              intuition for how starting amount, rate, time horizon, and
+              compounding frequency each move the outcome — change one
+              variable at a time, as in the worked example above, to see
+              which has the biggest effect on your specific numbers.
+              It&apos;s most useful as a comparison tool (this rate vs.
+              that one, this many years vs. that many) rather than as a
+              forecast of an exact real-world balance.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Nominal rate vs. effective annual yield
+            </h3>
+            <p>
+              The annual rate you enter here is a nominal rate — the
+              stated percentage before accounting for how often it
+              compounds. The actual amount that rate earns over a year,
+              once compounding is factored in, is called the effective
+              annual yield (in banking specifically, the Annual Percentage
+              Yield, or APY, defined under the Truth in Savings Act and
+              its implementing Regulation DD). Two accounts advertising
+              the same nominal rate can pay out different amounts if one
+              compounds more frequently than the other — exactly the gap
+              the compounding-frequency comparison above illustrates, and
+              why comparing nominal rates alone can be misleading.
             </p>
           </ArticleLayout>
         }

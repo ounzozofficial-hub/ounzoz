@@ -104,7 +104,7 @@ export default function StudyTimeCalculatorPage() {
         contentSlot={
           <ArticleLayout
             title="About the Study Time Calculator"
-            sourceCitation="This tool performs a simple time-allocation calculation (available hours ÷ number of topics) rather than citing a study-hours guideline — how much total time any given exam or course requires varies too much by subject, institution, and student to state as a single verifiable rule."
+            sourceCitation="This tool performs a simple time-allocation calculation (available hours ÷ number of topics) rather than citing a study-hours guideline — how much total time any given exam or course requires varies too much by subject, institution, and student to state as a single verifiable rule. Spacing/distributed-practice research cited per Cepeda et al. (2006), Psychological Bulletin."
           >
             <p>
               Cramming everything into the last couple of days rarely goes
@@ -133,6 +133,80 @@ export default function StudyTimeCalculatorPage() {
               equally. If some topics are harder than others, it&apos;s
               worth manually weighting your plan toward them rather than
               splitting time perfectly evenly.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A worked example
+            </h3>
+            <p>
+              Say your exam is 14 days away, you can realistically study 3
+              hours a day, and you have 8 topics to cover. Total available
+              hours: 14 × 3 = 42 hours. Divide by topics: 42 ÷ 8 = 5.25,
+              which this calculator rounds to 5.3 hours per topic — above
+              the 1-hour advisory threshold, so no warning would show for
+              this particular plan.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              A common misconception
+            </h3>
+            <p>
+              More total hours doesn&apos;t automatically mean better
+              retention, especially if most of those hours end up
+              massed into the final day or two before the exam. A
+              widely cited 2006 meta-analysis by Cepeda, Pashler, Vul,
+              Wixted, and Rohrer, published in Psychological Bulletin,
+              reviewed hundreds of learning experiments and found that
+              spacing study sessions out over time consistently produced
+              better long-term retention than massing the same total
+              amount of study time into a short window — the effect this
+              calculator&apos;s day-by-day allocation is built to
+              encourage, even though it doesn&apos;t schedule individual
+              sessions for you.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Where the even split breaks down
+            </h3>
+            <p>
+              Splitting time perfectly evenly across topics is a
+              reasonable default, but it assumes every topic takes the
+              same effort to learn — rarely true in practice. A topic
+              you already understand well needs less of your allotted
+              share, while a genuinely difficult one may need more than
+              its even split provides. The same applies to how the days
+              themselves are used: this tool treats every day&apos;s
+              hours as interchangeable, but the spacing research above
+              suggests that revisiting a topic on a later day, rather
+              than only studying it once in one long block, is generally
+              more effective than the total-hours number alone captures.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              How to use your result
+            </h3>
+            <p>
+              Treat the hours-per-topic figure as a planning floor, not a
+              strict budget — it tells you roughly how much runway
+              you&apos;re working with, so you can decide whether to
+              start sooner, trim your topic list, or accept a lighter
+              pass on some material. If the number is comfortably above
+              the advisory threshold, consider spreading a topic&apos;s
+              hours across more than one day rather than studying it in a
+              single sitting, since that spacing is what the research
+              above associates with better retention.
+            </p>
+            <h3 className="font-[family-name:var(--font-body)] text-[var(--font-size-base)] font-semibold text-[var(--color-text-primary)]">
+              Time allocation vs. total study load
+            </h3>
+            <p>
+              This tool answers a narrower question than it might first
+              seem to: given time you&apos;ve already decided to commit,
+              how should it be divided. It doesn&apos;t answer the
+              separate question of how much total study time a course or
+              exam actually warrants, which depends on the subject,
+              your existing familiarity with the material, and the
+              exam&apos;s difficulty — factors too individual to reduce
+              to a single formula. Use this calculator once you&apos;ve
+              already estimated your total available hours; use your own
+              judgment, a syllabus, or an instructor&apos;s guidance to
+              decide what that total should be in the first place.
             </p>
           </ArticleLayout>
         }
