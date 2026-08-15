@@ -22,13 +22,19 @@ export function Header() {
           </span>
         </Link>
 
-        {/* All three V1 category pages now exist (Health, Finance,
+       {/* All three V1 category pages now exist (Health, Finance,
             Student), so every nav entry is a real link — none point to a
             page that doesn't exist yet (avoided per CLAUDE.md Section 18). */}
         <nav
           aria-label="Primary"
           className="hidden items-center gap-6 font-[family-name:var(--font-body)] text-sm font-medium text-white/70 md:flex"
         >
+          <Link
+            href="/"
+            className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-cyan)]"
+          >
+            Home
+          </Link>
           <Link
             href="/health"
             className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-cyan)]"
