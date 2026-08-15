@@ -151,7 +151,43 @@ export default function Home() {
           ))}
         </div>
       </section>
-
+{/* Shop strip */}
+      <section
+        aria-label="Digital Products"
+        className="mx-auto w-full max-w-[var(--content-max-width)] px-4 md:px-6"
+      >
+        <div className="flex items-center justify-between mb-[var(--space-5)]">
+          <h2 className="font-[family-name:var(--font-body)] text-[var(--font-size-xl)] font-semibold text-[var(--color-text-primary)]">
+            Digital Products
+          </h2>
+          <a
+            href="/shop"
+            className="text-[var(--color-brand-cyan)] text-sm font-semibold hover:underline"
+          >
+            View all →
+          </a>
+        </div>
+        <div className="grid grid-cols-1 gap-[var(--space-4)] sm:grid-cols-2 md:grid-cols-3">
+          <a href="/shop" className="block rounded-xl border border-[var(--color-brand-cyan)]/20 bg-[var(--color-surface-card)] p-6 hover:border-[var(--color-brand-cyan)]/60 transition-colors">
+            <div className="text-[var(--color-brand-cyan)] text-xs font-bold tracking-widest mb-2">PLANNERS</div>
+            <div className="font-bold text-[var(--color-text-primary)] text-lg mb-1">Daily & Weekly Planners</div>
+            <div className="text-[var(--color-text-secondary)] text-sm mb-4">Printable PDF planners — undated, minimal, instant download.</div>
+            <div className="text-[var(--color-brand-yellow)] font-bold">From $4.99 →</div>
+          </a>
+          <a href="/shop" className="block rounded-xl border border-[var(--color-brand-cyan)]/20 bg-[var(--color-surface-card)] p-6 hover:border-[var(--color-brand-cyan)]/60 transition-colors">
+            <div className="text-[var(--color-brand-cyan)] text-xs font-bold tracking-widest mb-2">KIDS</div>
+            <div className="font-bold text-[var(--color-text-primary)] text-lg mb-1">Kids & Education</div>
+            <div className="text-[var(--color-text-secondary)] text-sm mb-4">Printable worksheets, coloring books & activity packs for ages 3–8.</div>
+            <div className="text-[var(--color-brand-yellow)] font-bold">From $3.99 →</div>
+          </a>
+          <a href="/shop" className="block rounded-xl border border-[var(--color-brand-cyan)]/20 bg-[var(--color-surface-card)] p-6 hover:border-[var(--color-brand-cyan)]/60 transition-colors">
+            <div className="text-[var(--color-brand-cyan)] text-xs font-bold tracking-widest mb-2">AI TOOLS</div>
+            <div className="font-bold text-[var(--color-text-primary)] text-lg mb-1">AI Prompts Master Pack</div>
+            <div className="text-[var(--color-text-secondary)] text-sm mb-4">160 copy-paste ready prompts for ChatGPT, Claude & Gemini.</div>
+            <div className="text-[var(--color-brand-yellow)] font-bold">$2.00 →</div>
+          </a>
+        </div>
+      </section>
       {/* Trust/value strip — DESIGN.md Section 21. */}
       <section
         aria-label="Why OUNZOZ"
