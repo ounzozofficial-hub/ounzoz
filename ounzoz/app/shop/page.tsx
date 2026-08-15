@@ -7,7 +7,7 @@ const PRODUCTS = [
     category: "planners",
     name: "Ultimate Daily Planner",
     tagline: "Plan with purpose. Track what matters.",
-    price: "$4.99",
+    price: "$4.97",
     pages: "12 Pages",
     badge: "BESTSELLER",
     features: ["Daily schedule 6AM–10PM", "30-Day habit tracker", "Expense tracker", "Evening reflection"],
@@ -19,11 +19,11 @@ const PRODUCTS = [
     category: "planners",
     name: "Ultimate Weekly Planner",
     tagline: "Plan your week. Own your time.",
-    price: "$4.99",
+    price: "$3.97",
     pages: "8 Pages",
     badge: "NEW",
     features: ["Year at a glance", "Monthly overview", "Weekly spread", "Goals & priorities tracker"],
-    url: "https://ounzozofficial.gumroad.com/l/weeklyplanner",
+    url: "https://ounzozofficial.gumroad.com/l/eyffhc",
     color: "#4a7a58",
   },
   {
@@ -83,11 +83,10 @@ const PRODUCTS = [
     pages: "160 Prompts",
     badge: "LAUNCH PRICE",
     features: ["Social media & SEO", "E-commerce & freelancing", "Productivity & automation", "Business & entrepreneurship"],
-    url: "https://creatorvaultpro.gumroad.com/l/160AIPromptsMasterPack",
+    url: "https://ounzozofficial.gumroad.com/l/160AIPromptsMasterPack",
     color: "#00b4d8",
   },
 ];
-
 const CATEGORIES = [
   { id: "all", label: "All Products" },
   { id: "planners", label: "Planners" },
