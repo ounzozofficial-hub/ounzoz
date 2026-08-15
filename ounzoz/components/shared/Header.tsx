@@ -47,8 +47,19 @@ export function Header() {
           >
             Student
           </Link>
+          <Link
+            href="/shop"
+            className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-cyan)] text-[var(--color-brand-yellow)] font-semibold"
+          >
+            Student
+          </Link>
+          <Link
+            href="/shop"
+            className="hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-cyan)] text-[var(--color-brand-yellow)] font-semibold"
+          >
+            Shop
+          </Link>
         </nav>
-
         <ThemeToggle />
       </div>
     </header>
