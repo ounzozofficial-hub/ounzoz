@@ -17,8 +17,8 @@ export function Header() {
           className="flex items-center gap-2 font-[family-name:var(--font-display)] text-xl font-extrabold tracking-tight text-white transition-opacity duration-150 hover:opacity-80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-cyan)]"
         >
           <span>
-            OUNZO
-            <span className="text-[var(--color-brand-cyan)]">Z</span>
+            <span className="text-[var(--color-brand-cyan)]">OUN</span>
+            <span className="text-[var(--color-brand-yellow)]">ZOZ</span>
           </span>
         </Link>
 
