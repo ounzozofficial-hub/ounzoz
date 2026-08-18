@@ -11,14 +11,14 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 // - Primary: cyan bg, navy text (not white — contrast rule), radius-sm,
 //   44px desktop / 48px mobile height, darker-cyan hover + shadow-sm,
 //   2px navy focus outline offset 2px.
-// - Secondary: transparent bg, 1px border-color, primary text color.
+// - Secondary: navy bg, cyan text, cyan border.
 // - Rule: every tool page has exactly one primary button — enforced by
 //   usage discipline in tool pages, not by this component.
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
     'bg-[var(--color-brand-cyan)] text-[var(--color-brand-navy)] hover:bg-[color-mix(in_srgb,var(--color-brand-cyan)_85%,black)] hover:shadow-[var(--shadow-sm)]',
-  secondary:
-    'bg-transparent text-[var(--color-text-primary)] border border-[var(--color-border)] hover:bg-[var(--color-surface)]',
+    secondary:
+    'bg-[var(--color-brand-navy)] text-[var(--color-brand-cyan)] border border-[var(--color-brand-cyan)] hover:bg-[color-mix(in_srgb,var(--color-brand-navy)_85%,var(--color-brand-cyan))]',
 };
 
 export function Button({
