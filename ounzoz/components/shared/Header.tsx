@@ -60,7 +60,6 @@ export function Header() {
             Shop
           </Link>
         </nav>
-        <ThemeToggle />
       </div>
     </header>
   );
