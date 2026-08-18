@@ -9,11 +9,11 @@
 
 :root {
   /* --- Color: Light theme (default) — DESIGN.md Section 2 --- */
-  --color-background: #ffffff;
-  --color-surface: #f0f4f8;
-  --color-text-primary: #0B1120;
-  --color-text-secondary: #334155;
-  --color-border: #cbd5e1;
+  --color-background: #f8fafc;
+  --color-surface: #0B1120;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #00E5FF;
+  --color-border: #1a2a40;
 
   /* --- Color: Brand (constant across themes) --- */
   --color-brand-navy: #0b1120;
